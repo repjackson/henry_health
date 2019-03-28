@@ -13,9 +13,11 @@ if Meteor.isClient
 
 
 
-    Template.user_tribe_editor.onCreated ->
+    Template.user_group_editor.onCreated ->
         @autorun -> Meteor.subscribe 'type','tribe'
-    Template.user_tribe_editor.helpers
+
+
+    Template.user_group_editor.helpers
         tribes: ->
             Docs.find
                 type:'tribe'
@@ -25,7 +27,7 @@ if Meteor.isClient
             if current_user.tribes and @slug in current_user.tribes then 'grey' else ''
 
 
-    Template.user_tribe_editor.events
+    Template.user_group_editor.events
         'click .toggle_tribe': ->
             # console.log @
             current_user = Meteor.users.findOne username:Router.current().params.username
@@ -705,3 +707,9 @@ if Meteor.isClient
             console.log current_user
             Meteor.call 'verify_email', current_user._id, @address, ->
                 alert 'Verification Email Sent'
+
+
+if Meteor.isServer
+    Meteor.publish 'user_from_username', (username)->
+        Meteor.users.find
+            username:username

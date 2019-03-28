@@ -2,7 +2,7 @@ template(name='user_edit')
     .ui.stackable.padded.grid.pad_left
         .middle.aligned.row
             .four.wide.center.aligned.column
-                a.ui.large.button(href="/u/#{user_from_username_param.username}/about" title='Profile') 
+                a.ui.large.button(href="/user/#{user_from_username_param.username}/about" title='Profile') 
                     i.checkmark.icon
                     |Save
             .eight.wide.center.aligned.column
@@ -49,27 +49,7 @@ template(name='user_edit')
                         i.remove.icon
                         |Delete User
             .eleven.wide.column
-                +user_tribe_editor
-                //- +user_schema_editor
-                //- if is_admin
-                //-     +user_single_doc_ref_editor key='building' schema='building' label='Building'
-                //-     +user_single_doc_ref_editor key='membership' schema='goldrun_role' label='Gold Run Role'
-                .ui.labeled.icon.input
-                     .ui.label Address
-                     i.globe.icon
-                     input#address(type='text' value=user_from_username_param.address)
-                .ui.labeled.icon.input
-                     .ui.label Unit #
-                     i.home.icon
-                     input#apt_number(type='number' value=user_from_username_param.apt_number)
-                .ui.labeled.icon.input
-                     .ui.label Building #
-                     i.building.icon
-                     input#building_number(type='number' value=user_from_username_param.building_number)
-                .ui.labeled.icon.input
-                     .ui.label Date Started
-                     i.calendar.icon
-                     input#start_date(type='date' value=user_from_username_param.start_date)
+                +user_group_editor
                 .ui.labeled.icon.input
                      .ui.label 
                          |Phone
@@ -78,23 +58,17 @@ template(name='user_edit')
                 .ui.labeled.icon.input
                      .ui.label Email
                      input#email(type='email' value=user_from_username_param.email)
-                    
-                    // if user_from_username_param.owner
-                    //     .ui.blue.owner.button
-                    //         i.checkmark.icon
-                    //         | Owner
-                    // else 
-                    //     .ui.owner.button
-                    //         i.circle.outline.icon
-                    //         | Owner
-                    // unless user_from_username_param.owner       
-                    //     .ui.labeled.icon.input
-                    //         .ui.label Lease Expiration
-                    //         i.clock.icon
-                    //         input#lease_expiration(type='date' value=user_from_username_param.lease_expiration)
-                                        
-                //- +stripe_connect
-                //- +payment_methods
+                with user_from_username_param
+                    +text_edit key='first_name' label='First Name'
+                    +text_edit key='last_name' label='Last Name'
+                    +number_edit key='age' label='Age'
+                    +text_edit key='email' label='Email'
+                    +text_edit key='state' label='State'
+                    +number_edit key='zip_code' label='Zip Code'
+                    +array_edit key='array' label='Sources of Stress'
+                    +boolean_edit key='health_insurance' label='Health Insurance'
+                    +boolean_edit key='out_of_pocket' label='Out of Pocket'
+                    +boolean_edit key='terms' label='Agree to Terms'
 
 
 template(name='user_schema_editor')
@@ -104,8 +78,8 @@ template(name='user_schema_editor')
             i.icon(class=icon)
             |#{title}
             
-template(name='user_tribe_editor')
-    .ui.header My Tribes
+template(name='user_group_editor')
+    .ui.header My Groups
     each tribes
         .ui.button.toggle_tribe(class=user_tribe_class title=title)
             i.icon(class=icon)

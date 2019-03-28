@@ -122,6 +122,18 @@ template(name='user_about')
                     strong #{telephone}
                 //- .ui.item Email 
                 //-     strong #{email}
+                with user_from_username_param
+                    +text_view key='first_name' label='First Name'
+                    +text_view key='last_name' label='Last Name'
+                    +number_view key='age' label='Age'
+                    +text_view key='email' label='Email'
+                    +text_view key='state' label='State'
+                    +number_view key='zip_code' label='Zip Code'
+                    +array_view key='array' label='Sources of Stress'
+                    +boolean_view key='health_insurance' label='Health Insurance'
+                    +boolean_view key='out_of_pocket' label='Out of Pocket'
+                    +boolean_view key='terms' label='Agree to Terms'
+
                 .ui.small.header 
                     i.linkify.icon
                     |Link
