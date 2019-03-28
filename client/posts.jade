@@ -5,9 +5,11 @@ template(name='posts')
                 i.plus.icon
                 |Add Post
         .twelve.wide.column
-            .ui.center.aligned.header Posts
+            h1.ui.center.aligned.header 
+                i.newspaper.grey.icon
+                |Posts
             each posts
-                +post_item
+                +post_segment
 
 
 template(name='my_posts')
@@ -20,53 +22,68 @@ template(name='my_posts')
                         a(href="/post/view/#{_id}") #{title}
 
 
-template(name='post')
-    .ui.segment
-        .ui.centered.image
-            a(href="/post/view/#{_id}")
-                img(src="{{c.url image_id  height=300 crop='fill' gravity='face' }}")
-        .content
-            h1.ui.header
-                a(href="/post/view/#{_id}") #{title}
-            if publish_date
-                .meta
-                    | Published #{publish_when}
-            .description
-                |{{nl2br body}}
-        .content
-            each tags
-                .ui.compact.button.post_tag(class=tag_class) #{this}
-            .edit_post.ui.primary.basic.right.floated.button
-                i.pencil.icon
-                |Edit Post    
-        
-            
-template(name='post_item')
+template(name='post_segment')
     .ui.segment
         a.image(href="/post/view/#{_id}")
             img.ui.rounded.image(src="{{c.url image_id  width=175 height=175 crop='fill' gravity='face' }}")
         .content
-            a.header(href="/post/view/#{_id}") #{title}
+            a.ui.center.aligned.header(href="/post/view/#{_id}") #{title}
             if publish_date
                 .meta
                     | Published #{publish_when}
             .description
                 |!{description}
-                a(href="/post/view/#{_id}") 
+                a.ui.basic.button(href="/post/view/#{_id}") 
                     |View More
                     i.arrow.right.icon
             .extra
                 i.tags.icon
                 each tags
                     .ui.compact.label.post_tag(class=tag_class) #{this}
-            if isInRole 'admin'
-                .extra
-                    i.red.configure.large.icon
-                    if published
-                        .ui.green.basic.label Published
-                    else
-                        .ui.red.basic.label Unpublished                        
-                    if featured
-                        .ui.green.basic.label Featured
-                    else
-                        .ui.red.basic.label Unfeatured
+            .extra
+                i.red.configure.large.icon
+                if published
+                    .ui.green.basic.label Published
+                else
+                    .ui.red.basic.label Unpublished                        
+                if featured
+                    .ui.green.basic.label Featured
+                else
+                    .ui.red.basic.label Unfeatured
+
+template(name='post_view')
+    with post
+        .ui.stackable.padded.grid
+            .row
+                a.ui.top.left.attached.basic.button(href="/posts")
+                    i.arrow.left.icon
+                    |Posts
+            .centered.row
+                h1.ui.center.aligned.header #{title}
+                if image_id
+                    img.ui.centered.image(src="{{c.url image_id height=500 width=800 background='white' crop='lpad'}}")
+            .row
+                .ten.wide.column
+                    if publish_date
+                        h4.ui.header Published #{publish_when}
+                    .ui.basic.segment
+                        |!{description}
+                    if tags
+                        .ui.basic.segment
+                            each tags
+                                .ui.basic.label #{this}
+                    +comments
+                .five.wide.column
+                    +user_card
+                    .edit_post.ui.basic.large.button
+                        i.edit.icon
+                        |Edit
+                    .ui.hidden.divider
+                        if published
+                            .ui.green.basic.label Published
+                        else
+                            .ui.red.basic.label Unpublished                        
+                        if featured
+                            .ui.green.basic.label Featured
+                        else
+                            .ui.red.basic.label Unfeatured

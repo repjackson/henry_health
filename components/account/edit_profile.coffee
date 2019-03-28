@@ -1,6 +1,4 @@
 if Meteor.isClient
-    Router.route '/user/:username/edit', -> @render 'edit_profile'
-
     Template.edit_profile.onCreated ->
         @autorun -> Meteor.subscribe 'user_profile', Router.current().params.username
 

@@ -1,0 +1,48 @@
+template(name='nav')
+    .ui.borderless.stackable.top.attached.large.menu
+        //- a.toggle_sidebar.mobile.only.header.item
+        //-     i.sidebar.icon
+        //-     | Henry Health
+
+        a.header.mobile.hidden.item(href='/' class="{{isActivePath '/'}}") 
+            img.ui.small.image(src="{{c.url 'henry_logo'}}")
+        a.mobile.hidden.item(href='/users' class="{{isActivePath '/users'}}")
+            i.large.grey.users.icon
+            |People
+        a.mobile.hidden.item(href='/posts' class="{{isActivePath '/posts'}}")
+            i.large.grey.newspaper.icon
+            |Posts
+        .mobile.hidden.right.menu
+            if currentUser
+                a.icon.item(href='/dashboard' class="{{isActivePath '/dashboard'}}")
+                    i.large.grey.line.chart.icon
+                a.ui.simple.dropdown.icon.item(href='/notifications')
+                    i.large.grey.alarm.icon
+                    .menu
+                        each notifications
+                            .item #{text}
+                a.icon.item(href='/messages' class="{{isActivePath '/messages'}}")
+                    i.large.grey.mail.icon
+                if isInRole 'admin'
+                    a.mobile.hidden.item(href='/admin' class="{{isActivePath '/admin'}}")
+                        i.large.grey.configure.icon
+                        |Admin
+                a.mobile.hidden.item(href='/media' class="{{isActivePath '/media'}}")
+                    i.large.grey.video.icon
+                    |Media
+                a.mobile.hidden.item(href="/user/#{currentUser.username}" class="{{isActivePath '/user/#{currentUser.username}'}}")
+                    if currentUser.profile.image_id
+                        img.ui.avatar.image(src="{{c.url currentUser.image_id width=50 height=50 gravity='face' crop='fill'}}")
+                    else
+                        i.large.grey.user.icon
+                    if currentUser.name
+                        | #{currentUser.name}
+                    else
+                        | Profile
+                a#logout.ui.mobile.hidden.item(href='#') 
+                    i.large.grey.sign.out.alternate.icon
+                    | Sign Out
+            else
+                a.ui.mobile.hidden.item(href='/sign-in') 
+                    i.large.grey.sign.in.alternate.icon
+                    | Sign In
