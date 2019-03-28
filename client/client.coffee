@@ -24,7 +24,10 @@ Template.registerHelper 'when', () -> moment(@_timestamp).fromNow()
 Template.registerHelper 'from_now', (input) -> moment(input).fromNow()
 
 Template.registerHelper 'current_type', (input) -> Router.current().params.type
-
+Template.registerHelper 'current_model', (input) ->
+    Docs.findOne
+        model:'model'
+        slug: Router.current().params.model_slug
 
 Template.registerHelper 'is_admin', () ->
     if Meteor.user() and Meteor.user().roles
