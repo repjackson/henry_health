@@ -2,7 +2,7 @@ if Meteor.isClient
     Template.timecard.onCreated ->
         self = @
         self.autorun ->
-            self.subscribe 'timecard', FlowRouter.getParam('user_id')
+            self.subscribe 'timecard', Router.getParam('user_id')
 
 
     Template.timecard.helpers

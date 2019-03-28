@@ -1,6 +1,6 @@
 Template.edit_herd_image.events
     "change input[type='file']": (e) ->
-        herd_id = FlowRouter.getParam('herd_id')
+        herd_id = Router.getParam('herd_id')
         files = e.currentTarget.files
 
 
@@ -18,7 +18,7 @@ Template.edit_herd_image.events
 
     'keydown #input_image_id': (e,t)->
         if e.which is 13
-            herd_id = FlowRouter.getParam('herd_id')
+            herd_id = Router.getParam('herd_id')
             image_id = $('#input_image_id').val().toLowerCase().trim()
             if image_id.length > 0
                 Herds.update herd_id,
@@ -42,7 +42,7 @@ Template.edit_herd_image.events
                 if not err
                     # Do Stuff with res
                     # console.log res
-                    Herds.update FlowRouter.getParam('herd_id'), 
+                    Herds.update Router.getParam('herd_id'), 
                         $unset: image_id: 1
 
                 else
@@ -54,7 +54,7 @@ Template.edit_herd_image.events
     # 		        console.log "Upload Error: #{err}"
     # 		    else
     #     			console.log "Upload Result: #{res}"
-    #                 # Herds.update FlowRouter.getParam('herd_id'), 
+    #                 # Herds.update Router.getParam('herd_id'), 
     #                 #     $unset: image_id: 1
 
 

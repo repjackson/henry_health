@@ -1,4 +1,4 @@
-FlowRouter.route '/checkin', action: (params) ->
+Router.route '/checkin', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'checkin'
 
@@ -64,7 +64,7 @@ if Meteor.isClient
                         confirmButtonText: 'Ok'
                         closeOnConfirm: true
                         }, ->
-                        #     FlowRouter.go "/profile/#{user._id}"
+                        #     Router.go "/profile/#{user._id}"
             
         'click .sign_out_user': ->
             swal {

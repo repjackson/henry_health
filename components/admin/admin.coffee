@@ -1,5 +1,5 @@
 
-FlowRouter.route '/admin', action: (params) ->
+Router.route '/admin', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
         main: 'user_table'

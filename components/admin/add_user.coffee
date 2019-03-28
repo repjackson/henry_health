@@ -1,4 +1,4 @@
-FlowRouter.route '/user/add', action: (params) ->
+Router.route '/user/add', action: (params) ->
     BlazeLayout.render 'layout',
         nav: 'nav'
         main: 'add_user'
@@ -32,7 +32,7 @@ if Meteor.isClient
             email = $('#email').val().trim()
             Meteor.call 'create_user', username, first_name, last_name, email, (err,new_id)->
                 console.log new_id
-                FlowRouter.go "/profile/#{new_id}"
+                Router.go "/profile/#{new_id}"
             
             
 if Meteor.isServer

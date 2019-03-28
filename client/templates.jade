@@ -29,15 +29,17 @@ template(name='layout')
         //     a.item
         //         i.sidebar.icon
         //         |     Menu
-        .ui.bottom.attached.basic.segment.pushable
-            +sidebar
-            .pusher
-                #main_area
-                    .ui.basic.fluid.segment
-                        +Template.dynamic template=cloud
-                        +Template.dynamic template=sub_nav
-                        +Template.dynamic template=sub_sub_nav
-                        +Template.dynamic template=main
+        #main
+            +yield
+        //- .ui.bottom.attached.basic.segment.pushable
+        //-     +sidebar
+        //-     .pusher
+        //-         #main_area
+        //-             .ui.basic.fluid.segment
+        //-                 +Template.dynamic template=cloud
+        //-                 +Template.dynamic template=sub_nav
+        //-                 +Template.dynamic template=sub_sub_nav
+        //-                 +Template.dynamic template=main
 
 
 

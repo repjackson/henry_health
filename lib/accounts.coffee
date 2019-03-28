@@ -1,32 +1,88 @@
+# AccountsTemplates.configure
+#     defaultLayout: 'layout'
+#     # defaultLayoutRegions:
+#         # nav: ''
+#     defaultContentRegion: 'main'
+#     showForgotPasswordLink: true
+#     overrideLoginErrors: true
+#     enablePasswordChange: true
+#
+#     sendVerificationEmail: true
+#     enforceEmailVerification: false
+#     confirmPassword: true
+#     continuousValidation: true
+#     #displayFormLabels: true
+#     #forbidClientAccountCreation: true
+#     #formValidationFeedback: true
+#     #homeRoutePath: '/'
+#     showAddRemoveServices: true
+#     #showPlaceholders: true
+#
+#     negativeValidation: true
+#     positiveValidation: true
+#     negativeFeedback: true
+#     positiveFeedback: true
+#
+#     # Privacy Policy and Terms of Use
+#     #privacyUrl: 'privacy'
+#     #termsUrl: 'terms-of-use'
 
-AccountsTemplates.configure
-    defaultLayout: 'layout'
-    # defaultLayoutRegions:
-        # nav: ''
-    defaultContentRegion: 'main'
-    showForgotPasswordLink: true
-    overrideLoginErrors: true
-    enablePasswordChange: true
+AccountsTemplates.configure({
+    # // Behavior
+    confirmPassword: true,
+    defaultLayout: 'layout',
+    enablePasswordChange: true,
+    forbidClientAccountCreation: false,
+    overrideLoginErrors: true,
+    sendVerificationEmail: false,
+    lowercaseUsername: false,
+    focusFirstInput: true,
 
-    sendVerificationEmail: true
-    enforceEmailVerification: false
-    confirmPassword: true
-    continuousValidation: true
-    #displayFormLabels: true
-    #forbidClientAccountCreation: true
-    #formValidationFeedback: true
-    #homeRoutePath: '/'
-    showAddRemoveServices: true
-    #showPlaceholders: true
+    # // Appearance
+    showAddRemoveServices: false,
+    showForgotPasswordLink: true,
+    showLabels: true,
+    showPlaceholders: true,
+    showResendVerificationEmailLink: false,
 
-    negativeValidation: true
-    positiveValidation: true
-    negativeFeedback: true
-    positiveFeedback: true
+    # // Client-side Validation
+    continuousValidation: false,
+    negativeFeedback: false,
+    negativeValidation: true,
+    positiveValidation: true,
+    positiveFeedback: true,
+    showValidating: true,
 
-    # Privacy Policy and Terms of Use
-    #privacyUrl: 'privacy'
-    #termsUrl: 'terms-of-use'
+    # // Privacy Policy and Terms of Use
+    # privacyUrl: 'privacy',
+    # termsUrl: 'terms-of-use',
+
+    # // Redirects
+    homeRoutePath: '/',
+    redirectTimeout: 4000,
+
+    # // Hooks
+    # onLogoutHook: myLogoutFunc,
+    # onSubmitHook: mySubmitFunc,
+    # preSignUpHook: myPreSubmitFunc,
+    # postSignUpHook: myPostSubmitFunc,
+
+    # // Texts
+    # texts: {
+    #   button: {
+    #       signUp: "Register Now!"
+    #   },
+    #   socialSignUp: "Register",
+    #   socialIcons: {
+    #       "meteor-developer": "fa fa-rocket"
+    #   },
+    #   title: {
+    #       forgotPwd: "Recover Your Password"
+    #   },
+    # },
+});
+
+
 
 pwd = AccountsTemplates.removeField('password')
 AccountsTemplates.removeField 'email'
@@ -62,4 +118,3 @@ AccountsTemplates.configureRoute 'resetPwd'
 AccountsTemplates.configureRoute 'signIn'
 AccountsTemplates.configureRoute 'signUp'
 AccountsTemplates.configureRoute 'verifyEmail'
-

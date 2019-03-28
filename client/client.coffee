@@ -5,7 +5,7 @@ $.cloudinary.config
     cloud_name:"facet"
 
     
-FlowRouter.notFound =
+Router.notFound =
     action: ->
         BlazeLayout.render 'layout', 
             main: 'not_found'

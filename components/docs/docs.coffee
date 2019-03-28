@@ -24,7 +24,7 @@ Docs.helpers
     author: -> Meteor.users.findOne @author_id
     when: -> moment(@timestamp).fromNow()
 
-FlowRouter.route '/docs', action: (params) ->
+Router.route '/docs', action: (params) ->
     BlazeLayout.render 'layout',
         # cloud: 'cloud'
         main: 'docs'
@@ -63,12 +63,12 @@ if Meteor.isClient
     Template.view.events
         'click .tag': -> if @valueOf() in selected_tags.array() then selected_tags.remove(@valueOf()) else selected_tags.push(@valueOf())
     
-        'click .edit': -> FlowRouter.go("/edit/#{@_id}")
+        'click .edit': -> Router.go("/edit/#{@_id}")
 
     Template.docs.events
         'click #add': ->
             Meteor.call 'add', (err,id)->
-                FlowRouter.go "/edit/#{id}"
+                Router.go "/edit/#{id}"
     
         'keyup #quick_add': (e,t)->
             e.preventDefault

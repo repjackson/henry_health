@@ -1,5 +1,5 @@
 if Meteor.isClient
-    FlowRouter.route '/users', action: ->
+    Router.route '/users', action: ->
         BlazeLayout.render 'layout', 
             main: 'users'
             
@@ -14,5 +14,5 @@ if Meteor.isClient
     Template.users.events
         # 'click #add_user': ->
         #     id = Docs.insert type:'person'
-        #     FlowRouter.go "/person/edit/#{id}"
+        #     Router.go "/person/edit/#{id}"
     

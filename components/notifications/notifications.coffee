@@ -1,7 +1,7 @@
 @Notifications = new Meteor.Collection 'notifications'
 
 
-FlowRouter.route '/notifications', action: (params) ->
+Router.route '/notifications', action: (params) ->
     BlazeLayout.render 'layout',
         main: 'notifications'
 
@@ -14,12 +14,12 @@ if Meteor.isClient
             Notifications.find { }
     
     Template.notification.events
-        'click .edit': -> FlowRouter.go("/notification/edit/#{@_id}")
+        'click .edit': -> Router.go("/notification/edit/#{@_id}")
 
     Template.notifications.events
         # 'click #add_module': ->
         #     id = notifications.insert({})
-        #     FlowRouter.go "/edit_module/#{id}"
+        #     Router.go "/edit_module/#{id}"
     
     
 

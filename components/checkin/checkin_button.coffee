@@ -45,5 +45,5 @@ if Meteor.isClient
 
     Template.check_in_button.helpers
         checked_in: ->
-            user = Meteor.users.findOne FlowRouter.getParam('user_id')
+            user = Meteor.users.findOne Router.getParam('user_id')
             user.profile.checked_in
