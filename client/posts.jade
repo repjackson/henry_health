@@ -1,20 +1,13 @@
 template(name='posts')
-    .ui.container
-        .ui.stackable.divided.grid
-            .twelve.wide.column
-                .ui.relaxed.divided.items
-                    each posts
-                        +post_item
-            .four.wide.column
-                if isInRole 'admin'
-                    h2.ui.header 
-                        i.red.configure.icon
-                        |Admin
-                    #add_post.ui.compact.basic.fluid.button
-                        i.large.icons
-                            i.sticky.note.outline.icon
-                            i.green.plus.corner.icon
-                        |Add Post
+    .ui.stackable.padded.grid
+        .four.wide.column
+            #add_post.ui.compact.basic.fluid.button
+                i.plus.icon
+                |Add Post
+        .twelve.wide.column
+            .ui.center.aligned.header Posts
+            each posts
+                +post_item
 
 
 template(name='my_posts')
@@ -28,7 +21,7 @@ template(name='my_posts')
 
 
 template(name='post')
-    .ui.fluid.card
+    .ui.segment
         .ui.centered.image
             a(href="/post/view/#{_id}")
                 img(src="{{c.url image_id  height=300 crop='fill' gravity='face' }}")
@@ -43,14 +36,13 @@ template(name='post')
         .content
             each tags
                 .ui.compact.button.post_tag(class=tag_class) #{this}
-            if isInRole 'admin'
-                .edit_post.ui.primary.basic.right.floated.button
-                    i.pencil.icon
-                    |Edit Post    
-            
+            .edit_post.ui.primary.basic.right.floated.button
+                i.pencil.icon
+                |Edit Post    
+        
             
 template(name='post_item')
-    .ui.item
+    .ui.segment
         a.image(href="/post/view/#{_id}")
             img.ui.rounded.image(src="{{c.url image_id  width=175 height=175 crop='fill' gravity='face' }}")
         .content

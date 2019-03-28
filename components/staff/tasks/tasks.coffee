@@ -28,7 +28,7 @@ if Meteor.isClient
 
 
     Template.edit_task.onCreated ->
-        @autorun -> Meteor.subscribe 'doc', Router.getParam('doc_id')
+        @autorun -> Meteor.subscribe 'doc', Router.current().params.doc_id
         @autorun -> Meteor.subscribe 'docs', [], 'building'
     
          
@@ -63,7 +63,7 @@ if Meteor.isClient
     
     Template.edit_task.helpers
         task: -> 
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             # console.log doc_id
             Docs.findOne doc_id 
 
@@ -82,7 +82,7 @@ if Meteor.isClient
                 confirmButtonText: 'Delete'
                 confirmButtonColor: '#da5347'
             }, ->
-                Docs.remove Router.getParam('doc_id'), ->
+                Docs.remove Router.current().params.doc_id, ->
                     Router.go "/tasks"
 
         'blur #description': (e,t)->

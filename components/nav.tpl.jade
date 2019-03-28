@@ -1,16 +1,15 @@
 .ui.borderless.stackable.top.attached.large.menu
-    a.toggle_sidebar.mobile.only.header.item
-        i.sidebar.icon
-        | Henry Health
+    //- a.toggle_sidebar.mobile.only.header.item
+    //-     i.sidebar.icon
+    //-     | Henry Health
 
     a.header.mobile.hidden.item(href='/' class="{{isActivePath '/'}}") 
-        img.ui.tiny.image(src="{{c.url 'henry_logo'}}")
-    // .header.mobile.hidden.item GR
-    a.mobile.hidden.item(href='/people' class="{{isActivePath '/people'}}")
+        img.ui.small.image(src="{{c.url 'henry_logo'}}")
+    a.mobile.hidden.item(href='/users' class="{{isActivePath '/users'}}")
         i.users.icon
         |People
     a.mobile.hidden.item(href='/posts' class="{{isActivePath '/posts'}}")
-        i.sticky.note.outline.icon
+        i.newspaper.icon
         |Posts
     .mobile.hidden.right.menu
         if currentUser
@@ -30,9 +29,9 @@
             a.mobile.hidden.item(href='/staff' class="{{isActivePath '/staff'}}")
                 i.info.circle.icon
                 |Staff
-            a.mobile.hidden.item(href="/account/profile/edit/#{currentUser._id}" class="{{isActivePath '/account/profile/edit/#{currentUser._id}'}}")
+            a.mobile.hidden.item(href="/user/#{currentUser.username}" class="{{isActivePath '/user/#{currentUser.username}'}}")
                 if currentUser.profile.image_id
-                    img.ui.avatar.image(src="{{c.url currentUser.profile.image_id width=50 height=50 gravity='face' crop='fill'}}")
+                    img.ui.avatar.image(src="{{c.url currentUser.image_id width=50 height=50 gravity='face' crop='fill'}}")
                 else
                     i.user.icon
                 if currentUser.name
@@ -40,9 +39,9 @@
                 else
                     | Profile
             a#logout.ui.mobile.hidden.item(href='#') 
-                i.sign.out.icon
+                i.sign.out.alternate.icon
                 | Sign Out
         else
             a.ui.mobile.hidden.item(href='/sign-in') 
-                i.sign.in.icon
+                i.sign.in.alternate.icon
                 | Sign In

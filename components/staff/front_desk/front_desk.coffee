@@ -13,7 +13,7 @@ if Meteor.isClient
 #     Template.frontdesk.onCreated ->
 #         @autorun -> Meteor.subscribe('frontdesk')
 #     Template.edit_frontdesk.onCreated ->
-#         @autorun -> Meteor.subscribe('frontdesk', Router.getParam('doc_id'))
+#         @autorun -> Meteor.subscribe('frontdesk', Router.current().params.doc_id)
 
     
 #     Template.frontdesk.helpers
@@ -50,7 +50,7 @@ if Meteor.isClient
 #                 confirmButtonText: 'Delete'
 #                 confirmButtonColor: '#da5347'
 #             }, =>
-#                 doc = Docs.findOne Router.getParam('doc_id')
+#                 doc = Docs.findOne Router.current().params.doc_id
 #                 Docs.remove doc._id, ->
 #                     Router.go "/frontdesk"
 

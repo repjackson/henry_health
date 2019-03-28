@@ -12,7 +12,7 @@ Template.delete_button.events
             confirmButtonText: 'Delete'
             confirmButtonColor: '#da5347'
         }, =>
-            # doc = Docs.findOne Router.getParam('doc_id')
+            # doc = Docs.findOne Router.current().params.doc_id
             # Docs.remove doc._id, ->
             #     Router.go "/docs"
             console.log template

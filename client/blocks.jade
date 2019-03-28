@@ -1,0 +1,191 @@
+template(name='comments')
+    .ui.grey.header
+        i.chat.grey.outline.icon
+        |Comments
+    if currentUser
+        .ui.fluid.icon.input
+            i.plus.icon
+            input.add_comment(type='text' placeholder='Add...')
+    .ui.comments
+        each doc_comments
+            .ui.comment
+                .content
+                    .header #{body}
+                    .meta #{when}
+                    .actions
+                        i.thumbs.up.link.icon
+                        i.remove.link.remove_comment.icon
+
+template(name='detect')
+    .ui.icon.big.circular.button.detect_fields
+        i.dna.icon
+        |Detect Fields
+
+
+template(name='follow')
+    .ui.segment
+        .ui.header
+            i.user.plus.icon
+            |Follow
+        +user_list_toggle key='follower_ids' icon='rss' add_label='Follow' remove_label='Unfollow' color='grey'
+
+
+
+
+template(name='toggle_edit')
+    .ui.button.toggle_edit
+        i.pencil.icon
+
+template(name='user_list_info')
+    a.ui.button.item(href="/user/#{user._id}")
+        img.ui.avatar.image(src=user.image title=name)
+        |#{user.profile.name}
+        //- +user_status user
+
+
+
+template(name='user_info')
+    a.ui.label(href="/u/#{user.username}")
+        if user.image_id
+            img.ui.mini.inline.image(src="{{c.url user.image_id }}")
+        //- if user.name
+        //-     |#{user.name}
+        |@#{user.username}
+        |#{user.first_name}
+        |#{user.last_name}
+        //- +user_status user
+
+template(name='user_card')
+    a.ui.segment(href="/u/#{user.username}")
+        if user.image_id
+            img.ui.small.image(src="{{c.url user.image_id }}")
+        |@#{user.username}
+        |@#{user.first_name}
+        |@#{user.last_name}
+        //- +user_status user
+
+template(name='person_card')
+    .ui.fluid.segment
+        .ui.two.column.grid
+            .column
+                if person.image
+                    a(href="/s/person/#{person._id}/view")
+                        img.ui.small.image(src="{{c.url person.image height=400 crop='limit'}}")
+            .column
+                a.ui.header(href="/s/person/#{person._id}/view")
+                    |#{person.first_name}
+                    |#{person.last_name}
+                a.ui.small.header(href="/s/person/#{person._id}/view")
+                    |@#{person.username}
+                .ui.list
+                    .item Telephone
+                        strong #{person.telephone}
+                    .item Email
+                        strong #{person.email}
+                    .item Building Number
+                        strong #{person.building_number}
+                    .item Unit Number
+                        strong #{person.unit_number}
+        //- // +user_status user
+
+
+template(name='role_editor')
+    each roles
+        .ui.button #{this}
+
+template(name='author_info')
+    a.ui.button(href="/u/#{author.username}") by #{author.username}
+
+template(name='creation_info')
+    .ui.tiny.grey.inline.header #{when}
+    .ui.tiny.grey.inline.header #{long_date _timestamp}
+
+
+template(name='user_list_toggle')
+    if currentUser
+        .ui.button.toggle(class=user_list_toggle_class title=label href='#')
+            i.icon(class=icon)
+            |#{label}
+        each list_users
+            +user_info
+
+
+template(name='voting')
+    //- div
+    if points
+        strong #{points}
+    .ui.icon.large.big.circular.button.upvote
+        i.thumbs.up.icon(class=upvote_class)
+    each upvoter_ids
+        +user_info
+    .ui.icon.large.big.circular.button.downvote
+        i.thumbs.down.icon(class=downvote_class)
+    each downvoter_ids
+        +user_info
+
+
+
+template(name='view_button')
+    .ui.large.button.view(title='View')
+        |View #{type}
+        i.right.chevron.icon
+
+template(name='remove_button')
+    .ui.circular.icon.large.button.remove_doc(title='Delete')
+        i.grey.link.remove.icon
+        // |Remove #{title}
+        // |Remove #{title} #{type}
+            
+
+template(name='add_button')
+    a.ui.button.add(title='Add')
+        i.plus.icon(tooltip="Add #{type}")
+        |#{type}
+
+
+
+
+template(name='clone_button')
+    a.ui.icon.circular.big.button.clone_doc(title='clone' href="#")
+        i.clone.icon
+
+
+
+template(name='edit_button')
+    .ui.large.icon.circular.button.edit(title="edit #{title}")
+        i.blue.pencil.icon
+        //- |Edit
+
+
+template(name='save_button')
+    //- a.ui.button.big.save(title='Save' href="/s/#{type}/#{_id}/view")
+    a.ui.button.icon.big.save(title='Save' href="/view/#{_id}")
+        i.green.checkmark.icon
+        //- |Save
+
+template(name='toggle_button')
+    .ui.icon.toggle.button(title=label)
+        i.icon(class=icon)
+    each selected
+        |#{username}
+
+
+template(name='view_user_button')
+    .view_user.view(title="view #{username}")
+        i.play.icon
+        |View
+
+template(name='add_type_button')
+    .ui.icon.button.add(title="add #{type}")
+        i.plus.icon
+        |#{type}
+        
+        
+        
+template(name='doc_list_toggle')
+    .ui.icon.button.toggle(class=doc_list_toggle_class title=label href='#')
+        i.icon(class=icon)
+        // +icolor name=icon
+        |#{label}
+    each list_users
+        +user_info

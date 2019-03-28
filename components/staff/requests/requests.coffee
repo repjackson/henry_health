@@ -14,7 +14,7 @@ if Meteor.isClient
         @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'request')
 
     Template.edit_request.onCreated ->
-        @autorun -> Meteor.subscribe('doc', Router.getParam('doc_id'))
+        @autorun -> Meteor.subscribe('doc', Router.current().params.doc_id)
 
     
     Template.requests.helpers
@@ -57,7 +57,7 @@ if Meteor.isClient
         'blur #request_date': ->
             request_date = $('#request_date').val()
             # console.log request_date
-            Docs.update Router.getParam('doc_id'),
+            Docs.update Router.current().params.doc_id,
                 $set:
                     request_date: request_date
     
@@ -79,5 +79,5 @@ if Meteor.isClient
                 confirmButtonText: 'Delete'
                 confirmButtonColor: '#da5347'
             }, =>
-                Docs.remove Router.getParam('doc_id'), ->
+                Docs.remove Router.current().params.doc_id, ->
                     Router.go "/requests"

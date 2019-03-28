@@ -2,7 +2,7 @@ Template.edit_description.events
     'blur .froala-container': (e,t)->
         html = t.$('div.froala-reactive-meteorized-override').froalaEditor('html.get', true)
         
-        doc_id = Router.getParam('doc_id')
+        doc_id = Router.current().params.doc_id
 
         Docs.update doc_id,
             $set: 
@@ -13,7 +13,7 @@ Template.edit_description.events
 
 Template.edit_description.helpers
     getFEContext: ->
-        @current_doc = Docs.findOne Router.getParam('doc_id')
+        @current_doc = Docs.findOne Router.current().params.doc_id
         self = @
         {
             _value: self.current_doc.description

@@ -1,8 +1,5 @@
 if Meteor.isClient
-    Router.route '/', (->
-        @layout 'layout'
-        @render 'home'
-        ), name:'home'
+    Router.route '/', -> @render 'home'
 
     Template.home.onCreated ->
         @autorun -> Meteor.subscribe('featured_posts')

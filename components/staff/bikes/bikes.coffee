@@ -20,7 +20,7 @@ if Meteor.isClient
         @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'bike')
 
     Template.edit_bike.onCreated ->
-        @autorun -> Meteor.subscribe('doc', Router.getParam('doc_id'))
+        @autorun -> Meteor.subscribe('doc', Router.current().params.doc_id)
 
     
     Template.bikes.helpers
@@ -62,12 +62,12 @@ if Meteor.isClient
                 confirmButtonText: 'Delete'
                 confirmButtonColor: '#da5347'
             }, =>
-                doc = Docs.findOne Router.getParam('doc_id')
+                doc = Docs.findOne Router.current().params.doc_id
                 Docs.remove doc._id, ->
                     Router.go "/bikes"
                     
         "change #upload_handlebar_image": (e) ->
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             files = e.currentTarget.files
     
     
@@ -84,7 +84,7 @@ if Meteor.isClient
                     return
         
         "change #upload_frame_image": (e) ->
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             files = e.currentTarget.files
     
     
@@ -101,7 +101,7 @@ if Meteor.isClient
                     return
         
         "change #upload_seat_image": (e) ->
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             files = e.currentTarget.files
     
     
@@ -119,7 +119,7 @@ if Meteor.isClient
     
         # 'keydown #input_image_id': (e,t)->
         #     if e.which is 13
-        #         doc_id = Router.getParam('doc_id')
+        #         doc_id = Router.current().params.doc_id
         #         image_id = $('#input_image_id').val().toLowerCase().trim()
         #         if image_id.length > 0
         #             Docs.update doc_id,
@@ -143,7 +143,7 @@ if Meteor.isClient
                     if not err
                         # Do Stuff with res
                         # console.log res
-                        Docs.update Router.getParam('doc_id'), 
+                        Docs.update Router.current().params.doc_id, 
                             $unset: handlebar_image_id: 1
     
                     else
@@ -163,7 +163,7 @@ if Meteor.isClient
                     if not err
                         # Do Stuff with res
                         # console.log res
-                        Docs.update Router.getParam('doc_id'), 
+                        Docs.update Router.current().params.doc_id, 
                             $unset: frame_image_id: 1
     
                     else
@@ -183,7 +183,7 @@ if Meteor.isClient
                     if not err
                         # Do Stuff with res
                         # console.log res
-                        Docs.update Router.getParam('doc_id'), 
+                        Docs.update Router.current().params.doc_id, 
                             $unset: seat_image_id: 1
     
                     else

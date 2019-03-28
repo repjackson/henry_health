@@ -1,7 +1,7 @@
 Template.edit_tags.events
     'keydown #add_tag': (e,t)->
         if e.which is 13
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             tag = $('#add_tag').val().toLowerCase().trim()
             if tag.length > 0
                 Docs.update doc_id,
@@ -10,7 +10,7 @@ Template.edit_tags.events
 
     'click .doc_tag': (e,t)->
         tag = @valueOf()
-        Docs.update Router.getParam('doc_id'),
+        Docs.update Router.current().params.doc_id,
             $pull: tags: tag
         $('#add_tag').val(tag)
 

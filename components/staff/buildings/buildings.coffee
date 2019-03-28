@@ -25,10 +25,10 @@ if Meteor.isClient
         
    
     Template.edit_building.onCreated ->
-        @autorun -> Meteor.subscribe('doc', Router.getParam('doc_id'))
+        @autorun -> Meteor.subscribe('doc', Router.current().params.doc_id)
 
     Template.view_building.onCreated ->
-        @autorun -> Meteor.subscribe('doc', Router.getParam('doc_id'))
+        @autorun -> Meteor.subscribe('doc', Router.current().params.doc_id)
 
 
 
@@ -44,13 +44,13 @@ if Meteor.isClient
     
     Template.edit_building.helpers
         building: -> 
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             # console.log doc_id
             Docs.findOne doc_id 
 
     Template.view_building.helpers
         building: -> 
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             # console.log doc_id
             Docs.findOne doc_id 
 
@@ -68,7 +68,7 @@ if Meteor.isClient
                 confirmButtonText: 'Delete'
                 confirmButtonColor: '#da5347'
             }, ->
-                Docs.remove Router.getParam('doc_id'), ->
+                Docs.remove Router.current().params.doc_id, ->
                     Router.go "/buildings"
 
 
@@ -95,7 +95,7 @@ if Meteor.isClient
 
         'click .remove_number': (e,t)->
             building_number = @valueOf()
-            Docs.update Router.getParam('doc_id'),
+            Docs.update Router.current().params.doc_id,
                 $pull: 
                     building_numbers: building_number
             

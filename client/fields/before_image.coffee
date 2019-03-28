@@ -1,6 +1,6 @@
 Template.before_image.events
     "change input[type='file']": (e) ->
-        doc_id = Router.getParam('doc_id')
+        doc_id = Router.current().params.doc_id
         files = e.currentTarget.files
 
 
@@ -18,7 +18,7 @@ Template.before_image.events
 
     'keydown #input_before_image_id': (e,t)->
         if e.which is 13
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             before_image_id = $('#input_before_image_id').val().toLowerCase().trim()
             if before_image_id.length > 0
                 Docs.update doc_id,
@@ -42,7 +42,7 @@ Template.before_image.events
                 if not err
                     # Do Stuff with res
                     # console.log res
-                    Docs.update Router.getParam('doc_id'), 
+                    Docs.update Router.current().params.doc_id, 
                         $unset: before_image_id: 1
 
                 else
@@ -54,7 +54,7 @@ Template.before_image.events
     # 		        console.log "Upload Error: #{err}"
     # 		    else
     #     			console.log "Upload Result: #{res}"
-    #                 # Docs.update Router.getParam('doc_id'), 
+    #                 # Docs.update Router.current().params.doc_id, 
     #                 #     $unset: before_image_id: 1
 
 

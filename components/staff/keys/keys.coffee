@@ -41,7 +41,7 @@ if Meteor.isClient
 
 
     Template.edit_key.onCreated ->
-        @autorun -> Meteor.subscribe('doc', Router.getParam('doc_id'))
+        @autorun -> Meteor.subscribe('doc', Router.current().params.doc_id)
         @autorun -> Meteor.subscribe('buildings')
     
          
@@ -68,7 +68,7 @@ if Meteor.isClient
             # console.log building
             if building then building.building_numbers
         key: -> 
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             # console.log doc_id
             Docs.findOne doc_id 
 
@@ -112,7 +112,7 @@ if Meteor.isClient
                 confirmButtonText: 'Delete'
                 confirmButtonColor: '#da5347'
             }, ->
-                Docs.remove Router.getParam('doc_id'), ->
+                Docs.remove Router.current().params.doc_id, ->
                     Router.go "/keys"
 
         'change #select_building_code': (e,t)->

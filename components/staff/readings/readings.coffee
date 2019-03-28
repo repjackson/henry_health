@@ -37,7 +37,7 @@ if Meteor.isClient
         @autorun -> Meteor.subscribe('readings')
 
     Template.edit_reading.onCreated ->
-        @autorun -> Meteor.subscribe('doc', Router.getParam('doc_id'))
+        @autorun -> Meteor.subscribe('doc', Router.current().params.doc_id)
     
     Template.readings.helpers
         readings: -> 
@@ -64,7 +64,7 @@ if Meteor.isClient
     
     Template.edit_reading.helpers
         reading: -> 
-            doc_id = Router.getParam('doc_id')
+            doc_id = Router.current().params.doc_id
             # console.log doc_id
             Docs.findOne doc_id 
 
@@ -118,7 +118,7 @@ if Meteor.isClient
                 confirmButtonText: 'Delete'
                 confirmButtonColor: '#da5347'
             }, ->
-                Docs.remove Router.getParam('doc_id'), ->
+                Docs.remove Router.current().params.doc_id, ->
                     Router.go "/readings"
 
 

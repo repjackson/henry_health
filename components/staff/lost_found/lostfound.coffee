@@ -13,7 +13,7 @@ if Meteor.isClient
     Template.lostfound.onCreated ->
         @autorun -> Meteor.subscribe('docs', selected_tags.array(), 'lostfound')
     Template.edit_lf_item.onCreated ->
-        @autorun -> Meteor.subscribe('lostfound_item', Router.getParam('doc_id'))
+        @autorun -> Meteor.subscribe('lostfound_item', Router.current().params.doc_id)
 
     
     Template.lostfound.helpers
@@ -50,7 +50,7 @@ if Meteor.isClient
                 confirmButtonText: 'Delete'
                 confirmButtonColor: '#da5347'
             }, =>
-                doc = Docs.findOne Router.getParam('doc_id')
+                doc = Docs.findOne Router.current().params.doc_id
                 Docs.remove doc._id, ->
                     Router.go "/lostfound"
 
