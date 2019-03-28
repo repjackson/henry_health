@@ -44,3 +44,18 @@ if Meteor.isClient
                 Roles.addUsersToRoles self._id, 'staff'
                 swal "Made #{self.emails[0].address} a staff", "",'success'
                 return
+
+    Template.user_role_toggle.helpers
+        is_in_role: ->
+            @role in Template.parentData().roles
+
+    Template.user_role_toggle.events
+        'click .add_role': ->
+            parent_user = Template.parentData()
+            Meteor.users.update parent_user._id,
+                $addToSet:roles:@role
+
+        'click .remove_role': ->
+            parent_user = Template.parentData()
+            Meteor.users.update parent_user._id,
+                $pull:roles:@role

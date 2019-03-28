@@ -121,7 +121,7 @@ Router.route '/user/:username/contact', (->
 #     ), name:'user_campaigns'
 
 
-Router.route '/user/:username/edit', -> @render 'user_edit'
+Router.route '/user/:username/edit', -> @render 'edit_profile'
 
 
 Router.route '/p/:slug', -> @render 'page'

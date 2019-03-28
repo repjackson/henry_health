@@ -117,5 +117,6 @@ Template.camera.events 'click .snap': ->
     Webcam.snap (image) ->
         Session.set 'webcamSnap', image
 
+
 Template.camera.helpers
     image: -> Session.get 'webcamSnap'

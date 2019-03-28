@@ -24,16 +24,14 @@ template(name='user_table')
                             a(href="/account/profile/edit/#{_id}")
                                 |Edit
                         td 
-                            .ui.hidden.fitted.divider
-                            +user_role_toggle label='admin'
-                            +user_role_toggle label='therapist'
-                            +user_role_toggle label='client'
-                            +user_role_toggle label='user'
+                            +user_role_toggle role='admin'
+                            +user_role_toggle role='therapist'
+                            +user_role_toggle role='client'
+                            +user_role_toggle role='user'
                             
 
 template(name='user_role_toggle')
-    .ui.left.labeled.button
-        if is_in_role
-            .remove_role.ui.green.button #{label}
-        else
-            .add_role.ui.basic.label #{label}
+    if is_in_role
+        .remove_role.ui.green.compact.button #{role}
+    else
+        .add_role.ui.basic.compact.button #{role}

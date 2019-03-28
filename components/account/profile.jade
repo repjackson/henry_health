@@ -44,11 +44,11 @@ template(name='profile_layout')
                                             .content    
                                                 .header
                                                     |Messages
-                                        //- a.item(href="/user/#{user_from_username_param.username}/notifications" class="{{isActiveRoute regex='user_notifications'}}")
-                                        //-     i.bullhorn.icon
-                                        //-     .content    
-                                        //-         .header
-                                        //-             |Notifications
+                                        a.item(href="/user/#{user_from_username_param.username}/notifications" class="{{isActiveRoute regex='user_notifications'}}")
+                                            i.bullhorn.icon
+                                            .content    
+                                                .header
+                                                    |Notifications
                                         a.item(href="/user/#{user_from_username_param.username}/chat" class="{{isActiveRoute regex='user_chat'}}")
                                             i.chat.icon
                                             .content    
@@ -59,16 +59,16 @@ template(name='profile_layout')
                                         //-     .content    
                                         //-         .header
                                         //-             |Stripe
-                                        //- a.item(href="/user/#{user_from_username_param.username}/tags" class="{{isActiveRoute regex='user_tags'}}")
-                                        //-     i.tags.icon
-                                        //-     .content    
-                                        //-         .header
-                                        //-             |Tags
-                                        //- a.item(href="/user/#{user_from_username_param.username}/contact" class="{{isActiveRoute regex='user_contact'}}")
-                                        //-     i.phone.icon
-                                        //-     .content    
-                                        //-         .header
-                                        //-             |Contact
+                                        a.item(href="/user/#{user_from_username_param.username}/tags" class="{{isActiveRoute regex='user_tags'}}")
+                                            i.tags.icon
+                                            .content    
+                                                .header
+                                                    |Tags
+                                        a.item(href="/user/#{user_from_username_param.username}/contact" class="{{isActiveRoute regex='user_contact'}}")
+                                            i.phone.icon
+                                            .content    
+                                                .header
+                                                    |Contact
                                     //- if user_schemas
                                     //-     .ui.vertical.large.fluid.menu
                                     //-         each user_schemas
@@ -95,7 +95,7 @@ template(name='profile_layout')
                                             |Roles
                                         each roles
                                             .ui.label #{this}
-                                    +tribe_switcher
+                                    +group_switcher
                                 .twelve.wide.column.scrolling
                                     +yield
             +footer
@@ -223,12 +223,12 @@ template(name='role_switcher')
     +user_array_element_toggle key='roles' value='owner' user=currentUser
 
 
-template(name='tribe_switcher')
+template(name='group_switcher')
     .ui.secondary.segment
         .ui.header 
-            i.fire.icon
-            |Tribe Switcher
-        each my_tribes
+            i.users.icon
+            |Group Switcher
+        each my_groups
             +user_string_toggle key='current_tribe' value=slug  
             
 template(name='user_array_element_toggle')
