@@ -45,7 +45,7 @@ template(name='user_list_info')
 
 
 template(name='user_info')
-    a.ui.label(href="/u/#{user.username}")
+    a.ui.label(href="/user/#{user.username}")
         if user.image_id
             img.ui.mini.inline.image(src="{{c.url user.image_id }}")
         //- if user.name
@@ -56,7 +56,7 @@ template(name='user_info')
         //- +user_status user
 
 template(name='user_card')
-    a.ui.segment(href="/u/#{user.username}")
+    a.ui.segment(href="/user/#{user.username}")
         if user.image_id
             img.ui.small.image(src="{{c.url user.image_id }}")
         |@#{user.username}
@@ -94,7 +94,7 @@ template(name='role_editor')
         .ui.button #{this}
 
 template(name='author_info')
-    a.ui.button(href="/u/#{author.username}") by #{author.username}
+    a.ui.button(href="/user/#{author.username}") by #{author.username}
 
 template(name='creation_info')
     .ui.tiny.grey.inline.header #{when}
