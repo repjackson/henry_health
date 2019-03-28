@@ -21,7 +21,7 @@ template(name='nav')
                     .menu
                         each notifications
                             .item #{text}
-                a.icon.item(href='/messages' class="{{isActivePath '/messages'}}")
+                a.icon.item(href="/user/#{currentUser.username}/messages" class="{{isActivePath '/messages'}}")
                     i.large.grey.mail.icon
                 if isInRole 'admin'
                     a.mobile.hidden.item(href='/admin' class="{{isActivePath '/admin'}}")
@@ -39,9 +39,9 @@ template(name='nav')
                         | #{currentUser.name}
                     else
                         | Profile
-                a#logout.ui.mobile.hidden.item(href='#') 
+                a#logout.ui.mobile.hidden.icon.item(href='#') 
                     i.large.grey.sign.out.alternate.icon
-                    | Sign Out
+                    //- | Sign Out
             else
                 a.ui.mobile.hidden.item(href='/sign-in') 
                     i.large.grey.sign.in.alternate.icon

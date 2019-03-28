@@ -14,7 +14,7 @@ template(name='color_edit')
 
 template(name='color_view')
     .ui.form
-        .inline.field
+        .field
             label 
                 if icon
                     i.grey.icon(class=icon)
@@ -29,7 +29,7 @@ template(name='color_view')
 
 template(name='color_icon_edit')
     .ui.form
-        .inline.field
+        .field
             label 
                 if icon
                     i.grey.icon(class=icon)
@@ -45,7 +45,7 @@ template(name='color_icon_edit')
 
 template(name='icon_edit')
     .ui.form
-        .inline.field
+        .field
             label 
                 if icon
                     i.grey.icon(class=icon)
@@ -178,7 +178,7 @@ template(name='textarea_edit')
 
 template(name='html_edit')
     .ui.form
-        .inline.field
+        .field
             label 
                 if icon
                     i.grey.icon(class=icon)
@@ -235,16 +235,15 @@ template(name='doc_view')
 
 
 template(name='text_edit')
-        .ui.labeled.fluid.input
-            // if icon
-            //     i.grey.icon(class=icon)
-            .ui.label 
+    .ui.form
+        .field
+            if icon
+                i.grey.icon(class=icon)
+            label 
                 if label
                     |#{label}
                 else if key
                     |#{key}
-                else
-                    |#{this}
             input.edit_text(type='text' value=field_value placeholder=placeholder)
 
 template(name='text_view')
@@ -297,9 +296,6 @@ template(name='phone_view')
 template(name='code_edit')
     .ui.header ace
     #ace
-
-
-
 
 
 
@@ -410,24 +406,21 @@ template(name='datetime_view')
 
 
 template(name='array_edit')
-    div
-    .ui.labeled.icon.input
-        .ui.label 
-            // if icon
-            //     i.grey.icon(class=icon)
-            if label
-                |#{label}
-            else if key
-                |#{key}
-            else
-                |#{this}
-        input.new_element(type='text' placeholder='+')
+    .ui.form
+        .field
+            label 
+                if icon
+                    i.grey.icon(class=icon)
+                if label
+                    |#{label}
+                else if key
+                    |#{key}
+            input.new_element(type='text' placeholder='+')
     if field_value
         each field_value
             .ui.large.label
                 i.delete.icon.remove_element
                 |#{this}
-    div
 
 
 template(name='array_view')

@@ -50,6 +50,7 @@ template(name='doc_emotion')
 template(name='call_watson')
     #call_watson.ui.icon.button 
         i.chess.knight.icon
+        | Analyze
         
 
 
@@ -99,32 +100,32 @@ template(name='keywords')
 template(name='entities')
     .ui.grey.header 
         |#{watson.entities.length} entities
-    .ui.list
+    .ui.four.column.stackable.grid
         each watson.entities
-            .item
+            .column
                 .ui.small.grey.header #{type}: #{text}
-            if emotion
-                with emotion
-                    span {{ to_percent sadness }}% sadness
-                    .ui.blue.small.disabled.progress(data-percent="{{to_percent sadness}}" title="{{to_percent sadness}}% sadness")
-                        .bar
-                        .progress
-                    span {{ to_percent joy }}% joy 
-                    .ui.teal.small.disabled.progress(data-percent="{{to_percent joy}}" title="{{to_percent joy}}% joy")
-                        .bar
-                        .progress
-                    span {{ to_percent fear }}% fear
-                    //- .progress
-                    .ui.small.disabled.progress(data-percent="{{to_percent fear}}" title="{{to_percent fear}}% fear")
-                        .bar
-                    span {{ to_percent disgust }}% disgust 
-                    .ui.yellow.small.disabled.progress(data-percent="{{to_percent disgust}}" title="{{to_percent disgust}}% disgust")
-                        .bar
-                        .progress
-                    span {{ to_percent anger }}% anger 
-                    .ui.orange.small.disabled.progress(data-percent="{{to_percent anger}}" title="{{to_percent anger}}% anger")
-                        .bar
-                        .progress
+                if emotion
+                    with emotion
+                        span {{ to_percent sadness }}% sadness
+                        .ui.blue.small.disabled.progress(data-percent="{{to_percent sadness}}" title="{{to_percent sadness}}% sadness")
+                            .bar
+                            .progress
+                        span {{ to_percent joy }}% joy 
+                        .ui.teal.small.disabled.progress(data-percent="{{to_percent joy}}" title="{{to_percent joy}}% joy")
+                            .bar
+                            .progress
+                        span {{ to_percent fear }}% fear
+                        //- .progress
+                        .ui.small.disabled.progress(data-percent="{{to_percent fear}}" title="{{to_percent fear}}% fear")
+                            .bar
+                        span {{ to_percent disgust }}% disgust 
+                        .ui.yellow.small.disabled.progress(data-percent="{{to_percent disgust}}" title="{{to_percent disgust}}% disgust")
+                            .bar
+                            .progress
+                        span {{ to_percent anger }}% anger 
+                        .ui.orange.small.disabled.progress(data-percent="{{to_percent anger}}" title="{{to_percent anger}}% anger")
+                            .bar
+                            .progress
 
 
 
@@ -182,7 +183,7 @@ template(name='semantic_roles')
             .ui.header #{watson.semantic_roles.length} semantic roles
                 i.dropdown.icon
         .active.content
-            +jsonView(json=watson.semantic_roles)
+            //- +jsonView(json=watson.semantic_roles)
             //- .ui.list
             //-     each watson.semantic_roles
             //-         .item
@@ -196,7 +197,7 @@ template(name='relations')
             .ui.inline.header #{watson.relations.length} relations
             i.dropdown.icon
         .active.content    
-            +jsonView(json=watson.relations)
+            //- +jsonView(json=watson.relations)
             //- .ui.list
             //-     each watson.relations
             //-         .item
@@ -261,7 +262,7 @@ template(name='consumption_preferences')
                         .item #{name}
                     else
                         .disabled.item #{name}
-            // +jsonView(json=personality.consumption_preferences)
+            //- // +jsonView(json=personality.consumption_preferences)
 
 
 
@@ -281,7 +282,7 @@ template(name='tone')
     // unless tone                
     //- #call_tone.ui.icon.button
     //-     i.refresh.icon
-            // +jsonView(json=tone)
+            //- // +jsonView(json=tone)
 
 
 
@@ -304,6 +305,6 @@ template(name='watson_view')
     //-             i.code.icon
     //-             i.dropdown.icon
     //-         .content
-    //-             +jsonView(json=watson)
+                +jsonView(json=watson)
     +personality
     +consumption_preferences
