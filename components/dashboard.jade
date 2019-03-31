@@ -2,7 +2,21 @@ template(name='dashboard')
     .ui.stackable.padded.grid
         .centered.row
             .twelve.wide.column
-                .ui.header Dashboard
+                h1.ui.center.aligned.header
+                    i.dashboard.icon
+                    if is_therapist
+                        |Therapist
+                    if is_client
+                        |Client
+                    |Dashboard
         .centered.row
-            .four.wide.column
-                
+            .twelve.wide.column
+                if is_therapist
+                    .ui.header Links to Docs
+                    .ui.header Links to Post
+                if is_client
+                    .ui.header Availability
+                    .ui.header Contact Verbage
+                a.ui.fluid.button(href="/user/#{currentUser.username}")
+                    i.pencil.icon
+                    | Edit Profile

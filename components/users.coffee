@@ -1,7 +1,7 @@
 if Meteor.isClient
     Router.route '/users', -> @render 'users'
-            
-    Template.people.onCreated ->
+
+    Template.users.onCreated ->
         @autorun -> Meteor.subscribe('users')
 
 

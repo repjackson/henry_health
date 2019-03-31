@@ -38,6 +38,14 @@ Template.registerHelper 'is_dev', () ->
     if Meteor.user() and Meteor.user().roles
         if 'dev' in Meteor.user().roles then true else false
 
+Template.registerHelper 'is_client', () ->
+    if Meteor.user() and Meteor.user().roles
+        if 'client' in Meteor.user().roles then true else false
+
+Template.registerHelper 'is_therapist', () ->
+    if Meteor.user() and Meteor.user().roles
+        if 'therapist' in Meteor.user().roles then true else false
+
 
 Template.registerHelper 'is_editing', () ->
     # console.log 'this', @
