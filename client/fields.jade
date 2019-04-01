@@ -617,9 +617,7 @@ template(name='multi_doc_edit')
         .ui.compact.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
-            |#{title}
-            |#{key}
-            |#{username}
+            |#{label}
     // .ui.sub.header 
     //     if icon
     //         i.grey.icon(class=icon)
@@ -628,16 +626,16 @@ template(name='multi_doc_edit')
     //     each choices
     //         option(value=slug) #{title}
     // .ui.fluid.multiple.selection.dropdown
-        // input(type='hidden' name='multi_doc_edit')
-        // i.dropdown.icon
-        // .default.text 
-        //     |#{label}
-        // .menu
-        //     each choices
-        //         .item(data-value=slug) 
-        //             if icon
-        //                 i.grey.icon(class=icon)
-        //             |#{title}
+    //- // input(type='hidden' name='multi_doc_edit')
+    //- // i.dropdown.icon
+    //- // .default.text 
+    //- //     |#{label}
+    //- // .menu
+    //- //     each choices
+    //- //         .item(data-value=slug) 
+    //- //             if icon
+    //- //                 i.grey.icon(class=icon)
+    //- //             |#{title}
 
     
     

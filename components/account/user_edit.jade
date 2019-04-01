@@ -65,7 +65,7 @@ template(name='user_edit')
                     +text_edit key='email' label='Email'
                     +text_edit key='state' label='State'
                     +number_edit key='zip_code' label='Zip Code'
-                    +array_edit key='array' label='Sources of Stress'
+                    +multi_doc_edit key='stress_source' ref_schema='source_of_stress'
                     +boolean_edit key='health_insurance' label='Health Insurance'
                     +boolean_edit key='out_of_pocket' label='Out of Pocket'
                     +boolean_edit key='terms' label='Agree to Terms'

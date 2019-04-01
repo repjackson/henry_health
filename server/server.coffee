@@ -18,6 +18,10 @@ Meteor.publish 'featured_posts', ->
         type: 'post'
         featured: true
 
+Meteor.publish 'type', (type)->
+    Docs.find
+        type: type
+
 
 Meteor.publish 'facet_doc', (tags)->
     split_array = tags.split ','

@@ -484,7 +484,7 @@ Template.single_doc_edit.events
 
 
 Template.multi_doc_view.onCreated ->
-    # @autorun => Meteor.subscribe 'type', @data.ref_schema
+    @autorun => Meteor.subscribe 'type', @data.ref_schema
 
 Template.multi_doc_view.helpers
     choices: ->
@@ -514,56 +514,53 @@ Template.multi_doc_edit.helpers
     choices: ->
         # console.log @ref_schema
         Docs.find type:@ref_schema
+
     choice_class: ->
         selection = @
-        ref_field = Template.parentData()
+        current = Template.currentData()
+        parent = Template.parentData()
+        ref_field = Template.parentData(1)
         target = Template.parentData(2)
+        console.log @
+        console.log parent
+        console.log ref_field
+        console.log target
 
-        if brick
-            if parent["#{@key}"]
-                if @slug in parent["#{@key}"] then 'grey' else ''
-        else
-            if target["#{ref_field.key}"] and @slug in target["#{ref_field.key}"] then 'grey' else ''
+        if target["#{ref_field.key}"]
+            console.log target["#{ref_field.key}"]
+            if @slug in target["#{ref_field.key}"] then 'grey' else ''
+
 
 Template.multi_doc_edit.events
     'click .select_choice': ->
         selection = @
+        parent = Template.parentData(1)
         ref_field = Template.currentData()
-        target = Template.parentData(1)
 
+        # console.log parent
+        # console.log ref_field
+        # console.log @
+        # console.log parent["#{@key}"]
 
-        console.log @["#{ref_field.ref_key}"]
-
-        if brick
-            if parent["#{@key}"] and @slug in parent["#{ref_field.key}"]
-                doc = Docs.findOne parent._id
-                user = Meteor.users.findOne parent._id
-                if doc
-                    Docs.update parent._id,
-                        $pull:"#{@key}":@slug
-                else if user
-                    Meteor.users.update parent._id,
-                        $pull: "#{@key}": @slug
-            else
-                doc = Docs.findOne parent._id
-                user = Meteor.users.findOne parent._id
-
-                if doc
-                    Docs.update parent._id,
-                        $addToSet: "#{@key}": @slug
-                else if user
-                    Meteor.users.update parent._id,
-                        $addToSet: "#{@key}": @slug
-
-        else
-            if target["#{ref_field.key}"] and @slug in target["#{ref_field.key}"]
-                Docs.update target._id,
+        if parent["#{ref_field.key}"] and @slug in parent["#{ref_field.key}"]
+            doc = Docs.findOne parent._id
+            user = Meteor.users.findOne parent._id
+            if doc
+                Docs.update parent._id,
+                    $pull:"#{ref_field.key}":@slug
+            else if user
+                Meteor.users.update parent._id,
                     $pull: "#{ref_field.key}": @slug
-            else
-                Docs.update target._id,
+        else
+            doc = Docs.findOne parent._id
+            user = Meteor.users.findOne parent._id
+
+            if doc
+                Docs.update parent._id,
                     $addToSet: "#{ref_field.key}": @slug
-
-
+            else if user
+                Meteor.users.update parent._id,
+                    $addToSet: "#{ref_field.key}": @slug
 
 
 
