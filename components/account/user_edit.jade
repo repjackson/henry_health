@@ -13,12 +13,13 @@ template(name='user_edit')
         .row
             .five.wide.column.scrolling
                 .ui.form
-                    .field
-                        label First Name
-                        input#first_name(type='text', placeholder='First Name', value='{{user_from_username_param.first_name}}')
-                    .field
-                        label Last Name
-                        input#last_name(type='text', placeholder='Last Name', value='{{user_from_username_param.last_name}}')
+                    with user_from_username_param
+                        +text_edit key='first_name' label='First Name'
+                        +text_edit key='last_name' label='Last Name'
+                        +number_edit key='age' label='Age'
+                        +text_edit key='email' label='Email'
+                        +text_edit key='state' label='State'
+                        +number_edit key='zip_code' label='Zip Code'
                     .field
                         if user_from_username_param.image_id
                             label Image
@@ -59,12 +60,6 @@ template(name='user_edit')
                 //-      .ui.label Email
                 //-      input#email(type='email' value=user_from_username_param.email)
                 with user_from_username_param
-                    +text_edit key='first_name' label='First Name'
-                    +text_edit key='last_name' label='Last Name'
-                    +number_edit key='age' label='Age'
-                    +text_edit key='email' label='Email'
-                    +text_edit key='state' label='State'
-                    +number_edit key='zip_code' label='Zip Code'
                     +multi_doc_edit key='stress_source' ref_schema='source_of_stress' label='Which of the following are major sources of stress for you?'
                     +multi_doc_edit key='previous_counsuling_source' ref_schema='counsuling_source' label='Have you ever sought counseling from any of the following?'
                     +multi_doc_edit key='therapist_gender_preference' ref_schema='gender' label='Would you prefer a male or female therapist?'
