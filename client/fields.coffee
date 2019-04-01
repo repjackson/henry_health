@@ -256,7 +256,7 @@ Template.text_edit.events
 Template.boolean_edit.helpers
     boolean_toggle_class: ->
         parent = Template.parentData()
-        if parent["#{@key}"] then 'grey' else ''
+        if parent["#{@key}"] then 'teal' else ''
 
 
 Template.boolean_edit.events
@@ -450,9 +450,9 @@ Template.single_doc_edit.helpers
 
 
         if brick
-            if @slug is parent["#{@key}"] then 'grey' else ''
+            if @slug is parent["#{@key}"] then 'teal' else ''
         else
-            if @slug is target["#{ref_field.key}"] then 'grey' else ''
+            if @slug is target["#{ref_field.key}"] then 'teal' else ''
 
 
 Template.single_doc_edit.events
@@ -527,8 +527,8 @@ Template.multi_doc_edit.helpers
         # console.log target
 
         if target["#{ref_field.key}"]
-            console.log target["#{ref_field.key}"]
-            if @slug in target["#{ref_field.key}"] then 'grey' else ''
+            # console.log target["#{ref_field.key}"]
+            if @slug in target["#{ref_field.key}"] then 'teal' else ''
 
 
 Template.multi_doc_edit.events

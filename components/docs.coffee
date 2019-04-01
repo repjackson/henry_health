@@ -49,7 +49,7 @@ if Meteor.isClient
             Docs.find { },
                 sort:
                     tag_count: 1
-                limit: 1
+                limit: 10
 
         tag_class: -> if @valueOf() in selected_tags.array() then 'primary' else 'basic'
 
