@@ -24,6 +24,15 @@ Router.route('enroll', {
 })
 
 
+Router.route '/s/:type', (->
+    @layout 'layout'
+    @render 'delta'
+    ), name:'delta'
+
+Router.route '/s/:type/:_id/edit', -> @render 'type_edit'
+Router.route '/s/:type/:_id/view', -> @render 'type_view'
+
+
 
 # Router.route '/user/:username', -> @render 'user'
 Router.route '/edit/:_id', -> @render 'edit'

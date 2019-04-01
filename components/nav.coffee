@@ -3,6 +3,10 @@ if Meteor.isClient
         'click #logout': ->
             AccountsTemplates.logout()
 
+        'click .delta': ->
+            Session.set 'loading', true
+            Meteor.call 'set_delta_facets', 'schema',->
+                Session.set 'loading', false
 
     Template.nav.onCreated ->
         @autorun ->

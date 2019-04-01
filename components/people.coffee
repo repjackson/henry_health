@@ -14,7 +14,6 @@ if Meteor.isClient
         @autorun -> Meteor.subscribe('doc', Router.current().params.doc_id)
 
 
-
     Template.people.helpers
         people: ->
             # People.find {}

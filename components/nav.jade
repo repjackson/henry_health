@@ -23,6 +23,9 @@ template(name='nav')
                 a.item(href='/admin' class="{{isActivePath '/admin'}}")
                     i.large.grey.user.shield.icon
                     | Admin
+                a.item.delta(href="/s/schema" class="{{isActivePath '/s/schema'}}")
+                    i.sitemap.large.icon
+                    
                 //- a.ui.simple.dropdown.icon.item(href='/user/#{currentUser.username}/notifications' class="{{isActiveRoute regex='user_notifications'}}")
                 //-     i.large.grey.alarm.icon
                 //-     .menu

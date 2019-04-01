@@ -49,15 +49,15 @@ template(name='user_edit')
                         i.remove.icon
                         |Delete User
             .eleven.wide.column
-                +user_group_editor
-                .ui.labeled.icon.input
-                     .ui.label 
-                         |Phone
-                     i.phone.icon
-                     input#telephone(type='number' value=user_from_username_param.telephone)
-                .ui.labeled.icon.input
-                     .ui.label Email
-                     input#email(type='email' value=user_from_username_param.email)
+                //- +user_group_editor
+                //- .ui.labeled.icon.input
+                //-      .ui.label 
+                //-          |Phone
+                //-      i.phone.icon
+                //-      input#telephone(type='number' value=user_from_username_param.telephone)
+                //- .ui.labeled.icon.input
+                //-      .ui.label Email
+                //-      input#email(type='email' value=user_from_username_param.email)
                 with user_from_username_param
                     +text_edit key='first_name' label='First Name'
                     +text_edit key='last_name' label='Last Name'
