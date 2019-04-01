@@ -60,7 +60,11 @@ template(name='edit')
     .ui.segment.container
         with current_doc
             +text_edit key='type' label='Type'
-            +Template.dynamic template=type_edit_template
+            +text_edit key='label' label='Label'
+            +text_edit key='slug' label='Slug'
+
+            //- +doc_edit
+            //- +Template.dynamic template=doc_edit
         //- .content
         //-     a(href="/view/#{_id}")
         //-         .image
@@ -85,6 +89,12 @@ template(name='source_of_stress_edit')
 
 
 template(name='counsuling_source_edit')
+    .ui.header Counsuling Source Edit
+    +text_edit key='label' label='Label'
+    +text_edit key='slug' label='Slug'
+
+
+template(name='gender_edit')
     .ui.header Counsuling Source Edit
     +text_edit key='label' label='Label'
     +text_edit key='slug' label='Slug'
