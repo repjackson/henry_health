@@ -27,19 +27,19 @@ if Meteor.isClient
         @autorun -> Meteor.subscribe 'doc', Router.current().params.doc_id
 
     Template.model_doc_view.helpers
-        post: -> Docs.findOne Router.current().params.doc_id
+        model: -> Docs.findOne Router.current().params.doc_id
 
     Template.model_doc_view.events
-        'click .edit_post': ->
-            Router.go "/post/edit/#{@_id}"
+        'click .edit_model': ->
+            Router.go "/model/edit/#{@_id}"
 
 
     Template.model_doc_view.events
-        # 'click .post_tag': ->
-        #     if @valueOf() in selected_post_tags.array() then selected_post_tags.remove @valueOf() else selected_post_tags.push @valueOf()
+        # 'click .model_tag': ->
+        #     if @valueOf() in selected_model_tags.array() then selected_model_tags.remove @valueOf() else selected_model_tags.push @valueOf()
         #
-        # 'click .edit_post': ->
-        #     Router.go "/post/edit/#{@_id}"
+        # 'click .edit_model': ->
+        #     Router.go "/model/edit/#{@_id}"
 
 
     Template.model_doc_edit.onCreated ->

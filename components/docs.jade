@@ -57,3 +57,30 @@ template(name='view')
                     i.pencil.icon.icon
             else
                 | by #{author.username} #{when}
+
+template(name='edit')
+    .ui.segment.container
+        with current_doc
+            +text_edit key='type' label='Type'
+            +Template.dynamic template=type_edit_template
+        //- .content
+        //-     a(href="/view/#{_id}")
+        //-         .image
+        //-             img.ui.large.centered.image(src="{{c.url image_id }}")
+        //-         h1.ui.header #{title}
+        //-     .meta
+        //-         each tags
+        //-             .ui.button.tag(class=tag_class) #{this}
+        //-     .description
+        //-         |!{description}
+        //-     if can_edit
+        //-         .edit.ui.icon.circular.basic.button
+        //-             i.pencil.icon.icon
+        //-     else
+        //-         | by #{author.username} #{when}
+
+
+template(name='source_of_stress_edit')
+    .ui.header Source of Stress Edit
+    +text_edit key='label' label='Label'
+    +text_edit key='slug' label='Slug'

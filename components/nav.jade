@@ -12,9 +12,6 @@ template(name='nav')
         //- a.mobile.hidden.item(href='/users' class="{{isActivePath '/users'}}")
         //-     i.large.grey.users.icon
         //-     |People
-        //- a.mobile.hidden.item(href='/posts' class="{{isActivePath '/posts'}}")
-        //-     i.large.grey.newspaper.icon
-        //-     |Posts
         //- a.mobile.hidden.item(href='/m/article' class="{{isActivePath '/m/article'}}")
         //-     i.newspaper.grey.file.icon
         //-     | Articles
@@ -23,7 +20,7 @@ template(name='nav')
                 a.item(href='/admin' class="{{isActivePath '/admin'}}")
                     i.large.grey.user.shield.icon
                     | Admin
-                a.item.delta(href="/s/schema" class="{{isActivePath '/s/schema'}}")
+                a.item(href="/docs" class="{{isActivePath '/docs'}}")
                     i.sitemap.large.icon
                     
                 //- a.ui.simple.dropdown.icon.item(href='/user/#{currentUser.username}/notifications' class="{{isActiveRoute regex='user_notifications'}}")

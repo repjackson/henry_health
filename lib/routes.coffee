@@ -35,8 +35,8 @@ Router.route '/s/:type/:_id/view', -> @render 'type_view'
 
 
 # Router.route '/user/:username', -> @render 'user'
-Router.route '/edit/:_id', -> @render 'edit'
-Router.route '/view/:_id', -> @render 'view'
+Router.route '/edit/:doc_id', -> @render 'edit'
+Router.route '/view/:doc_id', -> @render 'view'
 Router.route '*', -> @render 'not_found'
 
 # Router.route '/user/:username/s/:type', -> @render 'profile_layout', 'user_section'

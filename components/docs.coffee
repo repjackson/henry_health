@@ -24,10 +24,7 @@ Docs.helpers
     author: -> Meteor.users.findOne @author_id
     when: -> moment(@timestamp).fromNow()
 
-Router.route '/docs', action: (params) ->
-    BlazeLayout.render 'layout',
-        # cloud: 'cloud'
-        main: 'docs'
+Router.route '/docs', -> @render 'docs'
 
 Meteor.methods
     add: (tags=[])->
@@ -41,6 +38,12 @@ if Meteor.isClient
     Template.docs.onCreated ->
         @autorun -> Meteor.subscribe('docs', selected_tags.array())
 
+    Template.view.onCreated ->
+        @autorun -> Meteor.subscribe 'doc', Router.current().params.doc_id
+
+    Template.edit.onCreated ->
+        @autorun -> Meteor.subscribe 'doc', Router.current().params.doc_id
+
     Template.docs.helpers
         docs: ->
             Docs.find { },
@@ -51,6 +54,9 @@ if Meteor.isClient
         tag_class: -> if @valueOf() in selected_tags.array() then 'primary' else 'basic'
 
         selected_tags: -> selected_tags.array()
+
+    Template.edit.helpers
+        type_edit_template: -> "#{@type}_edit"
 
 
     Template.view.helpers

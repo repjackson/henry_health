@@ -20,7 +20,7 @@ Template.registerHelper 'dev', () -> Meteor.isDevelopment
 Template.registerHelper 'is_author', () -> @_author_id is Meteor.userId()
 Template.registerHelper 'to_percent', (number) -> (number*100).toFixed()
 Template.registerHelper 'long_date', (input) -> moment(input).format("dddd, MMMM Do h:mm:ss a")
-Template.registerHelper 'when', () -> moment(@_timestamp).fromNow()
+Template.registerHelper 'when', () -> moment(@timestamp).fromNow()
 Template.registerHelper 'from_now', (input) -> moment(input).fromNow()
 
 Template.registerHelper 'current_type', (input) -> Router.current().params.type
@@ -28,6 +28,19 @@ Template.registerHelper 'current_model', (input) ->
     Docs.findOne
         model:'model'
         slug: Router.current().params.model_slug
+
+Template.registerHelper 'current_schema', (input) ->
+    Docs.findOne
+        type:'schema'
+        slug: Router.current().params.type
+
+
+Template.registerHelper 'current_doc', (doc_id) ->
+    Docs.findOne Router.current().params.doc_id
+
+
+
+
 
 Template.registerHelper 'is_admin', () ->
     if Meteor.user() and Meteor.user().roles

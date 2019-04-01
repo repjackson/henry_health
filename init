@@ -1,0 +1,176 @@
+{
+  "_id": "XnLJvLy7bDAaEzepQ",
+  "_timestamp": 1548398746263,
+  "_timestamp_long": "Friday, January 25th 2019, 6:45:46 am",
+  "type": "schema",
+  "plural": "Sections",
+  "title": "Section",
+  "slug": "schema",
+  "icon": "sitemap",
+  "body": "Top level structure.",
+  "_keys": [
+    "type",
+    "plural",
+    "title",
+    "slug",
+    "icon",
+    "body",
+    "group",
+    "tags",
+    "topnav",
+    "topnav_roles",
+    "view_roles",
+    "edit_roles",
+    "add_roles",
+    "field_templates",
+    "rank",
+    "actions",
+    "tribe",
+    "color_icon"
+  ],
+  "_timestamp_tags": [
+    "friday",
+    "january",
+    "25th",
+    "2019"
+  ],
+  "_author_id": "ytjpFxiwnWaJELZEd",
+  "_type": {
+    "string": true,
+    "length": 6,
+    "field": "text"
+  },
+  "_plural": {
+    "string": true,
+    "length": 8,
+    "field": "text"
+  },
+  "_title": {
+    "string": true,
+    "length": 7,
+    "field": "text"
+  },
+  "_slug": {
+    "string": true,
+    "length": 6,
+    "field": "text"
+  },
+  "_icon": {
+    "string": true,
+    "length": 7,
+    "field": "text"
+  },
+  "_body": {
+    "string": true,
+    "length": 20,
+    "field": "text"
+  },
+  "_detected": 1,
+  "group": "Schemas",
+  "tags": [
+    "schema",
+    "root",
+    "structure",
+    "top",
+    "dev"
+  ],
+  "topnav": true,
+  "topnav_roles": [
+    "dev",
+    "admin"
+  ],
+  "view_roles": [
+    "dev"
+  ],
+  "edit_roles": [
+    "dev"
+  ],
+  "add_roles": [
+    "dev"
+  ],
+  "field_templates": [
+    "title",
+    "slug"
+  ],
+  "rank": "0",
+  "actions": [
+    "view_section"
+  ],
+  "tribe": "dao",
+  "color_icon": "active-directory",
+  "_group": {
+    "string": true,
+    "length": 7,
+    "field": "text"
+  },
+  "_tags": {
+    "object": true,
+    "array": true,
+    "length": 5,
+    "array_element_type": "string",
+    "field": "array"
+  },
+  "_topnav": {
+    "boolean": true,
+    "field": "boolean"
+  },
+  "_topnav_roles": {
+    "object": true,
+    "array": true,
+    "length": 2,
+    "array_element_type": "string",
+    "field": "array"
+  },
+  "_view_roles": {
+    "object": true,
+    "array": true,
+    "length": 1,
+    "array_element_type": "string",
+    "field": "array"
+  },
+  "_edit_roles": {
+    "object": true,
+    "array": true,
+    "length": 1,
+    "array_element_type": "string",
+    "field": "array"
+  },
+  "_add_roles": {
+    "object": true,
+    "array": true,
+    "length": 1,
+    "array_element_type": "string",
+    "field": "array"
+  },
+  "_field_templates": {
+    "object": true,
+    "array": true,
+    "length": 2,
+    "array_element_type": "string",
+    "field": "array"
+  },
+  "_rank": {
+    "string": true,
+    "length": 1,
+    "field": "text"
+  },
+  "_actions": {
+    "object": true,
+    "array": true,
+    "length": 1,
+    "array_element_type": "string",
+    "field": "array"
+  },
+  "_tribe": {
+    "string": true,
+    "length": 3,
+    "field": "text"
+  },
+  "_color_icon": {
+    "string": true,
+    "length": 16,
+    "field": "text"
+  },
+  "archived": true,
+  "collection": "docs"
+}
