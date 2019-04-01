@@ -521,10 +521,10 @@ Template.multi_doc_edit.helpers
         parent = Template.parentData()
         ref_field = Template.parentData(1)
         target = Template.parentData(2)
-        console.log @
-        console.log parent
-        console.log ref_field
-        console.log target
+        # console.log @
+        # console.log parent
+        # console.log ref_field
+        # console.log target
 
         if target["#{ref_field.key}"]
             console.log target["#{ref_field.key}"]
