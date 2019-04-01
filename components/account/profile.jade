@@ -26,49 +26,49 @@ template(name='profile_layout')
                                     if is_admin
                                         .ui.vertical.fluid.menu
                                             a.item(href="/user/#{user_from_username_param.username}/edit")
-                                                i.settings.icon
+                                                i.setting.icon
                                                 | Settings
-                                    .ui.vertical.large.fluid.menu
-                                        a.item(href="/user/#{user_from_username_param.username}/about" class="{{isActiveRoute regex='user_about'}}")
-                                            i.info.icon
-                                            .content    
-                                                .header
-                                                    |About
-                                        a.item(href="/user/#{user_from_username_param.username}/connections" class="{{isActiveRoute regex='user_connections'}}")
-                                            i.fork.icon
-                                            .content    
-                                                .header
-                                                    |Connections
-                                        a.item(href="/user/#{user_from_username_param.username}/messages" class="{{isActiveRoute regex='user_messages'}}")
-                                            i.mail.icon
-                                            .content    
-                                                .header
-                                                    |Messages
-                                        a.item(href="/user/#{user_from_username_param.username}/notifications" class="{{isActiveRoute regex='user_notifications'}}")
-                                            i.bullhorn.icon
-                                            .content    
-                                                .header
-                                                    |Notifications
-                                        a.item(href="/user/#{user_from_username_param.username}/chat" class="{{isActiveRoute regex='user_chat'}}")
-                                            i.chat.icon
-                                            .content    
-                                                .header
-                                                    |Chat
+                                    //- .ui.vertical.large.fluid.menu
+                                    //-     a.item(href="/user/#{user_from_username_param.username}/about" class="{{isActiveRoute regex='user_about'}}")
+                                    //-         i.info.icon
+                                    //-         .content    
+                                    //-             .header
+                                    //-                 |About
+                                        //- a.item(href="/user/#{user_from_username_param.username}/connections" class="{{isActiveRoute regex='user_connections'}}")
+                                        //-     i.fork.icon
+                                        //-     .content    
+                                        //-         .header
+                                        //-             |Connections
+                                        //- a.item(href="/user/#{user_from_username_param.username}/messages" class="{{isActiveRoute regex='user_messages'}}")
+                                        //-     i.mail.icon
+                                        //-     .content    
+                                        //-         .header
+                                        //-             |Messages
+                                        //- a.item(href="/user/#{user_from_username_param.username}/notifications" class="{{isActiveRoute regex='user_notifications'}}")
+                                        //-     i.bullhorn.icon
+                                        //-     .content    
+                                        //-         .header
+                                        //-             |Notifications
+                                        //- a.item(href="/user/#{user_from_username_param.username}/chat" class="{{isActiveRoute regex='user_chat'}}")
+                                        //-     i.chat.icon
+                                        //-     .content    
+                                        //-         .header
+                                        //-             |Chat
                                         //- a.item(href="/user/#{user_from_username_param.username}/stripe" class="{{isActiveRoute regex='user_stripe'}}")
                                         //-     i.stripe.icon
                                         //-     .content    
                                         //-         .header
                                         //-             |Stripe
-                                        a.item(href="/user/#{user_from_username_param.username}/tags" class="{{isActiveRoute regex='user_tags'}}")
-                                            i.tags.icon
-                                            .content    
-                                                .header
-                                                    |Tags
-                                        a.item(href="/user/#{user_from_username_param.username}/contact" class="{{isActiveRoute regex='user_contact'}}")
-                                            i.phone.icon
-                                            .content    
-                                                .header
-                                                    |Contact
+                                        //- a.item(href="/user/#{user_from_username_param.username}/tags" class="{{isActiveRoute regex='user_tags'}}")
+                                        //-     i.tags.icon
+                                        //-     .content    
+                                        //-         .header
+                                        //-             |Tags
+                                        //- a.item(href="/user/#{user_from_username_param.username}/contact" class="{{isActiveRoute regex='user_contact'}}")
+                                        //-     i.phone.icon
+                                        //-     .content    
+                                        //-         .header
+                                        //-             |Contact
                                     //- if user_schemas
                                     //-     .ui.vertical.large.fluid.menu
                                     //-         each user_schemas
@@ -95,7 +95,7 @@ template(name='profile_layout')
                                             |Roles
                                         each roles
                                             .ui.label #{this}
-                                    +group_switcher
+                                    //- +group_switcher
                                 .twelve.wide.column.scrolling
                                     +yield
             +footer
@@ -112,14 +112,6 @@ template(name='user_about')
     .ui.padded.stackable.grid
         .eight.wide.column
             .ui.list
-                .ui.item First Name 
-                    strong #{first_name}
-                .ui.item Last Name 
-                    strong #{last_name}
-                .ui.item Address 
-                    strong #{address}
-                .ui.item Telephone 
-                    strong #{telephone}
                 //- .ui.item Email 
                 //-     strong #{email}
                 with user_from_username_param
@@ -133,29 +125,24 @@ template(name='user_about')
                     +boolean_view key='health_insurance' label='Health Insurance'
                     +boolean_view key='out_of_pocket' label='Out of Pocket'
                     +boolean_view key='terms' label='Agree to Terms'
-
-                .ui.small.header 
-                    i.linkify.icon
-                    |Link
-                a(href=profile.website target='_blank') #{website}
             each emails
                 .ui.label #{address}
                 .ui.secondary.segment
-            .ui.inline.header
-                i.fire.icon
-                | My Groups
-            each groups
-                a.ui.button(href="/t/#{this}") 
-                    i.external.icon
-                    |#{this}
+            //- .ui.inline.header
+            //-     i.fire.icon
+            //-     | My Groups
+            //- each groups
+            //-     a.ui.button(href="/t/#{this}") 
+            //-         i.external.icon
+            //-         |#{this}
     
-            +textarea_view key='bio' label='Bio' collection='users' icon='align-left'
-            +user_bookmarks    
-        .eight.wide.column
-            +user_feed
-    if current_user
-        +role_switcher
-    +user_tags
+            //- +textarea_view key='bio' label='Bio' collection='users' icon='align-left'
+            //- +user_bookmarks    
+        //- .eight.wide.column
+        //-     +user_feed
+    //- if current_user
+    //-     +role_switcher
+    //- +user_tags
     
 
 

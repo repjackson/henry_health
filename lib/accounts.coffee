@@ -34,7 +34,7 @@ AccountsTemplates.configure({
     enablePasswordChange: true,
     forbidClientAccountCreation: false,
     overrideLoginErrors: true,
-    sendVerificationEmail: false,
+    sendVerificationEmail: true,
     lowercaseUsername: false,
     focusFirstInput: true,
 
@@ -43,10 +43,10 @@ AccountsTemplates.configure({
     showForgotPasswordLink: true,
     showLabels: true,
     showPlaceholders: true,
-    showResendVerificationEmailLink: false,
+    showResendVerificationEmailLink: true,
 
     # // Client-side Validation
-    continuousValidation: false,
+    continuousValidation: true,
     negativeFeedback: false,
     negativeValidation: true,
     positiveValidation: true,
@@ -54,11 +54,11 @@ AccountsTemplates.configure({
     showValidating: true,
 
     # // Privacy Policy and Terms of Use
-    # privacyUrl: 'privacy',
-    # termsUrl: 'terms-of-use',
+    privacyUrl: 'privacy',
+    termsUrl: 'terms-of-use',
 
     # // Redirects
-    homeRoutePath: '/',
+    homeRoutePath: '/dashboard',
     redirectTimeout: 4000,
 
     # // Hooks
@@ -82,10 +82,53 @@ AccountsTemplates.configure({
     # },
 });
 
+AccountsTemplates.configure
+    texts:
+        button:
+          changePwd: "Change password"
+          enrollAccount: "Enroll"
+          forgotPwd: "Forgot Password"
+          resetPwd: "Reset Password"
+          signIn: "Sign In"
+          signUp: "Enroll"
 
 
 pwd = AccountsTemplates.removeField('password')
 AccountsTemplates.removeField 'email'
+
+
+# AccountsTemplates.addField
+#     _id: 'fruit'
+#     type: 'checkboxes'
+#     displayName: 'Preferred Fruit'
+#     select: [
+#         {
+#             text: 'Apple'
+#             value: 'aa'
+#         }
+#         {
+#             text: 'Banana'
+#             value: 'bb'
+#         }
+#         {
+#             text: 'Carrot'
+#             value: 'cc'
+#         }
+#     ]
+
+# Which of the following are major sources of stress for you? *
+#  Time Management
+#  Personal Expectations
+#  Family Expectations and Family Life
+#  Money and Finances
+#  Physical Health Issues
+#  Living Arrangements
+#  Work/Employment Decisions
+#  Relationships
+#  Academic Demands
+#  Daily Hassles
+
+
 AccountsTemplates.addFields [
     {
         _id: 'username'
@@ -102,6 +145,25 @@ AccountsTemplates.addFields [
         re: /.+@(.+){2,}\.(.+){2,}/
         errStr: 'Invalid email'
     }
+    # {
+    #     _id: 'fruit'
+    #     type: 'radio'
+    #     displayName: 'Preferred Fruit'
+    #     select: [
+    #         {
+    #           text: 'Apple'
+    #           value: 'aa'
+    #         }
+    #         {
+    #           text: 'Banana'
+    #           value: 'bb'
+    #         }
+    #         {
+    #           text: 'Carrot'
+    #           value: 'cc'
+    #         }
+    #     ]
+    # }
     {
         _id: 'username_and_email'
         type: 'text'
