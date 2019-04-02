@@ -34,6 +34,10 @@ Template.registerHelper 'current_user', (input) ->
     Meteor.user() and Meteor.user().username is Router.current().params.username
 
 
+Template.registerHelper 'user_is_client', (input) ->
+    user = Meteor.users.findOne username:Router.current().params.username
+    if user and user.roles and 'client' in user.roles then true else false
+
 
 Template.registerHelper 'current_schema', (input) ->
     Docs.findOne
@@ -90,7 +94,7 @@ Template.registerHelper 'can_edit', () ->  Meteor.userId() is @author_id or Role
 
 Template.registerHelper 'publish_when', () -> moment(@publish_date).fromNow()
 Template.registerHelper 'when', () -> moment(@timestamp).fromNow()
-Template.registerHelper 'is_dev', () -> Meteor.isDevelopment
+Template.registerHelper 'in_dev', () -> Meteor.isDevelopment
 
 
 Template.registerHelper 'calculated_size', (metric) ->

@@ -52,10 +52,12 @@ template(name='register')
                 //- +atForm state='signUp'
 
 
-template(name='therapist_register')
+template(name='register_therapist')
     .ui.padded.stackable.grid
         .centered.row
             .twelve.wide.column
+                img.ui.centered.image(src="{{c.url 'henry_logo'}}")
+                h1.ui.center.aligned.header Register Therapist
                 if message
                     h4.ui.center.aligned.header #{message}
                 .ui.fluid.labeled.input(class=login_class)
@@ -122,5 +124,5 @@ template(name='login')
                         
                 .ui.center.aligned.secondary.segment    
                     .ui.small.header If you don't have an account 
-                    a.ui.button(href='/register-therapist') Register as a Therapist
-                    a.ui.button(href='/register-client') Register as a Client
+                    a.ui.button(href='/register_therapist') Register as a Therapist
+                    a.ui.button(href='/register') Register as a Client

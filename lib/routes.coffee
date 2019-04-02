@@ -13,6 +13,7 @@ Router.route '/me', -> @render 'me'
 # Router.route '/users', -> @render 'users'
 Router.route '/inbox', -> @render 'inbox'
 Router.route '/register', -> @render 'register'
+Router.route '/register_therapist', -> @render 'register_therapist'
 
 
 Router.route('enroll', {

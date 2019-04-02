@@ -115,24 +115,25 @@ template(name='user_about')
 
     .ui.padded.stackable.grid
         .eight.wide.column
-            .ui.list
-                //- .ui.item Email 
-                //-     strong #{email}
-                with user_from_username_param
-                    +multi_doc_view key='stress_source' ref_schema='source_of_stress' label='Which of the following are major sources of stress for you?'
-                    +multi_doc_view key='previous_counsuling_source' ref_schema='counsuling_source' label='Have you ever sought counseling from any of the following?'
-                    +single_doc_view key='therapist_gender_preference' ref_schema='gender' label='Would you prefer a male or female therapist?'
-                    +single_doc_view key='self_consider' ref_schema='consider_self' label='Do you consider yourself to be: *'
-                    +single_doc_view key='marital_status' ref_schema='marital_status' label='What is your marital status?'
-                    +single_doc_view key='highest_education_level' ref_schema='education_level' label='What is your highest level of education? *'
-                    +single_doc_view key='employment' ref_schema='employment' label='Are you employed? *'
-                    +single_doc_view key='annual_household_income' ref_schema='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
-                    +single_doc_view key='annual_income' ref_schema='income_option' label='What is your annual income? *'
-                    +boolean_view key='health_insurance' label='Do you have health insurance? *'
-                    +boolean_view key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
-                    div
-                    a.ui.header(href="https://henry-health.com/privacy-policy/") Henry Health Privacy Policy
-                    +boolean_view key='terms' label='I have read and agree to the terms of the Henry Health Privacy Policy *'
+            if user_is_client
+                .ui.list
+                    //- .ui.item Email 
+                    //-     strong #{email}
+                    with user_from_username_param
+                        +multi_doc_view key='stress_source' ref_schema='source_of_stress' label='Which of the following are major sources of stress for you?'
+                        +multi_doc_view key='previous_counsuling_source' ref_schema='counsuling_source' label='Have you ever sought counseling from any of the following?'
+                        +single_doc_view key='therapist_gender_preference' ref_schema='gender' label='Would you prefer a male or female therapist?'
+                        +single_doc_view key='self_consider' ref_schema='consider_self' label='Do you consider yourself to be: *'
+                        +single_doc_view key='marital_status' ref_schema='marital_status' label='What is your marital status?'
+                        +single_doc_view key='highest_education_level' ref_schema='education_level' label='What is your highest level of education? *'
+                        +single_doc_view key='employment' ref_schema='employment' label='Are you employed? *'
+                        +single_doc_view key='annual_household_income' ref_schema='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
+                        +single_doc_view key='annual_income' ref_schema='income_option' label='What is your annual income? *'
+                        +boolean_view key='health_insurance' label='Do you have health insurance? *'
+                        +boolean_view key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
+                        div
+                        a.ui.header(href="https://henry-health.com/privacy-policy/") Henry Health Privacy Policy
+                        +boolean_view key='terms' label='I have read and agree to the terms of the Henry Health Privacy Policy *'
             each emails
                 .ui.label #{address}
                 .ui.secondary.segment
