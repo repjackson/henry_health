@@ -1,7 +1,10 @@
 if Meteor.isClient
     Template.nav.events
         'click #logout': ->
-            AccountsTemplates.logout()
+            Session.set 'logging_out', true
+            Meteor.logout ->
+                Session.set 'logging_out', false
+                Router.go '/'
 
         'click .delta': ->
             Session.set 'loading', true
@@ -18,6 +21,7 @@ if Meteor.isClient
             Docs.find
                 type:'notification'
 
+        logging_out: -> Session.get 'logging_out'
 
 
 if Meteor.isServer

@@ -43,13 +43,17 @@ template(name='nav')
                     else
                         i.large.grey.user.icon
                     | #{currentUser.username}
-                a#logout.ui.mobile.hidden.icon.item(href='#') 
-                    i.large.grey.sign.out.alternate.icon
-                    //- | Sign Out
+                if logging_out
+                    .icon.disabled.item
+                        i.large.loading.refresh.icon
+                else
+                    a#logout.ui.mobile.hidden.icon.item(href='#') 
+                        i.large.grey.sign.out.alternate.icon
+                        //- | Sign Out
             else
                 a.ui.mobile.hidden.item(href='/login') 
                     i.large.grey.sign.in.alternate.icon
-                    | Sign In
+                    | Log In
                 a.ui.mobile.hidden.item(href='/register') 
                     i.large.grey.user.plus.icon
                     | Enroll

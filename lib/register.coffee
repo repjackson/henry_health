@@ -27,6 +27,7 @@ if Meteor.isClient
                 Meteor.loginWithPassword username, password, (err,res)=>
                     if err
                         console.log err
+                        alert err.reason
                         # if err.error is 403
                         #     Session.set 'message', "#{username} not found"
                         #     Session.set 'enter_mode', 'register'
