@@ -159,11 +159,11 @@ if Meteor.isClient
 
     Template.user_edit.events
         'click .remove_user': ->
-            if confirm "Confirm delete #{@username}?  Cannot be undone."
-                current_user = Meteor.users.findOne username:Router.current().params.username
+            current_user = Meteor.users.findOne username:Router.current().params.username
+            if confirm "Confirm delete #{current_user.username}?  Cannot be undone."
                 if current_user
                     Meteor.users.remove current_user._id
-                Router.go "/users"
+                    Router.go "/users"
 
         "change input[name='profile_image']": (e) ->
             files = e.currentTarget.files

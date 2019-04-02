@@ -1,4 +1,7 @@
 if Meteor.isClient
+    Template.register_therapist.onCreated ->
+        Session.set 'username', null
+
     Template.register_therapist.events
         'keyup .username': ->
             username = $('.username').val()

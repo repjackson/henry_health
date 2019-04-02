@@ -1,6 +1,10 @@
 
 Meteor.users.allow
+    insert: (userId, doc, fields, modifier) ->
+        true
     update: (userId, doc, fields, modifier) ->
+        true
+    remove: (userId, doc, fields, modifier) ->
         true
         # # console.log 'user ' + userId + 'wants to modify doc' + doc._id
         # if userId and doc._id == userId

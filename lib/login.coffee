@@ -1,4 +1,7 @@
 if Meteor.isClient
+    Template.login.onCreated ->
+        Session.set 'username', null
+
     Template.login.events
         'keyup .username': ->
             username = $('.username').val()
