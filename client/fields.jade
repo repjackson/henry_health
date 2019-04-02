@@ -593,17 +593,15 @@ template(name='single_doc_view')
 
 template(name='single_doc_edit')
     div
-    .ui.small.inline.header(title=key) 
+    .ui.header(title=key) 
         if icon
             i.grey.icon(class=icon)
         |#{label}
     each choices
-        .ui.compact.button.select_choice(class=choice_class)
+        .ui.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
-            |#{title}
-            |#{key}
-            |#{username}
+            |#{label}
     div
 
 

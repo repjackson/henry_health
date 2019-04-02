@@ -115,6 +115,7 @@ if Meteor.isServer
 
         Docs.find match,
             limit: 20
+            sort:timestamp:1
 
 
     Meteor.publish 'doc', (id)->

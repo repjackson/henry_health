@@ -444,43 +444,50 @@ Template.single_doc_edit.helpers
 
     choice_class: ->
         selection = @
-        ref_field = Template.parentData()
+        current = Template.currentData()
+        parent = Template.parentData()
+        ref_field = Template.parentData(1)
         target = Template.parentData(2)
+        # console.log @
+        # console.log parent
+        # console.log ref_field
+        # console.log target
 
-
-
-        if brick
-            if @slug is parent["#{@key}"] then 'teal' else ''
-        else
+        if target["#{ref_field.key}"]
+            # console.log target["#{ref_field.key}"]
             if @slug is target["#{ref_field.key}"] then 'teal' else ''
 
 
 Template.single_doc_edit.events
     'click .select_choice': ->
         selection = @
+        parent = Template.parentData(1)
         ref_field = Template.currentData()
-        target = Template.parentData(1)
 
-        # console.log @["#{ref_field.ref_key}"]
-        # Docs.update target._id,
-        #     $set: "#{ref_field.key}": @slug
+        # console.log parent
+        # console.log ref_field
+        # console.log @
+        # console.log parent["#{@key}"]
 
-        # if brick
-        if parent["#{@key}"] and @slug is parent["#{ref_field.key}"]
+        if parent["#{ref_field.key}"] and @slug in parent["#{ref_field.key}"]
             doc = Docs.findOne parent._id
             user = Meteor.users.findOne parent._id
             if doc
                 Docs.update parent._id,
-                    $unset:"#{@key}":@slug
+                    $unset:"#{ref_field.key}":1
             else if user
                 Meteor.users.update parent._id,
-                    $unset: "#{@key}": 1
+                    $unset: "#{ref_field.key}":1
         else
-            Docs.update parent._id,
-                $set: "#{@key}": @slug
-        # else
-        #     Docs.update target._id,
-        #         $set: "#{ref_field.key}": @slug
+            doc = Docs.findOne parent._id
+            user = Meteor.users.findOne parent._id
+
+            if doc
+                Docs.update parent._id,
+                    $set: "#{ref_field.key}": @slug
+            else if user
+                Meteor.users.update parent._id,
+                    $set: "#{ref_field.key}": @slug
 
 
 Template.multi_doc_view.onCreated ->

@@ -62,6 +62,7 @@ template(name='edit')
             +text_edit key='type' label='Type'
             +text_edit key='label' label='Label'
             +text_edit key='slug' label='Slug'
+            +number_edit key='number' label='Number'
 
             //- +doc_edit
             //- +Template.dynamic template=doc_edit
@@ -80,21 +81,3 @@ template(name='edit')
         //-             i.pencil.icon.icon
         //-     else
         //-         | by #{author.username} #{when}
-
-
-template(name='source_of_stress_edit')
-    .ui.header Source of Stress Edit
-    +text_edit key='label' label='Label'
-    +text_edit key='slug' label='Slug'
-
-
-template(name='counsuling_source_edit')
-    .ui.header Counsuling Source Edit
-    +text_edit key='label' label='Label'
-    +text_edit key='slug' label='Slug'
-
-
-template(name='gender_edit')
-    .ui.header Counsuling Source Edit
-    +text_edit key='label' label='Label'
-    +text_edit key='slug' label='Slug'
