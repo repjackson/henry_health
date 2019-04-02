@@ -22,8 +22,12 @@ template(name='profile_layout')
                                     //- if profile.image_id
                                     //-     a.item(href="/user/#{user_from_username_param.username}/about")
                                     //-         img.ui.medium.image(src="{{c.url profile.image_id height=400 crop='limit'}}")
-                                    // if current_user
-                                    if is_admin
+                                    if current_user
+                                        .ui.vertical.fluid.menu
+                                            a.item(href="/user/#{user_from_username_param.username}/edit")
+                                                i.setting.icon
+                                                | Settings
+                                    else if is_admin
                                         .ui.vertical.fluid.menu
                                             a.item(href="/user/#{user_from_username_param.username}/edit")
                                                 i.setting.icon

@@ -1,0 +1,16 @@
+template(name='register')
+    .ui.padded.stackable.grid
+        .centered.row
+            .twelve.wide.column
+                .ui.ordered.two.steps
+                    .active.step
+                        .content
+                            .title Registration
+                            .description
+                    .step
+                        .content
+                            .title Questionaire
+                            .description
+        .centered.row
+            .twelve.wide.column
+                +atForm state='signUp'

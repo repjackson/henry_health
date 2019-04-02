@@ -41,7 +41,7 @@
     "sidebar": true,
     "site": true,
     "statistic": true,
-    "step": false,
+    "step": true,
     "sticky": false,
     "tab": false,
     "table": true,

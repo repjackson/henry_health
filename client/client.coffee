@@ -29,6 +29,12 @@ Template.registerHelper 'current_model', (input) ->
         model:'model'
         slug: Router.current().params.model_slug
 
+
+Template.registerHelper 'current_user', (input) ->
+    Meteor.user() and Meteor.user().username is Router.current().params.username
+
+
+
 Template.registerHelper 'current_schema', (input) ->
     Docs.findOne
         type:'schema'

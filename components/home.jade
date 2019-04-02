@@ -1,12 +1,15 @@
 template(name='home')
-    .ui.text.container.grid
+    .ui.grid
         img.ui.centered.image(src="{{c.url 'henry_logo'}}")
-        .row
-            a.ui.big.fluid.button(href='/sign-up')
-                |Register
-        .row
-            a.ui.big.fluid.button(href="https://henry-health.com/join-waiting-list/")
-                |Wait List
-        .row
-            .ui.big.fluid.button
-                |Free Consultation
+        .centered.row
+            .twelve.wide.column
+                a.ui.big.fluid.button(href='/register')
+                    |Register
+        .centered.row
+            .twelve.wide.column
+                a.ui.big.fluid.button(href="https://henry-health.com/join-waiting-list/")
+                    |Wait List
+        .centered.row
+            .twelve.wide.column
+                .ui.big.fluid.button
+                    |Free Consultation
