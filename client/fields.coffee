@@ -256,6 +256,8 @@ Template.text_edit.events
 Template.boolean_edit.helpers
     boolean_toggle_class: ->
         parent = Template.parentData()
+        console.log parent
+        console.log @
         if parent["#{@key}"] then 'teal' else ''
 
 
@@ -270,7 +272,7 @@ Template.boolean_edit.events
                 $set:"#{@key}":!parent["#{@key}"]
         else if user
             Meteor.users.update parent._id,
-                $set:"#{@key}":!parent["#{brick}"]
+                $set:"#{@key}":!parent["#{@key}"]
 
 
 

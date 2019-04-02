@@ -1,17 +1,14 @@
 template(name='user_edit')
     .ui.stackable.padded.grid.pad_left
-        .middle.aligned.row
-            .four.wide.center.aligned.column
-                a.ui.large.button(href="/user/#{user_from_username_param.username}/about" title='Profile') 
-                    i.checkmark.icon
-                    |Save
-            .eight.wide.center.aligned.column
+        .row
+            .five.wide.column
                 .ui.center.aligned.large.header
                     i.cog.icon
                     | #{user_from_username_param.first_name} #{user_from_username_param.last_name} Profile
                 .ui.center.aligned.small.header @#{user_from_username_param.username}
-        .row
-            .five.wide.column.scrolling
+                a.ui.large.fluid.button(href="/user/#{user_from_username_param.username}/about" title='Profile') 
+                    i.checkmark.icon
+                    |Save
                 .ui.form
                     with user_from_username_param
                         +text_edit key='first_name' label='First Name'
@@ -69,9 +66,11 @@ template(name='user_edit')
                     +single_doc_edit key='employment' ref_schema='employment' label='Are you employed? *'
                     +single_doc_edit key='annual_household_income' ref_schema='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
                     +single_doc_edit key='annual_income' ref_schema='income_option' label='What is your annual income? *'
-                    +boolean_edit key='health_insurance' label='Health Insurance'
-                    +boolean_edit key='out_of_pocket' label='Out of Pocket'
-                    +boolean_edit key='terms' label='Agree to Terms'
+                    +boolean_edit key='health_insurance' label='Do you have health insurance? *'
+                    +boolean_edit key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
+                    div
+                    a.ui.header(href="https://henry-health.com/privacy-policy/") Henry Health Privacy Policy
+                    +boolean_edit key='terms' label='I have read and agree to the terms of the Henry Health Privacy Policy *'
 
 
 template(name='user_schema_editor')
