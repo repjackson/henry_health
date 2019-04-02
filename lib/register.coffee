@@ -22,6 +22,8 @@ if Meteor.isClient
             console.log options
             Meteor.call 'create_user', options, (err,res)->
                 console.log res
+                Meteor.users.update res,
+                    $set: roles: ['client']
                 Meteor.loginWithPassword username, password, (err,res)=>
                     if err
                         console.log err
@@ -31,6 +33,7 @@ if Meteor.isClient
                         #     Session.set 'username', "#{username}"
                     else
                         console.log res
+
                         Router.go "/user/#{username}/edit"
             # else
             #     Meteor.loginWithPassword username, password, (err,res)=>

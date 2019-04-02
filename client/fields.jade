@@ -571,27 +571,24 @@ template(name='single_doc_view')
 
 
 template(name='single_doc_edit')
-    div
-    .ui.header(title=key) 
+    .ui.small.header(title=key) 
         if icon
             i.grey.icon(class=icon)
         |#{label}
     each choices
-        .ui.button.select_choice(class=choice_class)
+        .ui.small.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{label}
-    div
 
 
 template(name='multi_doc_edit')
-    div
     if icon
         i.grey.icon(class=icon)
-    .ui.header(title=key)
+    .ui.small.header(title=key)
         |#{label}
     each choices
-        .ui.button.select_choice(class=choice_class)
+        .ui.compact.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{label}
