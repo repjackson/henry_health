@@ -12,8 +12,11 @@ template(name='dashboard')
         .centered.row
             .twelve.wide.column
                 if is_therapist
-                    .ui.header Links to Docs
-                    .ui.header Links to Post
+                    .ui.header Articles
+                    .ui.list
+                        each articles
+                            .item
+                                a(href=link target='_window') #{title}
                 if is_client
                     .ui.header Availability
                     .ui.header Contact Verbage

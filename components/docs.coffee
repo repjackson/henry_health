@@ -1,14 +1,27 @@
 # @Docs = new Meteor.Collection 'docs'
 #
-# Docs.before.insert (userId, doc)->
-#     doc.timestamp = Date.now()
-#     doc.author_id = Meteor.userId()
-#     # doc.points = 0
-#     # doc.downvoters = []
-#     # doc.tags.push Meteor.user().profile.current_herd
-#     # doc.upvoters = []
-#     return
-#
+
+Docs.before.insert (userId, doc)=>
+    timestamp = Date.now()
+    doc._timestamp = timestamp
+    doc._timestamp_long = moment(timestamp).format("dddd, MMMM Do YYYY, h:mm:ss a")
+    date = moment(timestamp).format('Do')
+    weekdaynum = moment(timestamp).isoWeekday()
+    weekday = moment().isoWeekday(weekdaynum).format('dddd')
+
+    month = moment(timestamp).format('MMMM')
+    year = moment(timestamp).format('YYYY')
+
+    date_array = [weekday, month, date, year]
+    if _
+        date_array = _.map(date_array, (el)-> el.toString().toLowerCase())
+    # date_array = _.each(date_array, (el)-> console.log(typeof el))
+    # console.log date_array
+        doc.timestamp_tags = date_array
+
+    doc.author_id = Meteor.userId()
+    doc.author_username = Meteor.user().username
+    return
 
 # Docs.after.insert (userId, doc)->
 #     console.log doc.tags
@@ -93,8 +106,8 @@ if Meteor.isClient
 if Meteor.isServer
     Docs.allow
         insert: (userId, doc) -> doc.author_id is userId
-        update: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
-        remove: (userId, doc) -> doc.author_id is userId or Roles.userIsInRole(userId, 'admin')
+        update: (userId, doc) -> doc.author_id is userId
+        remove: (userId, doc) -> doc.author_id is userId
 
 
 

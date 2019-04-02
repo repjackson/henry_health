@@ -20,6 +20,7 @@ template(name='nav')
                 a.item(href='/admin' class="{{isActivePath '/admin'}}")
                     i.large.grey.user.shield.icon
                     | Admin
+            if is_dev
                 a.item(href="/docs" class="{{isActivePath '/docs'}}")
                     i.sitemap.large.icon
                     

@@ -1,34 +1,66 @@
-template(name='user_table')
-    .ui.container
-        //- a#add_user.ui.button(href='/user/add')
-        //-     i.plus.icon
-        //-     |Add User
-        table.ui.sortable.striped.table
-            thead
+template(name='admin')
+    .ui.stackable.padded.grid
+        .sixteen.wide.column
+            +article_list
+            +user_table
+
+
+template(name='article_list')
+    .ui.header Article List
+    .ui.button.add_article New
+    table.ui.sortable.striped.table
+        thead
+            tr
+                th Title
+                th Link
+                th Actions
+        tbody
+            each articles
                 tr
-                    th Image
-                    th Profile
-                    th Roles
-            tbody
-                each users
-                    tr
-                        td 
-                            img.ui.tiny.image(src="{{c.url image_id width=100 height=100 gravity='face' crop='fill'}}")
-                        td 
-                            .ui.header 
-                                |#{name}
-                            div 
-                                | Username: #{username}
-                            each emails
-                                |#{address}
-                            a(href="/account/profile/edit/#{_id}")
-                                |Edit
-                        td 
-                            +user_role_toggle role='admin'
-                            +user_role_toggle role='therapist'
-                            +user_role_toggle role='client'
-                            +user_role_toggle role='user'
-                            
+                    td 
+                        +text_edit key='title'
+                    td 
+                        +text_edit key='link'
+                    td 
+                        i.remove.link.icon.delete_article
+
+
+
+template(name='user_table')
+    //- a#add_user.ui.button(href='/user/add')
+    //-     i.plus.icon
+    //-     |Add User
+    table.ui.sortable.striped.table
+        thead
+            tr
+                th Image
+                th Profile
+                th Roles
+                th Actions
+        tbody
+            each users
+                tr
+                    td 
+                        img.ui.tiny.image(src="{{c.url image_id width=100 height=100 gravity='face' crop='fill'}}")
+                    td 
+                        .ui.header 
+                            |#{name}
+                        .ui.small.header @#{username}
+                        each emails
+                            |#{address}
+                    td 
+                        +user_role_toggle role='admin'
+                        +user_role_toggle role='therapist'
+                        +user_role_toggle role='client'
+                        +user_role_toggle role='user'
+                    td
+                        .ui.disabled.button
+                            i.external.icon
+                            |PDF
+                        a.ui.button(href="/user/#{username}/edit")
+                            i.pencil.icon
+                            |Edit
+                        
 
 template(name='user_role_toggle')
     if is_in_role

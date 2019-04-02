@@ -1,4 +1,4 @@
-Router.route '/admin', -> @render 'user_table'
+Router.route '/admin', -> @render 'admin'
 
 if Meteor.isClient
     Template.user_table.onCreated ->
@@ -59,3 +59,26 @@ if Meteor.isClient
             parent_user = Template.parentData()
             Meteor.users.update parent_user._id,
                 $pull:roles:@role
+
+
+
+
+
+
+    Template.article_list.onCreated ->
+        @autorun ->  Meteor.subscribe 'type', 'article'
+
+
+    Template.article_list.helpers
+        articles: ->
+            Docs.find
+                type:'article'
+
+    Template.article_list.events
+        'click .add_article': ->
+            Docs.insert
+                type:'article'
+
+        'click .delete_article': ->
+            if confirm 'Delete article?'
+                Docs.remove @_id
