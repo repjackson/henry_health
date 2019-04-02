@@ -140,6 +140,7 @@ Router.route '/settings', -> @render 'settings'
 
 # Router.route '/users', -> @render 'people'
 
+Router.route '/login', -> @render 'login'
 
 # Router.route '/', (->
 #     @layout 'layout'

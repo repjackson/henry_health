@@ -54,14 +54,13 @@ template(name='user_edit')
                         else
                             label Profile Image
                             input(type='file' name='profile_image' accept='image/*')
-                if is_user
-                    +password_edit
-                    +phone_editor
-                    +username_edit
-                    +emails_edit
-                    .ui.orange.button.remove_user 
-                        i.remove.icon
-                        |Delete User
+                +password_edit
+                +phone_editor
+                +username_edit
+                +emails_edit
+                .ui.orange.button.remove_user 
+                    i.remove.icon
+                    |Delete User
 
 
 template(name='user_schema_editor')
