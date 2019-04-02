@@ -256,8 +256,8 @@ Template.text_edit.events
 Template.boolean_edit.helpers
     boolean_toggle_class: ->
         parent = Template.parentData()
-        console.log parent
-        console.log @
+        # console.log parent
+        # console.log @
         if parent["#{@key}"] then 'teal' else ''
 
 
