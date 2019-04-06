@@ -7,6 +7,7 @@ if Meteor.isClient
         person: ->
             Meteor.users.findOne Router.current().params.user_id
 
+
         can_edit_profile: -> Meteor.userId() is Router.current().params.user_id or Roles.userIsInRole(Meteor.userId(),'dev')
 
     Template.view_profile.events

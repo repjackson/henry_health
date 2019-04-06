@@ -11,6 +11,18 @@ if Meteor.isClient
                 else
                     Session.set 'enter_mode', 'register'
 
+        'keyup .password': ->
+            password = $('.password').val()
+            Session.set 'password', password
+
+        'keyup .email': ->
+            email = $('.email').val()
+            Session.set 'email', email
+
+        'keyup .password2': ->
+            password2 = $('.password2').val()
+            Session.set 'password2', password2
+
 
         'click .enter': (e,t)->
             username = $('.username').val()
@@ -36,7 +48,6 @@ if Meteor.isClient
                         #     Session.set 'username', "#{username}"
                     else
                         console.log res
-
                         Router.go "/user/#{username}/edit"
             # else
             #     Meteor.loginWithPassword username, password, (err,res)=>
@@ -51,6 +62,13 @@ if Meteor.isClient
 
     Template.register.helpers
         username: -> Session.get 'username'
+
+        can_submit: ->
+            username = Session.get 'username'
+            email = Session.get 'email'
+            password = Session.get 'password'
+            password2 = Session.get 'password2'
+            if username and email and password then true else false
 
         registering: -> Session.equals 'enter_mode', 'register'
 

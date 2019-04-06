@@ -14,25 +14,29 @@ template(name='register')
                             .description
         .centered.row
             .twelve.wide.column
-
                 if message
                     h4.ui.center.aligned.header #{message}
                 .ui.fluid.labeled.input(class=login_class)
                     .ui.basic.label 
-                        i.user.icon
+                        i.grey.user.icon
                         |Username
                     input.username(type='text')
                 .ui.fluid.labeled.input(class=login_class)
                     .ui.basic.label 
-                        i.lock.icon
+                        i.grey.envelope.icon
+                        | Email
+                    input.email(type='text')
+                .ui.fluid.labeled.input(class=login_class)
+                    .ui.basic.label 
+                        i.grey.lock.icon
                         | Password
                     input.password(type='password' placeholder='password')
                 .ui.fluid.labeled.input(class=login_class)
                     .ui.basic.label 
-                        i.lock.icon
+                        i.grey.lock.icon
                         | Password (again)
                     input.password2(type='password' placeholder='password')
-                if username
+                if can_submit
                     if registering
                         .ui.fluid.large.button.enter(title="register #{username}" class=enter_class)
                             i.user.plus.icon
