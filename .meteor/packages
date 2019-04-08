@@ -25,13 +25,10 @@ dburles:collection-helpers
 accounts-password@1.5.1
 shell-server@0.4.0
 accounts-base@1.4.3
-useraccounts:iron-routing
-useraccounts:semantic-ui
 lepozepo:cloudinary
 momentjs:moment
 alanning:roles
 reactive-var@1.0.11
-kevohagan:sweetalert
 raix:handlebar-helpers
 matb33:collection-hooks
 mizzao:autocomplete
@@ -40,6 +37,5 @@ froala:editor-reactive@=2.4.2
 mquandalle:jade
 underscore@1.0.10
 coffeescript
-useraccounts:core
 zimme:active-route
 ecmascript@0.12.4
