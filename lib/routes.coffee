@@ -18,10 +18,11 @@ if Meteor.isClient
             @next()
         return
 
-    Router.onBeforeAction requireLogin, except: [ 'register','register_therapist','home' ]
+    Router.onBeforeAction requireLogin, except: [ 'register','register_therapist','home','login','reset_password' ]
 
 
 Router.route '/me', -> @render 'me'
+Router.route '/reset_password', -> @render 'reset_password'
 Router.route '/register', -> @render 'register'
 Router.route '/register_therapist', -> @render 'register_therapist'
 

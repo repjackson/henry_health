@@ -1,0 +1,91 @@
+template(name='login')
+    .ui.padded.stackable.grid
+        .centered.row
+            .twelve.wide.column
+                img.ui.centered.image(src="{{c.url 'henry_logo'}}")
+                h1.ui.center.aligned.header Log In 
+                if message
+                    h4.ui.center.aligned.header #{message}
+                .ui.fluid.labeled.input(class=login_class)
+                    .ui.basic.label 
+                        i.user.icon
+                        |Username
+                    input.username(type='text')
+                .ui.fluid.labeled.input(class=login_class)
+                    .ui.basic.label 
+                        i.lock.icon
+                        | Password
+                    input.password(type='password' placeholder='password')
+                if username
+                    if logging_in
+                        .ui.fluid.large.hhblue.circular.button.enter(title="Login #{username}" class=enter_class)
+                            |Login '#{username}'
+                            i.right.chevron.icon
+                    else
+                        .ui.center.aligned.secondary.segment
+                            .ui.small.grey.header Username "#{username}" not found
+                            a(href='/register') Register
+                .ui.center.aligned.basic.segment    
+                    a.ui.circular.button(href='/reset_password')
+                        i.refresh.icon
+                        |Reset Password
+                        
+                .ui.center.aligned.basic.segment    
+                    .ui.small.header If you don't have an account 
+                    a.ui.circular.button(href='/register_therapist') 
+                        i.plus.square.icon
+                        |Register as a Therapist
+                    a.ui.circular.button(href='/register') 
+                        i.user.icon
+                        |Register as a Client
+
+
+template(name='reset_password')
+    .ui.padded.stackable.grid
+        .centered.row
+            .twelve.wide.column
+                img.ui.centered.image(src="{{c.url 'henry_logo'}}")
+                h1.ui.center.aligned.grey.header
+                    i.refresh.icon
+                    |Reset Password 
+                if message
+                    h4.ui.center.aligned.header #{message}
+                        
+                .ui.placeholder.segment
+                    .ui.two.column.stackable.grid
+                        .column
+                            .ui.form
+                                .field
+                                    label
+                                        |Username
+                                    .ui.left.icon.input(class=login_class)
+                                        input.username(type='text')
+                                        i.user.icon
+                                    .ui.hhblue.submit.button Submit
+                        .middle.aligned.column
+                            .ui.form
+                                .field
+                                    label Email
+                                    .ui.left.icon.input
+                                        input(type='email')
+                                        i.envelope.icon
+                                    .ui.hhblue.submit.button Submit
+                    .ui.vertical.divider
+                        | Or
+                        
+                if username
+                    if logging_in
+                        .ui.fluid.large.hhblue.circular.button.enter(title="Login #{username}" class=enter_class)
+                            |Login '#{username}'
+                            i.right.arrow.icon
+                    else
+                        .ui.center.aligned.secondary.segment
+                            .ui.small.grey.header Username "#{username}" not found
+                            a(href='/register') Register
+                .ui.center.aligned.basic.segment    
+                    a.ui.circular.button(href='/login') Login
+                        
+                .ui.center.aligned.basic.segment    
+                    .ui.small.header If you don't have an account 
+                    a.ui.circular.button(href='/register_therapist') Register as a Therapist
+                    a.ui.circular.button(href='/register') Register as a Client

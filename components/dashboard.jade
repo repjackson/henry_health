@@ -20,6 +20,6 @@ template(name='dashboard')
                 if is_client
                     .ui.header Availability
                     .ui.header Contact Verbage
-                a.ui.fluid.button(href="/user/#{currentUser.username}")
+                a.ui.fluid.circular.hhblue.button(href="/user/#{currentUser.username}")
                     i.pencil.icon
                     | Edit Profile
