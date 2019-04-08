@@ -5,20 +5,6 @@
 		"jquery": "^3.3.1"
 	},
 	"scripts": {
-		"start": "MAIL_URL='smtp://sethmintom@gmail.com:repj1984!@@smtp.gmail.com:587/' MONGO_URL=mongodb://henryadmin:henryadminpassword@aws-us-east-1-portal.21.dblayer.com:10444/henrydb?ssl=true meteor --settings settings.json"
-	},
-	"devDependencies": {
-		"autoprefixer": "^6.3.1",
-		"postcss": "^6.0.22",
-		"postcss-load-config": "^1.2.0"
-	},
-	"postcss": {
-		"plugins": {
-			"autoprefixer": {
-				"browsers": [
-					"last 2 versions"
-				]
-			}
-		}
+		"start": "MAIL_URL='smtp://sethmintom@gmail.com:repj1984!@@smtp.gmail.com:587/' MONGO_URL=mongodb://rjackson:RJackson1@ds161335.mlab.com:61335/henry-health meteor --settings settings.json"
 	}
 }

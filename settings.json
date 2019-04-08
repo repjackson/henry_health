@@ -5,7 +5,7 @@
    },
    "galaxy.meteor.com":{
        "env":{
-           "MONGO_URL":"mongodb://henryadmin:henryadminpassword@aws-us-east-1-portal.21.dblayer.com:10444/henrydb?ssl=true",
+           "MONGO_URL":"mongodb://rjackson:RJackson1@ds161335.mlab.com:61335/henry-health",
            "ROOT_URL":"https://www.henry.meteorapp.com"
        }
    }

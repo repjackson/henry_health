@@ -34,7 +34,7 @@ template(name='user_edit')
                     i.cog.icon
                     | #{user_from_username_param.first_name} #{user_from_username_param.last_name} Profile
                 .ui.center.aligned.small.header @#{user_from_username_param.username}
-                a.ui.large.fluid.circular.button(href="/user/#{user_from_username_param.username}/about") 
+                a.ui.large.fluid.circular.button(href="/user/#{user_from_username_param.username}") 
                     i.checkmark.icon
                     |Save
                 .ui.form
