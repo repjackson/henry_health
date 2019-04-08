@@ -576,7 +576,7 @@ template(name='single_doc_edit')
             i.grey.icon(class=icon)
         |#{label}
     each choices
-        .ui.small.button.select_choice(class=choice_class)
+        .ui.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{label}
@@ -588,7 +588,7 @@ template(name='multi_doc_edit')
     .ui.small.header(title=key)
         |#{label}
     each choices
-        .ui.compact.button.select_choice(class=choice_class)
+        .ui.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{label}
