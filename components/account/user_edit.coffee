@@ -9,14 +9,6 @@ if Meteor.isClient
 
 
 
-    Template.user_group_editor.onCreated ->
-        @autorun -> Meteor.subscribe 'type','tribe'
-
-
-    Template.user_group_editor.helpers
-        tribes: ->
-            Docs.find
-                type:'tribe'
 
     Template.user_edit.onRendered ->
         Meteor.setTimeout ->
@@ -576,9 +568,8 @@ if Meteor.isClient
                     if error
                         # console.log 'updateUsername', error
                         alert "Error removing email: #{error.reason}"
-                    else
-                        alert result
-                    return
+                    # else
+                        # alert result
 
 
         'click .send_verification_email': (e,t)->

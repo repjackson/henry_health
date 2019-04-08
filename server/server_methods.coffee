@@ -10,6 +10,11 @@ Meteor.methods
         Accounts.addEmail(userId, new_email);
         return "Updated Email to #{new_email}"
 
+    remove_email: (user_id, email)->
+        # user = Meteor.users.findOne username:username
+        console.log 'removing email', email, 'from', user_id
+        Accounts.removeEmail user_id, email
+
 
     verify_email: (user_id)->
         Accounts.sendVerificationEmail(user_id)
