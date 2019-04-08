@@ -16,21 +16,6 @@ if Meteor.isClient
         , 2000
 
 
-    Template.user_schema_editor.helpers
-        schemas: ->
-            Docs.find
-                type:'schema'
-                user_schema:true
-
-        user_schema_class: ->
-            current_user = Meteor.users.findOne username:Router.current().params.username
-            # console.log @
-            # console.log current_user
-
-            if current_user.schema_ids and @_id in current_user.schema_ids then 'grey' else ''
-
-
-
     Template.user_single_doc_ref_editor.onCreated ->
         # console.log @data
         @autorun => Meteor.subscribe 'type', @data.schema
@@ -549,15 +534,15 @@ if Meteor.isClient
             re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             valid_email = re.test(new_email)
 
-            if valid_email
-                Meteor.call 'add_email', current_user._id, new_email, (error, result) ->
-                    if error
-                        # console.log 'updateUsername', error
-                        alert "Error adding email: #{error.reason}"
-                    else
-                        alert result
-                        $('#new_email').val('')
-                    return
+            # if valid_email
+            Meteor.call 'add_email', current_user._id, new_email, (error, result) ->
+                if error
+                    # console.log 'updateUsername', error
+                    alert "Error adding email: #{error.reason}"
+                else
+                    alert result
+                    $('#new_email').val('')
+                return
 
         'click .remove_email': ->
             if confirm 'Remove email?'

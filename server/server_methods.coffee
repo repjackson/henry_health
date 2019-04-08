@@ -5,9 +5,8 @@ Meteor.methods
         return "Updated Username: #{username}"
 
 
-    add_email: (new_email) ->
-        userId = Meteor.userId();
-        Accounts.addEmail(userId, new_email);
+    add_email: (user_id, new_email) ->
+        Accounts.addEmail(user_id, new_email);
         return "Updated Email to #{new_email}"
 
     remove_email: (user_id, email)->

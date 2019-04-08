@@ -444,7 +444,7 @@ template(name='array_view')
 
 template(name='children_edit')
     .ui.small.grey.header #{label}
-    .ui.button.add_child
+    .ui.circular.button.add_child
         i.plus.icon
         |Add Child #{ref_schema}
     .ui.styled.fluid.accordion
@@ -545,7 +545,7 @@ template(name='youtube_view')
 
 template(name='boolean_edit')
     .ui.header #{label}
-    .ui.button.toggle_boolean(class=boolean_toggle_class)
+    .ui.circular.button.toggle_boolean(class=boolean_toggle_class)
         if field_value
             |Yes
         else
@@ -576,7 +576,7 @@ template(name='single_doc_edit')
             i.grey.icon(class=icon)
         |#{label}
     each choices
-        .ui.button.select_choice(class=choice_class)
+        .ui.circular.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{label}
@@ -588,7 +588,7 @@ template(name='multi_doc_edit')
     .ui.small.header(title=key)
         |#{label}
     each choices
-        .ui.button.select_choice(class=choice_class)
+        .ui.circular.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{label}
