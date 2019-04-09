@@ -8,12 +8,12 @@ if Meteor.isClient
   #redirects user to login page if not logged in
     requireLogin = ->
         if !Meteor.user()
-            if Meteor.loggingIn()
-                Router.go 'home'
-                @next()
-            else
-                Router.go 'login'
-                @next()
+            # if Meteor.loggingIn()
+            #     Router.go 'home'
+            #     @next()
+            # else
+            Router.go 'login'
+            @next()
         else
             @next()
         return

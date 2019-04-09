@@ -107,7 +107,7 @@ if Meteor.isServer
     Docs.allow
         insert: (userId, doc) -> doc.author_id is userId
         update: (userId, doc) -> doc.author_id is userId
-        remove: (userId, doc) -> doc.author_id is userId
+        remove: (userId, doc) -> doc.author_id is userId or 'admin' in Meteor.user().roles
 
 
 

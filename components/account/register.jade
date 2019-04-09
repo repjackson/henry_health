@@ -38,21 +38,28 @@ template(name='register')
                     input.password2(type='password' placeholder='password')
                 if can_submit
                     if registering
-                        .ui.fluid.large.circular.button.enter(title="register #{username}" class=enter_class)
+                        .ui.fluid.large.circular.hhblue.button.enter(class=enter_class)
                             i.user.plus.icon
                             |Register '#{username}'
                     else
                         .ui.center.aligned.secondary.segment
                             .ui.small.grey.header Username "#{username}" found
-                            a.ui.circular.button(href='/login') Sign In
+                            a.ui.circular.button(href='/login') 
+                                i.grey.sign.in.alternate.icon
+                                |Log In
                         
                         
                 .ui.center.aligned.basic.segment    
                     .ui.small.header By clicking Register, you agree to our 
                         a(href='https://henry-health.com/privacy-policy/' target="_window") Privacy Policy
                     .ui.small.header If you already have an account
-                        a(href='/login') Sign In
-                    a.ui.circular.button(href='/register_therapist') Register as a Therapist
+                        a.ui.circular.button(href='/login') 
+                            i.grey.sign.in.alternate.icon
+                            |Log In
+                    a.ui.circular.button(href='/register_therapist') 
+                        i.plus.square.icon
+                        |Register as a Therapist
+
                     
 
                 //- +atForm state='signUp'
@@ -89,11 +96,15 @@ template(name='register_therapist')
                     else
                         .ui.center.aligned.secondary.segment
                             .ui.small.grey.header Username "#{username}" found
-                            a.ui.circular.button(href='/login') Sign In
+                            a.ui.circular.button(href='/login') 
+                                i.grey.sign.in.alternate.icon
+                                |Log In
                         
                         
                 .ui.center.aligned.secondary.segment    
                     .ui.small.header By clicking Register, you agree to our 
                         a(href='https://henry-health.com/privacy-policy/' target="_window") Privacy Policy
                     .ui.small.header If you already have an account
-                        a(href='/login') Sign In
+                        a.ui.circular.button(href='/login') 
+                            i.grey.sign.in.alternate.icon
+                            |Log In
