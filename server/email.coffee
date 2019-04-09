@@ -1,6 +1,6 @@
 
-Templates.test_email = {
-  path: 'activity-email.html'
+Templates.admin_enrollment_email = {
+  path: 'admin_enrollment_email.html'
   # scss: 'scss/activity-email.scss'
 
   # Attached template helpers.

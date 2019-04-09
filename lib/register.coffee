@@ -36,16 +36,17 @@ if Meteor.isClient
                 email:email
                 }
             console.log options
-            Meteor.call 'create_user', options, (err,res)->
-                console.log res
-                Meteor.users.update res,
+            Meteor.call 'create_user', options, (err,new_id)->
+                console.log new_id
+                Meteor.users.update new_id,
                     $set: roles: ['client']
                 Meteor.loginWithPassword username, password, (err,res)=>
                     if err
                         console.log err
                         alert err.reason
                     else
-                        console.log res
+                        console.log new_id
+                        Meteor.call 'send_admin_enrollment_email', new_id
                         Router.go "/user/#{username}/edit"
 
 
