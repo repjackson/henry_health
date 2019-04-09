@@ -74,9 +74,7 @@ if Meteor.isClient
 
     Template.view.helpers
         is_author: -> Meteor.userId() and @author_id is Meteor.userId()
-
         tag_class: -> if @valueOf() in selected_tags.array() then 'primary' else 'basic'
-
         when: -> moment(@timestamp).fromNow()
 
     Template.view.events

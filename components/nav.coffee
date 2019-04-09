@@ -6,10 +6,9 @@ if Meteor.isClient
                 Session.set 'logging_out', false
                 Router.go '/'
 
-        'click .delta': ->
-            Session.set 'loading', true
-            Meteor.call 'set_delta_facets', 'schema',->
-                Session.set 'loading', false
+        'click .test_email': ->
+            Meteor.call 'test_email'
+
 
     Template.nav.onCreated ->
         @autorun ->

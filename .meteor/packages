@@ -38,3 +38,4 @@ underscore@1.0.10
 coffeescript
 zimme:active-route
 ecmascript@0.12.4
+lookback:emails
