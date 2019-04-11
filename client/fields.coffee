@@ -427,8 +427,7 @@ Template.single_doc_view.onCreated ->
 Template.single_doc_view.helpers
     choices: ->
         console.log @ref_schema
-        Docs.find
-            type:@ref_schema
+        Docs.find {type:@ref_schema}, sort:rank:1
 
 
 
@@ -440,9 +439,7 @@ Template.single_doc_edit.helpers
     choices: ->
         # console.log @ref_schema
         if @ref_schema
-            Docs.find
-                type:@ref_schema
-                # tribe:Router.current().params.tribe_slug
+            Docs.find {type:@ref_schema}, sort:rank:1
 
     choice_class: ->
         selection = @
