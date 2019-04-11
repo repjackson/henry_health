@@ -81,12 +81,17 @@ template(name='profile_layout')
                                     //-                 .content    
                                     //-                     .header
                                     //-                         |#{plural}
-                                    if is_user
+                                    .ui.small.header Meeting Preferences
+                                    +array_view key='time_block' ref_schema='time_block' label='Time Block'
+                                    +array_view key='time_of_day' ref_schema='time_of_day' label='Time of Day'
+                                    +array_view key='day' ref_schema='day' label='Day(s)'
+            
+                                    if current_user
                                         .ui.vertical.fluid.menu
                                             a.item.logout(href='#')
                                                 i.sign.out.icon
                                                 |Log Out
-                                    .ui.segment
+                                    .ui.basic.segment
                                         //- .ui.header
                                         //-     |#{user.points} Following
                                         //- .ui.header

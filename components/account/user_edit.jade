@@ -24,11 +24,11 @@ template(name='user_edit')
                         +single_doc_edit key='annual_income' ref_schema='income_option' label='What is your annual income? *'
                         +boolean_edit key='health_insurance' label='Do you have health insurance? *'
                         +boolean_edit key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
-                        div
-                        a.ui.circular.button(href="https://henry-health.com/privacy-policy/" target="_window") 
-                            i.external.icon
-                            |Henry Health Privacy Policy
-                        +boolean_edit key='terms' label='I have read and agree to the terms of the Henry Health Privacy Policy *'
+                        .ui.secondary.segment
+                            a.ui.circular.button(href="https://henry-health.com/privacy-policy/" target="_window") 
+                                i.external.icon
+                                |Henry Health Privacy Policy
+                            +boolean_edit key='terms' label='I have read and agree to the terms of the Henry Health Privacy Policy *'
             .five.wide.column
                 .ui.center.aligned.large.header
                     i.cog.icon
@@ -55,13 +55,26 @@ template(name='user_edit')
                         else
                             label Profile Image
                             input(type='file' name='profile_image' accept='image/*')
-                +password_edit
-                //- +phone_editor
-                +username_edit
-                +emails_edit
-                .ui.orange.button.remove_user 
-                    i.remove.icon
-                    |Delete User
+                .ui.secondary.segment 
+                    .ui.header 
+                        i.clock.icon
+                        |Time Preference
+                    with user_from_username_param
+                        +multi_doc_edit key='time_block' ref_schema='time_block' label='Time Block'
+                        +multi_doc_edit key='time_of_day' ref_schema='time_of_day' label='Time of Day'
+                        +multi_doc_edit key='day' ref_schema='day' label='Day(s)'
+                
+                .ui.secondary.segment 
+                    .ui.header 
+                        i.setting.icon
+                        |Settings
+                    +password_edit
+                    //- +phone_editor
+                    +username_edit
+                    +emails_edit
+                    .ui.orange.button.remove_user 
+                        i.remove.icon
+                        |Delete User
 
 
 template(name='user_schema_editor')
