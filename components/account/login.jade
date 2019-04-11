@@ -15,7 +15,7 @@ template(name='login')
                     .ui.basic.label 
                         i.lock.icon
                         | Password
-                    input.password(type='password' placeholder='password')
+                    input.password(type='password')
                 if username
                     if logging_in
                         .ui.fluid.large.hhblue.circular.button.enter(title="Login #{username}" class=enter_class)

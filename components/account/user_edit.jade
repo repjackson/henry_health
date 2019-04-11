@@ -42,19 +42,19 @@ template(name='user_edit')
                         +text_edit key='first_name' label='First Name'
                         +text_edit key='last_name' label='Last Name'
                         +number_edit key='age' label='Age'
-                        +text_edit key='email' label='Email'
+                        //- +text_edit key='email' label='Email'
                         +text_edit key='state' label='State'
                         +number_edit key='zip_code' label='Zip Code'
-                    .field
-                        if user_from_username_param.image_id
-                            label Image
-                            .ui.centered.rounded.image
-                                img.ui.medium.image(src="{{c.url user_from_username_param.image_id width=400 height=400 gravity='face' crop='fill'}}")
-                                a#remove_photo.ui.right.corner.link.label
-                                    i.remove.link.icon
-                        else
-                            label Profile Image
-                            input(type='file' name='profile_image' accept='image/*')
+                    //- .field
+                    //-     if user_from_username_param.image_id
+                    //-         label Image
+                    //-         .ui.centered.rounded.image
+                    //-             img.ui.medium.image(src="{{c.url user_from_username_param.image_id width=400 height=400 gravity='face' crop='fill'}}")
+                    //-             a#remove_photo.ui.right.corner.link.label
+                    //-                 i.remove.link.icon
+                    //-     else
+                    //-         label Profile Image
+                    //-         input(type='file' name='profile_image' accept='image/*')
                 .ui.secondary.segment 
                     .ui.header 
                         i.clock.icon

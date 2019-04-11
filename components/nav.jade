@@ -3,12 +3,12 @@ template(name='nav')
         //- a.toggle_sidebar.mobile.only.header.item
         //-     i.sidebar.icon
         //-     | Henry Health
-        if currentUser
-            a.header.mobile.hidden.item(href='/dashboard' class="{{isActivePath '/dashboard'}}") 
-                img.ui.small.image(src="{{c.url 'henry_logo'}}")
-        else 
-            a.header.mobile.hidden.item(href='/' class="{{isActivePath '/'}}") 
-                img.ui.small.image(src="{{c.url 'henry_logo'}}")
+        //- if currentUser
+        //-     a.header.mobile.hidden.item(href='/dashboard' class="{{isActivePath '/dashboard'}}") 
+        //-         img.ui.small.image(src="{{c.url 'henry_logo'}}")
+        //- else 
+        a.header.item(href="https://henry-health.com/" class="{{isActivePath 'https://henry-health.com/'}}") 
+            img.ui.small.image(src="{{c.url 'henry_logo'}}")
         //- a.mobile.hidden.item(href='/users' class="{{isActivePath '/users'}}")
         //-     i.large.grey.users.icon
         //-     |People
