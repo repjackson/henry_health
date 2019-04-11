@@ -10,6 +10,30 @@
 #   siteName: 'Henry Health'
 
 
+Accounts.emailTemplates.siteName = 'Henry Health';
+Accounts.emailTemplates.from = 'Henry Health <admin@henry-health.com>';
+#
+# Accounts.emailTemplates.enrollAccount.subject = (user) => {
+#   return `Welcome to Awesome Town, ${user.profile.name}`;
+# };
+#
+# Accounts.emailTemplates.enrollAccount.text = (user, url) => {
+#   return 'You have been selected to participate in building a better future!'
+#     + ' To activate your account, simply click the link below:\n\n'
+#     + url;
+# };
+#
+# Accounts.emailTemplates.resetPassword.from = () => {
+#   // Overrides the value set in `Accounts.emailTemplates.from` when resetting
+#   // passwords.
+#   return 'AwesomeSite Password Reset <no-reply@example.com>';
+# };
+Accounts.emailTemplates.verifyEmail =
+   subject: -> "Henry Health Activation"
+   text: (user, url)-> "Hi #{user.username}.\n Please verify your e-mail by following this link: #{url}"
+
+
+
 Meteor.methods
     test_email: ->
         Accounts.sendVerificationEmail Meteor.userId()
@@ -39,11 +63,14 @@ Mailer.init
 
 Meteor.methods
     send_admin_enrollment_email: (new_user_id)->
-        console.log new_user_id
+        # console.log new_user_id
         new_user = Meteor.users.findOne new_user_id
-        # new_user = Meteor.users.findOne new_user_id
+        # console.log new_user
+        Accounts.sendVerificationEmail(new_user_id)
+
+        new_user = Meteor.users.findOne new_user_id
         Mailer.send
-            to: 'eric <repjackson@gmail.com>'           # 'To: ' address. Required.
+            to: ['EJ <repjackson@gmail.com>','Frank White <fdmwhite@gmail.com>']          # 'To: ' address. Required.
             subject: 'New User Enrollment'                     # Required.
             template: 'admin_enrollment_email'               # Required.
             replyTo: 'Henry Health <admin@henry-health.com>'      # Override global 'ReplyTo: ' option.

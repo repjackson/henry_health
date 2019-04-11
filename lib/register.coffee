@@ -37,17 +37,20 @@ if Meteor.isClient
                 }
             console.log options
             Meteor.call 'create_user', options, (err,new_id)->
-                console.log new_id
-                Meteor.users.update new_id,
-                    $set: roles: ['client']
-                Meteor.loginWithPassword username, password, (err,res)=>
-                    if err
-                        console.log err
-                        alert err.reason
-                    else
-                        console.log new_id
-                        Meteor.call 'send_admin_enrollment_email', new_id
-                        Router.go "/user/#{username}/edit"
+                if err
+                    alert err.reason
+                else
+                    console.log new_id
+                    Meteor.users.update new_id,
+                        $set: roles: ['client']
+                    Meteor.loginWithPassword username, password, (err,res)=>
+                        if err
+                            console.log err
+                            alert err.reason
+                        else
+                            console.log new_id
+                            Meteor.call 'send_admin_enrollment_email', new_id
+                            Router.go "/user/#{username}/edit"
 
 
     Template.register.helpers
