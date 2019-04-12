@@ -35,6 +35,9 @@ Meteor.publish 'facet_doc', (tags)->
 Meteor.publish 'users', ()->
     Meteor.users.find()
 
+Meteor.publish 'me', ()->
+    Meteor.users.find Meteor.userId()
+
 Meteor.methods
     set_delta_facets: (type)->
         my_delta = Docs.findOne
