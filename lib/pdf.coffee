@@ -4,9 +4,10 @@ Meteor.methods
         doc = new PDFDocument({size: 'A4', margin: 50})
         doc.fontSize(12)
         doc.font('Times-Bold').text("Henry Health Client Report", {align: 'center'})
-        for email in user.emails
-            doc.font('Times-Roman').text("Email: ", {align: 'left', continued:true})
-            doc.font('Times-Bold').text("#{email.address}", {align: 'left'})
+        if user.emails
+            for email in user.emails
+                doc.font('Times-Roman').text("Email: ", {align: 'left', continued:true})
+                doc.font('Times-Bold').text("#{email.address}", {align: 'left'})
 
         for key,value of user
             unless key in ['emails','_id', 'services']
