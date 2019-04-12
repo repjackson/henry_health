@@ -18,13 +18,28 @@ if Meteor.isClient
             @next()
         return
 
-    Router.onBeforeAction requireLogin, except: [ 'register','register_therapist','home','login','reset_password' ]
+    # Router.onBeforeAction requireLogin, except: [ 'register','register_therapist','home','login','reset_password' ]
 
 
 Router.route '/me', -> @render 'me'
 Router.route '/reset_password', -> @render 'reset_password'
 Router.route '/register', -> @render 'register'
 Router.route '/register_therapist', -> @render 'register_therapist'
+
+
+Router.route '/verify-email/:token', ->
+    # onBeforeAction: ->
+    console.log @
+    # Session.set('_resetPasswordToken', this.params.token)
+    # @subscribe('enrolledUser', this.params.token).wait()
+    console.log @params
+    Accounts.verifyEmail(@params.token, (err) =>
+        if err
+            console.log err
+            alert err
+        else
+            Router.go '/dashboard'
+    )
 
 
 Router.route('enroll', {

@@ -1,6 +1,6 @@
 Meteor.methods
     generate_pdf: (user)->
-        console.log user
+        # console.log user
         doc = new PDFDocument({size: 'A4', margin: 50})
         doc.fontSize(12)
         for key,value of user

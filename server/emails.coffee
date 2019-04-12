@@ -30,8 +30,11 @@ Accounts.emailTemplates.from = 'Henry Health <admin@henry-health.com>';
 # };
 Accounts.emailTemplates.verifyEmail =
    subject: -> "Henry Health Activation"
-   text: (user, url)-> "Hi #{user.username}.\n Please verify your e-mail by following this link: #{url}"
+   text: (user, url)-> "Hi #{user.username}.\n Please verify your e-mail by clicking here: #{url}.\n\n If you did not request this verification, please ignore this email. If you feel something is wrong, please contact our support team: admin@henry-health.com."
 
+
+Accounts.urls.verifyEmail = (token)->
+    Meteor.absoluteUrl("verify-email/" + token)
 
 
 Meteor.methods
@@ -44,7 +47,7 @@ Mailer.config
     from: 'Henry Health <admin@henry-health.com>',     # Default 'From:' address. Required.
     replyTo: 'Henry Health <admin@henry-health.com>',  # Defaults to `from`.
     routePrefix: 'emails',              # Route prefix.
-    baseUrl: process.env.ROOT_URL,      # The base domain to build absolute link URLs from in the emails.
+    baseUrl: "process.env.ROOT_URL",      # The base domain to build absolute link URLs from in the emails.
     testEmail: "repjackson@gmail.com",                    # Default address to send test emails to.
     logger: console                     # Injected logger (see further below)
     silent: false,                      # If set to `true`, any `Logger.info` calls won't be shown in the console to reduce clutter.
@@ -71,7 +74,7 @@ Meteor.methods
         new_user = Meteor.users.findOne new_user_id
         Mailer.send
             to: ['EJ <repjackson@gmail.com>','Frank White <fdmwhite@gmail.com>']          # 'To: ' address. Required.
-            subject: 'New User Enrollment'                     # Required.
+            subject: 'New Henry Health Enrollment'                     # Required.
             template: 'admin_enrollment_email'               # Required.
             replyTo: 'Henry Health <admin@henry-health.com>'      # Override global 'ReplyTo: ' option.
             from: 'Henry Health <admin@henry-health.com>'         # Override global 'From: ' option.

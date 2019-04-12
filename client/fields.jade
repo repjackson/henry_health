@@ -558,9 +558,9 @@ template(name='boolean_view')
         |No
 
 template(name='single_doc_view')
-    if icon
-        i.grey.icon(class=icon)
-    .ui.header(title=key)
+    .ui.grey.header(title=key)
+        if icon
+            i.icon(class=icon)
         |#{label}
     .ui.label
         if icon
@@ -615,9 +615,9 @@ template(name='multi_doc_edit')
     
 
 template(name='multi_doc_view')
-    if icon
-        i.grey.icon(class=icon)
-    .ui.header(title=key)
+    .ui.grey.inline.header(title=key)
+        if icon
+            i.icon(class=icon)
         |#{label}
     each field_value
         .ui.basic.label
