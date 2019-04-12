@@ -140,8 +140,6 @@ template(name='image_link_view')
 
 
 
-
-
 template(name='textarea_view')
     .ui.unstyled.accordion
         .active.title
@@ -236,7 +234,7 @@ template(name='doc_view')
 
 template(name='text_edit')
     .ui.labeled.fluid.input
-        .ui.label
+        .ui.basic.label
             if icon
                 i.grey.icon(class=icon)
             if label
@@ -300,7 +298,7 @@ template(name='code_edit')
 
 template(name='number_edit')
     .ui.labeled.fluid.input
-        .ui.label
+        .ui.basic.label
             // if icon
             //     i.grey.icon(class=icon)
             |#{label}
@@ -583,9 +581,9 @@ template(name='single_doc_edit')
 
 
 template(name='multi_doc_edit')
-    if icon
-        i.grey.icon(class=icon)
-    .ui.small.header(title=key)
+    .ui.small.grey.header(title=key)
+        if icon
+            i.grey.icon(class=icon)
         |#{label}
     each choices
         .ui.circular.button.select_choice(class=choice_class)
@@ -622,7 +620,7 @@ template(name='multi_doc_view')
     .ui.header(title=key)
         |#{label}
     each field_value
-        .ui.label
+        .ui.basic.label
             |#{this}
     div
 

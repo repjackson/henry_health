@@ -3,39 +3,39 @@ template(name='login')
         .centered.row
             .twelve.wide.column
                 img.ui.centered.image(src="{{c.url 'henry_logo'}}")
-                h1.ui.center.aligned.header Log In 
+                h1.ui.center.aligned.grey.header Log In 
                 if message
                     h4.ui.center.aligned.header #{message}
                 .ui.fluid.labeled.input(class=login_class)
                     .ui.basic.label 
-                        i.user.icon
+                        i.user.grey.icon
                         |Username
                     input.username(type='text')
                 .ui.fluid.labeled.input(class=login_class)
                     .ui.basic.label 
-                        i.lock.icon
+                        i.lock.grey.icon
                         | Password
                     input.password(type='password')
                 if username
                     if logging_in
                         .ui.fluid.large.hhblue.circular.button.enter(title="Login #{username}" class=enter_class)
-                            |Login '#{username}'
+                            |Login #{username}
                             i.right.chevron.icon
                     else
                         .ui.center.aligned.secondary.segment
                             .ui.small.grey.header Username "#{username}" not found
                             a(href='/register') Register
                 .ui.center.aligned.basic.segment    
-                    a.ui.circular.button(href='/reset_password')
+                    a.ui.circular.large.basic.button(href='/reset_password')
                         i.refresh.icon
                         |Reset Password
                         
                 .ui.center.aligned.basic.segment    
                     .ui.small.header If you don't have an account 
-                    a.ui.circular.button(href='/register_therapist') 
+                    a.ui.circular.large.basic.button(href='/register_therapist') 
                         i.plus.square.icon
                         |Register as a Therapist
-                    a.ui.circular.button(href='/register') 
+                    a.ui.circular.large.basic.button(href='/register') 
                         i.user.icon
                         |Register as a Client
 
@@ -83,9 +83,13 @@ template(name='reset_password')
                             .ui.small.grey.header Username "#{username}" not found
                             a(href='/register') Register
                 .ui.center.aligned.basic.segment    
-                    a.ui.circular.button(href='/login') Login
+                    a.ui.circular.large.basic.button(href='/login') Login
                         
                 .ui.center.aligned.basic.segment    
                     .ui.small.header If you don't have an account 
-                    a.ui.circular.button(href='/register_therapist') Register as a Therapist
-                    a.ui.circular.button(href='/register') Register as a Client
+                    a.ui.circular.large.basic.button(href='/register_therapist')
+                         i.plus.square.icon
+                         | Register as a Therapist
+                    a.ui.circular.large.basic.button(href='/register')
+                         i.user.icon
+                         |Register as a Client

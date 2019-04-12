@@ -2,7 +2,7 @@ template(name='dashboard')
     .ui.stackable.padded.grid
         .centered.row
             .twelve.wide.column
-                h1.ui.center.aligned.header
+                h1.ui.center.aligned.grey.header
                     i.dashboard.icon
                     if is_therapist
                         |Therapist
@@ -12,18 +12,23 @@ template(name='dashboard')
         .centered.row
             .twelve.wide.column
                 if is_therapist
-                    .ui.header Articles
-                    .ui.list
-                        each articles
-                            .item
-                                a(href=link target='_window') #{title}
+                    .ui.secondary.segment
+                        .ui.grey.header
+                            i.grey.newspaper.icon 
+                            |Articles
+                        .ui.link.large.list
+                            each articles
+                                a.item(href=link target='_window') #{title}
                 if is_client
                     with currentUser
-                        .ui.header Availability
-                        +multi_doc_edit key='time_block' ref_schema='time_block' label='Time Block'
-                        +multi_doc_edit key='time_of_day' ref_schema='time_of_day' label='Time of Day'
-                        +multi_doc_edit key='day' ref_schema='day' label='Day(s)'
-                    .ui.header Contact Info
+                        .ui.secondary.segment
+                            .ui.grey.header 
+                                i.clock.icon
+                                |Availability
+                            +multi_doc_edit key='time_block' ref_schema='time_block' label='Time Block'
+                            +multi_doc_edit key='time_of_day' ref_schema='time_of_day' label='Time of Day'
+                            +multi_doc_edit key='day' ref_schema='day' label='Day(s)'
+                    .ui.grey.header Contact Info
                 a.ui.circular.hhblue.button(href="/user/#{currentUser.username}/edit")
                     i.pencil.icon
                     | Edit Profile

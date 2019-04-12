@@ -1,5 +1,5 @@
 template(name='nav')
-    .ui.borderless.stackable.top.attached.large.menu
+    .ui.borderless.top.attached.large.menu
         //- a.toggle_sidebar.mobile.only.header.item
         //-     i.sidebar.icon
         //-     | Henry Health
@@ -15,11 +15,11 @@ template(name='nav')
         //- a.mobile.hidden.item(href='/m/article' class="{{isActivePath '/m/article'}}")
         //-     i.newspaper.grey.file.icon
         //-     | Articles
-        .mobile.hidden.right.menu
+        .right.menu
             if is_admin
                 a.item(href='/admin' class="{{isActivePath '/admin'}}")
-                    i.large.grey.user.shield.icon
-                    | Admin
+                    i.large.grey.shield.icon
+                    span.mobile.hidden Admin
             if is_dev
                 a.item(href="/docs" class="{{isActivePath '/docs'}}")
                     i.sitemap.large.icon
@@ -37,13 +37,13 @@ template(name='nav')
             if currentUser
                 a.item(href="/dashboard" class="{{isActivePath '/dashboard'}}")
                     i.large.grey.dashboard.icon
-                    | Dashboard
-                a.mobile.hidden.item(href="/user/#{currentUser.username}" class="{{isActivePath '/user/#{currentUser.username}'}}")
+                    span.mobile.hidden Dashboard
+                a.item(href="/user/#{currentUser.username}" class="{{isActivePath '/user/#{currentUser.username}'}}")
                     if currentUser.profile.image_id
                         img.ui.avatar.image(src="{{c.url currentUser.image_id width=50 height=50 gravity='face' crop='fill'}}")
                     else
                         i.large.grey.user.icon
-                    | #{currentUser.username}
+                    span.mobile.hidden #{currentUser.username}
                 if logging_out
                     .icon.disabled.item
                         i.large.loading.refresh.icon
@@ -51,12 +51,12 @@ template(name='nav')
                     a#logout.ui.mobile.hidden.icon.item(href='#') 
                         i.large.grey.sign.out.alternate.icon
             else
-                a.ui.mobile.hidden.item(href='/login') 
+                a.ui.item(href='/login') 
                     i.large.grey.sign.in.alternate.icon
-                    | Log In
-                a.ui.mobile.hidden.item(href='/register') 
+                    span.mobile.hidden Log In
+                a.ui.item(href='/register') 
                     i.large.grey.user.plus.icon
-                    | Enroll
+                    span.mobile.hidden Enroll
 
 
 

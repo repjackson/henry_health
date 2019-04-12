@@ -6,14 +6,12 @@ template(name='admin')
 
 
 template(name='article_list')
-    .ui.header Article List
-    .ui.button.add_article New
-    table.ui.sortable.striped.table
-        thead
-            tr
-                th Title
-                th Link
-                th Actions
+    .ui.grey.inline.large.center.aligned.header 
+        i.newspaper.icon
+        |Article List
+    .ui.icon.circular.basic.button.add_article
+        i.plus.large.icon
+    table.ui.very.basic.table
         tbody
             each articles
                 tr
@@ -22,7 +20,8 @@ template(name='article_list')
                     td 
                         +text_edit key='link'
                     td 
-                        i.remove.link.icon.delete_article
+                        .ui.circular.icon.button.delete_article
+                            i.remove.icon
 
 
 
@@ -30,40 +29,41 @@ template(name='user_table')
     //- a#add_user.ui.button(href='/user/add')
     //-     i.plus.icon
     //-     |Add User
-    table.ui.sortable.striped.table
-        thead
-            tr
-                th Image
-                th Profile
-                th Roles
-                th Actions
+    .ui.grey.inline.large.center.aligned.header 
+        i.users.icon
+        |Users
+    
+    table.ui.very.basic.striped.table
         tbody
             each users
                 tr
                     td 
-                        img.ui.tiny.image(src="{{c.url image_id width=100 height=100 gravity='face' crop='fill'}}")
-                    td 
-                        .ui.header 
-                            |#{name}
-                        .ui.small.header @#{username}
+                        a.ui.header(href="/user/#{username}/view") #{first_name} #{last_name}
+                        .ui.small.inline.header @#{username}
                         each emails
                             |#{address}
                     td 
-                        +user_role_toggle role='admin'
-                        +user_role_toggle role='therapist'
-                        +user_role_toggle role='client'
-                        +user_role_toggle role='user'
+                        +user_role_toggle role='admin' icon='shield'
+                        +user_role_toggle role='therapist' icon='plus square'
+                        +user_role_toggle role='client' icon='user'
                     td
-                        .ui.button.generate_pdf
+                        .ui.circular.basic.button.generate_pdf
                             i.external.icon
                             |PDF
-                        a.ui.button(href="/user/#{username}/edit")
+                        a.ui.circular.basic.button(href="/user/#{username}/edit")
                             i.pencil.icon
                             |Edit
+                        a.ui.circular.basic.button(href="/user/#{username}/view")
+                            i.right.chevron.icon
+                            |View
                         
 
 template(name='user_role_toggle')
     if is_in_role
-        .remove_role.ui.hhblue.button #{role}
+        .remove_role.ui.hhblue.circular.button 
+            i.icon(class=icon)
+            |#{role}
     else
-        .add_role.ui.basic.button #{role}
+        .add_role.ui.basic.circular.button
+            i.icon(class=icon)
+            |#{role}

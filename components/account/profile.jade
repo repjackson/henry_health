@@ -86,11 +86,6 @@ template(name='profile_layout')
                                     +array_view key='time_of_day' ref_schema='time_of_day' label='Time of Day'
                                     +array_view key='day' ref_schema='day' label='Day(s)'
             
-                                    if current_user
-                                        .ui.vertical.fluid.menu
-                                            a.item.logout(href='#')
-                                                i.sign.out.icon
-                                                |Log Out
                                     .ui.basic.segment
                                         //- .ui.header
                                         //-     |#{user.points} Following
@@ -104,6 +99,12 @@ template(name='profile_layout')
                                             |Roles
                                         each roles
                                             .ui.label #{this}
+                                    if current_user
+                                        .ui.vertical.fluid.menu
+                                            a.item.logout(href='#')
+                                                i.sign.out.icon
+                                                |Log Out
+                
                                     //- +group_switcher
                                 .twelve.wide.column.scrolling
                                     +yield
