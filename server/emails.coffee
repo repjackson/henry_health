@@ -36,6 +36,10 @@ Accounts.emailTemplates.verifyEmail =
 Accounts.urls.verifyEmail = (token)->
     Meteor.absoluteUrl("verify-email/" + token)
 
+Accounts.urls.resetPassword = (token)->
+    Meteor.absoluteUrl('reset_password/' + token);
+
+
 
 Meteor.methods
     test_email: ->

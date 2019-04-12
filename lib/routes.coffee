@@ -22,7 +22,7 @@ if Meteor.isClient
 
 
 Router.route '/me', -> @render 'me'
-Router.route '/reset_password', -> @render 'reset_password'
+Router.route '/forgot_password', -> @render 'reset_password'
 Router.route '/register', -> @render 'register'
 Router.route '/register_therapist', -> @render 'register_therapist'
 
@@ -40,6 +40,8 @@ Router.route '/verify-email/:token', ->
         else
             Router.go '/dashboard'
     )
+
+Router.route '/reset_password/:token', -> @render 'reset_password'
 
 
 Router.route('enroll', {

@@ -65,3 +65,27 @@ if Meteor.isClient
         username: -> Session.get 'username'
         logging_in: -> Session.equals 'enter_mode', 'login'
         enter_class: -> if Meteor.loggingIn() then 'loading disabled' else ''
+
+
+
+    Template.forgot_password.events
+        'click .submit_email': (e, t) ->
+            e.preventDefault()
+            emailVar = $('.email').val()
+            console.log 'emailVar : ' + emailVar
+
+            trimInput = (val) -> val.replace /^\s*|\s*$/g, ''
+
+            email_trim = trimInput(emailVar)
+            email = email_trim.toLowerCase()
+            Accounts.forgotPassword { email: email }, (err) ->
+                if err
+                    if err.message == 'User not found [403]'
+                        console.log 'This email does not exist.'
+                        alert 'This email does not exist.'
+                    else
+                        console.log 'We are sorry but something went wrong.'
+                        alert 'We are sorry but something went wrong.'
+                else
+                    console.log 'Email Sent. Check your mailbox.'
+                    alert 'Email Sent. Check your mailbox.'
