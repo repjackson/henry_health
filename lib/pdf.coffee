@@ -5,8 +5,7 @@ Meteor.methods
         doc.fontSize(12)
         for key,value of user
             console.log key,value
-            doc.text("#{key}", {align: 'center', width: 200})
+            doc.font('Times-Roman').text("#{key}: ", {align: 'left', continued:true})
+            doc.font('Times-Bold').text(" #{value}", {align: 'left'})
             doc.moveDown();
-            doc.text("#{value}", {align: 'center', width: 200})
-            doc.moveDown();
-        doc.write('client_dl.pdf')
+        doc.write("#{user.first_name}_#{user.last_name}_profile.pdf")

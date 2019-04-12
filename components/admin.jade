@@ -20,7 +20,7 @@ template(name='article_list')
                     td 
                         +text_edit key='link'
                     td 
-                        .ui.circular.icon.button.delete_article
+                        .ui.circular.icon.basic.button.delete_article
                             i.remove.icon
 
 
@@ -54,8 +54,8 @@ template(name='user_table')
                             i.pencil.icon
                             |Edit
                         a.ui.circular.basic.button(href="/user/#{username}/view")
-                            i.right.chevron.icon
                             |View
+                            i.right.chevron.icon
                         
 
 template(name='user_role_toggle')
