@@ -22,7 +22,7 @@ if Meteor.isClient
 
 
 Router.route '/me', -> @render 'me'
-Router.route '/forgot_password', -> @render 'reset_password'
+Router.route '/forgot_password', -> @render 'forgot_password'
 Router.route '/register', -> @render 'register'
 Router.route '/register_therapist', -> @render 'register_therapist'
 
