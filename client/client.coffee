@@ -38,6 +38,10 @@ Template.registerHelper 'user_is_client', (input) ->
     user = Meteor.users.findOne username:Router.current().params.username
     if user and user.roles and 'client' in user.roles then true else false
 
+Template.registerHelper 'user_is_therapist', (input) ->
+    user = Meteor.users.findOne username:Router.current().params.username
+    if user and user.roles and 'therapist' in user.roles then true else false
+
 
 Template.registerHelper 'current_schema', (input) ->
     Docs.findOne

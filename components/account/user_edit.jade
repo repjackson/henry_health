@@ -45,6 +45,8 @@ template(name='user_edit')
                         //- +text_edit key='email' label='Email'
                         +text_edit key='state' label='State'
                         +number_edit key='zip_code' label='Zip Code'
+                        if user_is_therapist
+                            +multi_doc_edit key='state_licensed' ref_schema='state' label='State Licensed to Practice'
                     //- .field
                     //-     if user_from_username_param.image_id
                     //-         label Image
