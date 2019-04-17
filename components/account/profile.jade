@@ -85,6 +85,13 @@ template(name='profile_layout')
                                     +array_view key='time_block' ref_schema='time_block' label='Time Block'
                                     +array_view key='time_of_day' ref_schema='time_of_day' label='Time of Day'
                                     +array_view key='day' ref_schema='day' label='Day(s)'
+                                    if user_is_therapist
+                                        .ui.small.header License
+                                        +multi_doc_view key='state_licensed' ref_schema='state' label='State Licensed to Practice'
+                                        +number_view key='license_number' label='License Number'
+                                        +date_view key='license_expiration' label='License Expiration Date'
+                                        +text_view key='expertise' label='Expertise'
+
             
                                     .ui.basic.segment
                                         //- .ui.header

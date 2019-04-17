@@ -47,6 +47,9 @@ template(name='user_edit')
                         +number_edit key='zip_code' label='Zip Code'
                         if user_is_therapist
                             +multi_doc_edit key='state_licensed' ref_schema='state' label='State Licensed to Practice'
+                            +number_edit key='license_number' label='License Number'
+                            +date_edit key='license_expiration' label='License Expiration Date'
+                            +text_edit key='expertise' label='Expertise'
                     //- .field
                     //-     if user_from_username_param.image_id
                     //-         label Image
