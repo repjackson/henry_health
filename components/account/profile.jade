@@ -82,12 +82,12 @@ template(name='profile_layout')
                                     //-                     .header
                                     //-                         |#{plural}
                                     .ui.small.header Meeting Preferences
-                                    +array_view key='time_block' ref_schema='time_block' label='Time Block'
-                                    +array_view key='time_of_day' ref_schema='time_of_day' label='Time of Day'
-                                    +array_view key='day' ref_schema='day' label='Day(s)'
+                                    +array_view key='time_block' ref_type='time_block' label='Time Block'
+                                    +array_view key='time_of_day' ref_type='time_of_day' label='Time of Day'
+                                    +array_view key='day' ref_type='day' label='Day(s)'
                                     if user_is_therapist
                                         .ui.small.header License
-                                        +multi_doc_view key='state_licensed' ref_schema='state' label='State Licensed to Practice'
+                                        +multi_doc_view key='state_licensed' ref_type='state' label='State Licensed to Practice'
                                         +number_view key='license_number' label='License Number'
                                         +date_view key='license_expiration' label='License Expiration Date'
                                         +text_view key='expertise' label='Expertise'
@@ -128,15 +128,15 @@ template(name='user_about')
             //- .ui.item Email 
             //-     strong #{email}
             with user_from_username_param
-                +multi_doc_view key='stress_source' ref_schema='source_of_stress' label='Which of the following are major sources of stress for you?'
-                +multi_doc_view key='previous_counsuling_source' ref_schema='counsuling_source' label='Have you ever sought counseling from any of the following?'
-                +single_doc_view key='therapist_gender_preference' ref_schema='gender' label='Would you prefer a male or female therapist?'
-                +single_doc_view key='self_consider' ref_schema='consider_self' label='Do you consider yourself to be: *'
-                +single_doc_view key='marital_status' ref_schema='marital_status' label='What is your marital status?'
-                +single_doc_view key='highest_education_level' ref_schema='education_level' label='What is your highest level of education? *'
-                +single_doc_view key='employment' ref_schema='employment' label='Are you employed? *'
-                +single_doc_view key='annual_household_income' ref_schema='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
-                +single_doc_view key='annual_income' ref_schema='income_option' label='What is your annual income? *'
+                +multi_doc_view key='stress_source' ref_type='source_of_stress' label='Which of the following are major sources of stress for you?'
+                +multi_doc_view key='previous_counsuling_source' ref_type='counsuling_source' label='Have you ever sought counseling from any of the following?'
+                +single_doc_view key='therapist_gender_preference' ref_type='gender' label='Would you prefer a male or female therapist?'
+                +single_doc_view key='self_consider' ref_type='consider_self' label='Do you consider yourself to be: *'
+                +single_doc_view key='marital_status' ref_type='marital_status' label='What is your marital status?'
+                +single_doc_view key='highest_education_level' ref_type='education_level' label='What is your highest level of education? *'
+                +single_doc_view key='employment' ref_type='employment' label='Are you employed? *'
+                +single_doc_view key='annual_household_income' ref_type='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
+                +single_doc_view key='annual_income' ref_type='income_option' label='What is your annual income? *'
                 +boolean_view key='health_insurance' label='Do you have health insurance? *'
                 +boolean_view key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
                 div

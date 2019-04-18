@@ -10,8 +10,6 @@ if Meteor.isClient
 
 
     Template.user_table.events
-        'click #add_user': ->
-
         'click .generate_pdf': ->
             console.log @
             Meteor.call 'generate_pdf', @

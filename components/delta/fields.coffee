@@ -168,7 +168,7 @@ if Meteor.isClient
                 parent = Template.parentData(5)
             Cloudinary.upload files[0],
                 # folder:"secret" # optional parameters described in http://cloudinary.com/documentation/upload_images#remote_upload
-                # model:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
+                # type:"private" # optional: makes the image accessible only via a signed url. The signed url is available publicly for 1 hour.
                 (err,res) => #optional callback, you can catch with the Cloudinary collection as well
                     # console.log "Upload Error: #{err}"
                     # console.dir res
@@ -313,7 +313,7 @@ if Meteor.isClient
                 parent = Template.parentData(5)
             # console.log parent
             # console.log @
-            if parent["#{@key}"] then 'teal' else ''
+            if parent["#{@key}"] then 'blue' else ''
 
 
     Template.boolean_edit.events
@@ -441,10 +441,10 @@ if Meteor.isClient
 
 
     Template.children_view.onCreated ->
-        # @autorun => Meteor.subscribe 'children', @data.ref_model, Template.parentData(5)._id
+        # @autorun => Meteor.subscribe 'children', @data.ref_type, Template.parentData(5)._id
         @autorun => Meteor.subscribe 'child_docs', Template.parentData(5)._id
-        @autorun => Meteor.subscribe 'model_from_slug', @data.ref_model
-        @autorun => Meteor.subscribe 'model_fields_from_slug', @data.ref_model
+        @autorun => Meteor.subscribe 'type_from_slug', @data.ref_type
+        @autorun => Meteor.subscribe 'type_fields_from_slug', @data.ref_type
 
     Template.children_view.onRendered ->
         Meteor.setTimeout ->
@@ -468,7 +468,7 @@ if Meteor.isClient
             # else
             #     parent = Template.parentData(5)
             Docs.find {
-                model: @ref_model
+                type: @ref_type
                 parent_id: parent._id
                 # view_roles:$in:Meteor.user().roles
             }, sort:rank:1
@@ -476,10 +476,10 @@ if Meteor.isClient
 
     Template.children_edit.onCreated ->
         console.log @data
-        @autorun => Meteor.subscribe 'children', @data.ref_model, Template.parentData(5)._id
+        @autorun => Meteor.subscribe 'children', @data.ref_type, Template.parentData(5)._id
         @autorun => Meteor.subscribe 'child_docs', Template.parentData(5)._id
-        @autorun => Meteor.subscribe 'model_from_slug', @data.ref_model
-        @autorun => Meteor.subscribe 'model_fields_from_slug', @data.ref_model
+        @autorun => Meteor.subscribe 'type_from_slug', @data.ref_type
+        @autorun => Meteor.subscribe 'type_fields_from_slug', @data.ref_type
 
     Template.children_edit.onRendered ->
         Meteor.setTimeout ->
@@ -493,7 +493,7 @@ if Meteor.isClient
             # else
             #     parent = Template.parentData(5)
             Docs.find {
-                model: @ref_model
+                type: @ref_type
                 parent_id: parent._id
                 # view_roles:$in:Meteor.user().roles
             }, sort:rank:1
@@ -503,35 +503,35 @@ if Meteor.isClient
         'click .add_child': ->
             # console.log @
             new_id = Docs.insert
-                model: @ref_model
+                type: @ref_type
                 parent_id: parent._id
-                parent_model:Router.current().params.type
+                parent_type:Router.current().params.type
             # console.log new_id
 
 
 
 
     Template.single_doc_view.onCreated ->
-        # @autorun => Meteor.subscribe 'type', @data.ref_model
+        # @autorun => Meteor.subscribe 'type_docs', @data.ref_type
 
     Template.single_doc_view.helpers
         choices: ->
-            console.log @ref_model
+            console.log @ref_type
             Docs.find
-                model:@ref_model
+                type:@ref_type
 
 
 
 
     Template.single_doc_edit.onCreated ->
-        @autorun => Meteor.subscribe 'type', @data.ref_model
+        @autorun => Meteor.subscribe 'type_docs', @data.ref_type
 
     Template.single_doc_edit.helpers
         choices: ->
-            # console.log @ref_model
-            if @ref_model
+            # console.log @ref_type
+            if @ref_type
                 Docs.find
-                    model:@ref_model
+                    type:@ref_type
                     # tribe:Router.current().params.tribe_slug
 
         calculated_label: ->
@@ -593,13 +593,13 @@ if Meteor.isClient
 
 
     Template.multi_doc_view.onCreated ->
-        @autorun => Meteor.subscribe 'type', @data.ref_model
+        @autorun => Meteor.subscribe 'type_docs', @data.ref_type
 
     Template.multi_doc_view.helpers
         choices: ->
-            console.log @ref_model
+            console.log @ref_type
             Docs.find {
-                model:@ref_model
+                type:@ref_type
             }, sort:slug:-1
 
     # Template.multi_doc_edit.onRendered ->
@@ -615,14 +615,14 @@ if Meteor.isClient
 
 
     Template.multi_doc_edit.onCreated ->
-        @autorun => Meteor.subscribe 'type', @data.ref_model
+        @autorun => Meteor.subscribe 'type_docs', @data.ref_type
 
 
 
     Template.multi_doc_edit.helpers
         choices: ->
-            # console.log @ref_model
-            Docs.find model:@ref_model
+            # console.log @ref_type
+            Docs.find type:@ref_type
 
         choice_class: ->
             selection = @
@@ -637,7 +637,7 @@ if Meteor.isClient
 
             if target["#{ref_field.key}"]
                 # console.log target["#{ref_field.key}"]
-                if @slug in target["#{ref_field.key}"] then 'teal' else 'basic'
+                if @slug in target["#{ref_field.key}"] then 'blue' else 'basic'
 
 
     Template.multi_doc_edit.events
@@ -739,7 +739,7 @@ if Meteor.isClient
     Template.doc_edit.helpers
         referenced_document: ->
             Docs.findOne
-                model:'document'
+                type:'document'
                 slug:@key
 
 
@@ -755,7 +755,7 @@ if Meteor.isClient
     Template.doc_view.helpers
         referenced_document: ->
             Docs.findOne
-                model:'document'
+                type:'document'
                 slug:@key
 
 

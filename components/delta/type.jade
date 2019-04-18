@@ -6,7 +6,7 @@ template(name='type_edit')
                     .ui.header(title="type: #{type}")
                         |#{title}
                     +creation_info
-                    h1.ui.header edit type
+                    h1.ui.header Edit Type
                     .ui.form
                         +text_edit key='title' label='Title' direct=true
                         +text_edit key='slug' label='Slug' direct=true
@@ -23,10 +23,11 @@ template(name='type_edit')
                     //- each fields
                     //-     +Template.dynamic template=edit_template 
                     //-     // .ui.header #{key} [#{field}] #{label}
-                    .ui.inline.header fields
+                    .ui.inline.header Fields
                     .ui.icon.circular.button.add_field
                         i.plus.icon
                     each fields
+                        .ui.small.header Field
                         +field_edit
                         .ui.divider
 

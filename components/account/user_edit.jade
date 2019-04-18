@@ -13,15 +13,15 @@ template(name='user_edit')
                 //-      input#email(type='email' value=user_from_username_param.email)
                 if user_is_client
                     with user_from_username_param
-                        +multi_doc_edit key='stress_source' ref_schema='source_of_stress' label='Which of the following are major sources of stress for you?'
-                        +multi_doc_edit key='previous_counsuling_source' ref_schema='counsuling_source' label='Have you ever sought counseling from any of the following?'
-                        +single_doc_edit key='therapist_gender_preference' ref_schema='gender' label='Would you prefer a male or female therapist?'
-                        +single_doc_edit key='self_consider' ref_schema='consider_self' label='Do you consider yourself to be: *'
-                        +single_doc_edit key='marital_status' ref_schema='marital_status' label='What is your marital status?'
-                        +single_doc_edit key='highest_education_level' ref_schema='education_level' label='What is your highest level of education? *'
-                        +single_doc_edit key='employment' ref_schema='employment' label='Are you employed? *'
-                        +single_doc_edit key='annual_household_income' ref_schema='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
-                        +single_doc_edit key='annual_income' ref_schema='income_option' label='What is your annual income? *'
+                        +multi_doc_edit key='stress_source' ref_type='source_of_stress' label='Which of the following are major sources of stress for you?'
+                        +multi_doc_edit key='previous_counsuling_source' ref_type='counsuling_source' label='Have you ever sought counseling from any of the following?'
+                        +single_doc_edit key='therapist_gender_preference' ref_type='gender' label='Would you prefer a male or female therapist?'
+                        +single_doc_edit key='self_consider' ref_type='consider_self' label='Do you consider yourself to be: *'
+                        +single_doc_edit key='marital_status' ref_type='marital_status' label='What is your marital status?'
+                        +single_doc_edit key='highest_education_level' ref_type='education_level' label='What is your highest level of education? *'
+                        +single_doc_edit key='employment' ref_type='employment' label='Are you employed? *'
+                        +single_doc_edit key='annual_household_income' ref_type='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
+                        +single_doc_edit key='annual_income' ref_type='income_option' label='What is your annual income? *'
                         +boolean_edit key='health_insurance' label='Do you have health insurance? *'
                         +boolean_edit key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
                         .ui.secondary.segment
@@ -46,7 +46,7 @@ template(name='user_edit')
                         +text_edit key='state' label='State'
                         +number_edit key='zip_code' label='Zip Code'
                         if user_is_therapist
-                            +multi_doc_edit key='state_licensed' ref_schema='state' label='State Licensed to Practice'
+                            +multi_doc_edit key='state_licensed' ref_type='state' label='State Licensed to Practice'
                             +number_edit key='license_number' label='License Number'
                             +date_edit key='license_expiration' label='License Expiration Date'
                             +text_edit key='expertise' label='Expertise'
@@ -65,9 +65,9 @@ template(name='user_edit')
                         i.clock.icon
                         |Time Preference
                     with user_from_username_param
-                        +multi_doc_edit key='time_block' ref_schema='time_block' label='Time Block'
-                        +multi_doc_edit key='time_of_day' ref_schema='time_of_day' label='Time of Day'
-                        +multi_doc_edit key='day' ref_schema='day' label='Day(s)'
+                        +multi_doc_edit key='time_block' ref_type='time_block' label='Time Block'
+                        +multi_doc_edit key='time_of_day' ref_type='time_of_day' label='Time of Day'
+                        +multi_doc_edit key='day' ref_type='day' label='Day(s)'
                 
                 .ui.secondary.segment 
                     .ui.header 

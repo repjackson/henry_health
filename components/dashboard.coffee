@@ -2,7 +2,7 @@ if Meteor.isClient
     Router.route '/dashboard', -> @render 'dashboard'
 
     Template.dashboard.onCreated ->
-        @autorun -> Meteor.subscribe('type', 'article')
+        @autorun -> Meteor.subscribe('type_docs', 'article')
         # @autorun -> Meteor.subscribe('readings')
 
     Template.dashboard.helpers

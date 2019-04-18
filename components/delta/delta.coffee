@@ -37,7 +37,7 @@ Meteor.methods
 if Meteor.isClient
     Template.delta.onCreated ->
         # @autorun -> Meteor.subscribe 'type', Router.current().params.type_slug
-        # @autorun -> Meteor.subscribe 'type', 'type'
+        @autorun -> Meteor.subscribe 'type_from_slug', 'field'
         # @autorun -> Meteor.subscribe 'tags', selected_tags.array(), Router.current().params.type_slug
         # @autorun -> Meteor.subscribe 'docs', selected_tags.array(), Router.current().params.type_slug
         @autorun -> Meteor.subscribe 'type_from_slug', Router.current().params.type_slug
@@ -264,32 +264,22 @@ if Meteor.isClient
 
 
 if Meteor.isServer
+    # Meteor.publish 'type', (type_slug)-> Docs.find type:'type'
     Meteor.publish 'type_from_slug', (type_slug)->
-        if type_slug in ['type','brick','field','tribe','block','page']
-            Docs.find
-                type:'type'
-                slug:type_slug
-        else
-            match = {}
-            # if tribe_slug then match.slug = tribe_slug
-            match.type = 'type'
-            match.slug = type_slug
+        match = {}
+        match.type = 'type'
+        match.slug = type_slug
 
-            Docs.find match
+        Docs.find match
 
-    Meteor.publish 'type_from_doc_id', (type, id)->
+    Meteor.publish 'type_from_doc_id', (id)->
         doc = Docs.findOne id
         # console.log 'pub', tribe_slug, type, id
-        if type in ['type','tribe','page','block','brick']
-            Docs.find
-                type:'type'
-                slug:doc.type
-        else
-            match = {}
-            match.type = 'type'
-            match.slug = doc.type
+        match = {}
+        match.type = 'type'
+        match.slug = doc.type
 
-            Docs.find match
+        Docs.find match
 
 
     Meteor.publish 'type_fields_from_slug', (type_slug)->

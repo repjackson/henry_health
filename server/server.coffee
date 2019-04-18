@@ -22,7 +22,7 @@ Meteor.publish 'featured_posts', ->
         type: 'post'
         featured: true
 
-Meteor.publish 'type', (type)->
+Meteor.publish 'type_docs', (type)->
     Docs.find
         type: type
 
