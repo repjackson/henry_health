@@ -18,9 +18,9 @@ template(name='article_list')
             each articles
                 tr
                     td 
-                        +text_edit key='title'
+                        +text_edit key='title' direct=true
                     td 
-                        +text_edit key='link'
+                        +text_edit key='link' direct=true
                     td 
                         .ui.circular.icon.basic.button.delete_article
                             i.remove.icon
