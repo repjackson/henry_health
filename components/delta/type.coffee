@@ -18,6 +18,12 @@ if Meteor.isClient
                 Docs.remove @_id
                 Router.go '/types'
 
+    Template.type_doc_view.events
+        'click .set_type': ->
+            Session.set 'loading', true
+            Meteor.call 'set_facets', Router.current().params.type_slug,->
+                Session.set 'loading', false
+
 
     Template.type_doc_edit.onCreated ->
         @autorun -> Meteor.subscribe 'doc', Router.current().params.doc_id

@@ -94,18 +94,22 @@ template(name='delta_result')
                 .extra
                     // +user_list_toggle key='bookmark_ids' icon='bookmark' label='Bookmark' color='red'
                     if is_type
-                        a.ui.icon.large.circular.button.route_type(href="/t/#{slug}")
+                        a.ui.circular.button.route_type(href="/t/#{slug}")
                             i.sitemap.icon
-                        a.ui.icon.large.circular.button.route_type(href="/type/edit/#{_id}")
+                            | View Section
+                        a.ui.circular.button.route_type(href="/type/edit/#{_id}")
                             i.edit.icon
+                            | Edit Section
                     else
-                        a.ui.icon.large.circular.button(href="/t/#{type}/#{_id}/edit")
+                        a.ui.circular.button(href="/t/#{type}/#{_id}/edit")
                             i.pencil.icon
-                        a.ui.icon.large.circular.button(href="/t/#{type}/#{_id}/view")
+                            |Edit Document
+                        a.ui.circular.button(href="/t/#{type}/#{_id}/view")
                             i.eye.icon
+                            | View Document
                     //- each type.actions
                     //-     +Template.dynamic template=this data=..
-                    if _author_id
+                    if author_id
                         +author_info
                     +creation_info
                     //- .ui.small.inline.grey.header timestamp tags

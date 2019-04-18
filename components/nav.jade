@@ -15,12 +15,16 @@ template(name='nav')
         //- a.mobile.hidden.item(href='/m/article' class="{{isActivePath '/m/article'}}")
         //-     i.newspaper.grey.file.icon
         //-     | Articles
+        if is_loading
+            .icon.item
+                i.loading.refresh.big.grey.icon
+        
         .right.menu
             if is_admin
                 a.item(href='/admin' class="{{isActivePath '/admin'}}")
                     i.large.grey.shield.icon
                     span.mobile.hidden Admin
-                a.item(href="/t/type" class="{{isActivePath '/t/type'}}")
+                a.item.set_type(href="/t/type" class="{{isActivePath '/t/type'}}")
                     i.sitemap.large.icon
                         
                     

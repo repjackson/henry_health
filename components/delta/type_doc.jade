@@ -24,7 +24,7 @@ template(name='type_doc_view')
             .row
                 .sixteen.wide.column
                     .ui.breadcrumb
-                        a.section(href="/t/#{current_type.slug}" title=current_type.plural)
+                        a.section.set_type(href="/t/#{current_type.slug}" title=current_type.plural)
                             .ui.compact.small.button
                                 |#{current_type.title}
                         .divider

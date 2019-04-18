@@ -9,6 +9,10 @@ if Meteor.isClient
         'click .test_email': ->
             Meteor.call 'test_email'
 
+        'click .set_type': ->
+            Session.set 'loading', true
+            Meteor.call 'set_facets', 'type',->
+                Session.set 'loading', false
 
     Template.nav.onCreated ->
         @autorun ->
