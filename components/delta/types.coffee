@@ -97,8 +97,5 @@ if Meteor.isServer
             parent_id:type._id
 
     Meteor.publish 'type_docs', (slug)->
-        type = Docs.findOne
-            type:'type'
-            slug:slug
         Docs.find
             type:slug

@@ -29,7 +29,6 @@ template(name='type_edit')
                     each fields
                         .ui.small.header Field
                         +field_edit
-                        .ui.divider
 
 
 template(name='type_view')
@@ -112,10 +111,11 @@ template(name='type_view')
 
 
 template(name='field_edit')
-    +text_edit key='title' direct=true             
-    +text_edit key='key'  direct=true                  
-    +text_edit key='field_type' direct=true                   
-    +number_edit key='rank' label='rank' direct=true                 
+    +text_edit key='title' label='Field Title' direct=true             
+    +text_edit key='key'  labe='Field Key' direct=true                  
+    +text_edit key='field_type' label='Field Type' direct=true                   
+    +number_edit key='rank' label='Rank' direct=true   
+    +remove_button              
 
             
 //- template(name='view_type')
