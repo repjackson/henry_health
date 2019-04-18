@@ -128,17 +128,17 @@ template(name='user_about')
             //- .ui.item Email 
             //-     strong #{email}
             with user_from_username_param
-                +multi_doc_view key='stress_source' ref_type='source_of_stress' label='Which of the following are major sources of stress for you?'
-                +multi_doc_view key='previous_counsuling_source' ref_type='counsuling_source' label='Have you ever sought counseling from any of the following?'
-                +single_doc_view key='therapist_gender_preference' ref_type='gender' label='Would you prefer a male or female therapist?'
-                +single_doc_view key='self_consider' ref_type='consider_self' label='Do you consider yourself to be: *'
-                +single_doc_view key='marital_status' ref_type='marital_status' label='What is your marital status?'
-                +single_doc_view key='highest_education_level' ref_type='education_level' label='What is your highest level of education? *'
-                +single_doc_view key='employment' ref_type='employment' label='Are you employed? *'
-                +single_doc_view key='annual_household_income' ref_type='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
-                +single_doc_view key='annual_income' ref_type='income_option' label='What is your annual income? *'
-                +boolean_view key='health_insurance' label='Do you have health insurance? *'
-                +boolean_view key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
+                +multi_doc_view key='stress_source' ref_type='source_of_stress' label='Which of the following are major sources of stress for you?' direct=true
+                +multi_doc_view key='previous_counsuling_source' ref_type='counsuling_source' label='Have you ever sought counseling from any of the following?' direct=true
+                +single_doc_view key='therapist_gender_preference' ref_type='gender' label='Would you prefer a male or female therapist?' direct=true
+                +single_doc_view key='self_consider' ref_type='consider_self' label='Do you consider yourself to be: *' direct=true
+                +single_doc_view key='marital_status' ref_type='marital_status' label='What is your marital status?' direct=true
+                +single_doc_view key='highest_education_level' ref_type='education_level' label='What is your highest level of education? *' direct=true
+                +single_doc_view key='employment' ref_type='employment' label='Are you employed? *' direct=true
+                +single_doc_view key='annual_household_income' ref_type='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?' direct=true
+                +single_doc_view key='annual_income' ref_type='income_option' label='What is your annual income? *' direct=true
+                +boolean_view key='health_insurance' label='Do you have health insurance? *' direct=true
+                +boolean_view key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?' direct=true
                 div
                 a.ui.header(href="https://henry-health.com/privacy-policy/") Henry Health Privacy Policy
                 +boolean_view key='terms' label='I have read and agree to the terms of the Henry Health Privacy Policy *'
