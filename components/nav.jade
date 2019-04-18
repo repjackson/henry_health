@@ -21,8 +21,9 @@ template(name='nav')
                     i.large.grey.shield.icon
                     span.mobile.hidden Admin
             if is_dev
-                a.item(href="/docs" class="{{isActivePath '/docs'}}")
+                a.item(href="/t/type" class="{{isActivePath '/t/type'}}")
                     i.sitemap.large.icon
+                        
                     
                 //- a.ui.simple.dropdown.icon.item(href='/user/#{currentUser.username}/notifications' class="{{isActiveRoute regex='user_notifications'}}")
                 //-     i.large.grey.alarm.icon
