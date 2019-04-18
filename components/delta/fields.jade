@@ -228,7 +228,7 @@ template(name='doc_view')
         
 template(name='text_edit')
     .ui.labeled.fluid.input
-        .ui.basic.label
+        .ui.label
             if icon
                 i.grey.icon(class=icon)
             if label
@@ -284,7 +284,7 @@ template(name='phone_view')
 
 template(name='number_edit')
     .ui.labeled.fluid.input
-        .ui.basic.label
+        .ui.label
             if icon
                 i.grey.icon(class=icon)
             |#{label}
@@ -509,7 +509,7 @@ template(name='youtube_view')
 
 template(name='boolean_edit')
     div
-    .ui.inline.small.grey.header
+    .ui.inline.small.header
         if icon
             i.grey.icon(class=icon)
         | #{label}
@@ -522,11 +522,11 @@ template(name='boolean_edit')
 
 template(name='boolean_view')
     div
-    .ui.small.inline.grey.header #{label}
+    .ui.small.inline.header #{label}
     if field_value
         .ui.basic.green.label Yes
     else
-        .ui.basic.label No
+        .ui.label No
 
 template(name='single_doc_view')
     if icon
@@ -540,16 +540,16 @@ template(name='single_doc_view')
 
 
 template(name='single_doc_edit')
-    .ui.small.inline.grey.header(label=key) 
+    .ui.small.header(label=key) 
         if icon
             i.grey.icon(class=icon)
         |#{label}
     each choices
-        .ui.small.button.select_choice(class=choice_class)
+        .ui.circular.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{calculated_label}
-            |#{slug}
+            |#{label}
 
 
 template(name='multi_doc_edit')

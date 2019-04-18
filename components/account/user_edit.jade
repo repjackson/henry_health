@@ -39,17 +39,17 @@ template(name='user_edit')
                     |Save
                 .ui.form
                     with user_from_username_param
-                        +text_edit key='first_name' label='First Name'
-                        +text_edit key='last_name' label='Last Name'
-                        +number_edit key='age' label='Age'
+                        +text_edit key='first_name' label='First Name' direct=true
+                        +text_edit key='last_name' label='Last Name' direct=true
+                        +number_edit key='age' label='Age' direct=true
                         //- +text_edit key='email' label='Email'
-                        +text_edit key='state' label='State'
-                        +number_edit key='zip_code' label='Zip Code'
+                        +text_edit key='state' label='State' direct=true
+                        +number_edit key='zip_code' label='Zip Code' direct=true
                         if user_is_therapist
-                            +multi_doc_edit key='state_licensed' ref_type='state' label='State Licensed to Practice'
-                            +number_edit key='license_number' label='License Number'
-                            +date_edit key='license_expiration' label='License Expiration Date'
-                            +text_edit key='expertise' label='Expertise'
+                            +multi_doc_edit key='state_licensed' ref_type='state' label='State Licensed to Practice' direct=true
+                            +number_edit key='license_number' label='License Number' direct=true
+                            +date_edit key='license_expiration' label='License Expiration Date' direct=true
+                            +text_edit key='expertise' label='Expertise' direct=true
                     //- .field
                     //-     if user_from_username_param.image_id
                     //-         label Image
