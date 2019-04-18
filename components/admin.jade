@@ -1,6 +1,8 @@
 template(name='admin')
     .ui.stackable.padded.grid
         .sixteen.wide.column
+            if is_dev
+                +types
             +article_list
             +user_table
 

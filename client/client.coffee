@@ -23,11 +23,13 @@ Template.registerHelper 'long_date', (input) -> moment(input).format("dddd, MMMM
 Template.registerHelper 'when', () -> moment(@timestamp).fromNow()
 Template.registerHelper 'from_now', (input) -> moment(input).fromNow()
 
+
+
 Template.registerHelper 'current_type', (input) -> Router.current().params.type
-Template.registerHelper 'current_model', (input) ->
+Template.registerHelper 'current_type', (input) ->
     Docs.findOne
-        model:'model'
-        slug: Router.current().params.model_slug
+        type:'type'
+        slug: Router.current().params.type_slug
 
 
 Template.registerHelper 'current_user', (input) ->
@@ -88,9 +90,9 @@ Template.registerHelper 'user_from_username_param', () ->
     # console.log found
     found
 
-Template.registerHelper 'field_value', () ->
-    parent = Template.parentData()
-    parent["#{@key}"]
+# Template.registerHelper 'field_value', () ->
+#     parent = Template.parentData()
+#     parent["#{@key}"]
 
 
 Template.registerHelper 'is_author', () ->  Meteor.userId() is @author_id

@@ -19,8 +19,8 @@ Docs.before.insert (userId, doc)=>
     # console.log date_array
         doc.timestamp_tags = date_array
 
-    doc.author_id = Meteor.userId()
-    doc.author_username = Meteor.user().username
+    doc._author_id = Meteor.userId()
+    doc._author_username = Meteor.user().username
     return
 
 # Docs.after.insert (userId, doc)->
@@ -103,9 +103,9 @@ if Meteor.isClient
 
 if Meteor.isServer
     Docs.allow
-        insert: (userId, doc) -> doc.author_id is userId
-        update: (userId, doc) -> doc.author_id is userId
-        remove: (userId, doc) -> doc.author_id is userId or 'admin' in Meteor.user().roles
+        insert: (userId, doc) -> doc._author_id is userId
+        update: (userId, doc) -> doc._author_id is userId
+        remove: (userId, doc) -> doc._author_id is userId or 'admin' in Meteor.user().roles
 
 
 

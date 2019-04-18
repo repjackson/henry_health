@@ -1,42 +1,32 @@
-template(name='type_edit')
-    with doc
+template(name='type_doc_edit')
+    with current_doc
         .ui.stackable.padded.grid
             .centered.row
                 .four.wide.column
-                    .ui.header(title="Type: #{type}")
-                        |#{title}
-                    each bricks
-                        if header
-                            +Template.dynamic template=view_template 
-                    // +ioffice name='pencil' classes='ui inline image'
-                    div
+                    .ui.header(title="type: #{type}")
+                        |Edit #{type}
                     +creation_info
-                    a.ui.fluid.button(href="/s/#{type}/#{_id}/view")
-                        i.checkmark.icon
-                        | Save
-                    +remove_button
+                    a.ui.green.big.circular.icon.button(href="/t/#{type}/#{_id}/view")
+                        i.big.checkmark.icon
+                    #delete_type.ui.red.icon.circular.button
+                        i.trash.icon
+                            
                 .twelve.wide.column
                     //- |#{type}
-                    each small_bricks
-                        +Template.dynamic template=edit_template 
-                    each big_bricks
+                    each fields
                         +Template.dynamic template=edit_template 
                         // .ui.header #{key} [#{field}] #{label}
 
 
-template(name='type_view')
-    with doc
+template(name='type_doc_view')
+    with current_doc
         .ui.stackable.padded.grid
             .row
                 .sixteen.wide.column
                     .ui.breadcrumb
-                        a.section(href="/s/#{current_schema.slug}" title=current_schema.plural)
+                        a.section(href="/t/#{current_type.slug}" title=current_type.plural)
                             .ui.compact.small.button
-                                if schema.color_icon
-                                     +icolor name=schema.color_icon classes='ui mini inline image'
-                                // else
-                                // i.icon(class=current_schema.icon)
-                                |#{current_schema.plural}
+                                |#{current_type.title}
                         .divider
                             i.chevron.right.icon
                         .active.section
@@ -49,26 +39,28 @@ template(name='type_view')
             .row
                 .four.wide.column
                     // .ui.header
-                    //     a.ui.icon.button(href="/s/#{type}" title=plural)
+                    //     a.ui.icon.button(href="/t/#{type}" title=plural)
                     //         i.chevron.left.icon
                     //     |View #{type}
                     if can_edit
-                        a.ui.fluid.button(href="/s/#{type}/#{_id}/edit")
+                        a.ui.big.blue.circular.icon.button(href="/t/#{type}/#{_id}/edit")
                             i.pencil.icon
-                            |Edit
-                    each schema.actions
-                        +Template.dynamic template=this data=doc
+                    .ui.small.header timestamp tags
+                    each _timestamp_tags
+                        .ui.label #{this}
+                    each type.actions
+                        +Template.dynamic template=this data=current_doc
                     // +user_list_toggle key='bookmark_ids' icon='bookmark' label='Bookmark' color='red'
                     +creation_info
                 .twelve.wide.column
                     .ui.header
-                        each bricks
+                        each fields
                             if header
                                 +Template.dynamic template=view_template 
                         // if icon
                         //     i.icon(class=icon)
                         // |#{title}
-                    each bricks
+                    each fields
                         unless header
                             .item
                                 +Template.dynamic template=view_template 
@@ -76,5 +68,3 @@ template(name='type_view')
                     +comments
                     if watson
                         +watson_view
-                    
-                    

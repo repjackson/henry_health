@@ -1,0 +1,116 @@
+template(name='delta')
+    with current_type
+        .ui.stackable.padded.grid
+            .row
+                // .twelve.wide.column.padleft.scrolling(class=delta_left_column_class)
+                .six.wide.right.aligned.column.scrolling
+                    .ui.right.aligned.inline.header
+                        i.icon(class=icon)
+                        | #{title}
+                    unless is_loading
+                        //- if can_add
+                        .ui.icon.circular.green.big.button.add_type_doc(title="Add #{title}")
+                            i.plus.icon
+                        if can_edit
+                            //- +edit_button
+                            .ui.icon.circular.button.edit_type
+                                i.cog.icon
+                                //- | Configure #{plural}
+                        // .ui.divider
+                        // // each sessions
+                        // //     .ui.icon.button.select_session(class=session_selector_class title='select session')
+                        // //         i.play.icon
+                                
+                        if current_delta
+                            .ui.icon.circular.button.print_delta(title='Print Session Doc')
+                                i.code.icon
+                            .ui.reset.icon.circular.button(title='Reload Session')
+                                i.refresh.icon
+                            .ui.delete_delta.icon.circular.button(title='Delete Session')
+                                i.trash.icon
+                        else
+                            .create_delta.ui.button.pointer(title='new session')
+                                i.plus.icon
+                                |Session
+                    // |did: #{session_delta_id}
+                            
+                    each current_delta.facets
+                        +facet
+                .ten.wide.column.scrolling
+                    each current_delta.result_ids
+                        +delta_result
+                
+
+
+template(name='facet')
+    if filtering_res
+        div
+        .ui.inline.header 
+            if icon
+                i.small.grey.icon(class=icon)
+            if label
+                |#{label}
+            else 
+                |#{key}
+        //- .ui.icon.small.input
+        //-     if icon
+        //-         i.large.grey.icon(class=icon)
+        //-     input.add_filter(type='text' placeholder=key)
+        //-     // i.grey.dropdown.icon
+        //-         // i.dropdown.icon
+        //-         // each filters
+        //-         //     .unselect.ui.grey.button #{this}
+        each filtering_res
+            if name
+                .selector.ui.compact.button.toggle_selection(class=toggle_value_class title=count)
+                    | #{name}
+                    small #{cal_count}
+            else
+                .selector.ui.compact.button.toggle_selection(class=toggle_value_class title=count)
+                    strong [null]
+                    small #{cal_count}
+
+template(name='toggle_delta_config')
+    if boolean_true
+        .ui.grey.active.icon.button.disable_key(title=label)
+            i.icon(class=icon)
+            // | #{label}
+    else
+        .ui.icon.button.enable_key(title=label)
+            i.icon(class=icon)
+            // | #{label}
+
+
+
+template(name='delta_result')
+    //- .ui.header hi
+    with result 
+        unless is_loading
+            .ui.result.segment
+                .description
+                    each fields
+                        //- |#{title}
+                        +Template.dynamic template=view_template 
+                .extra
+                    // +user_list_toggle key='bookmark_ids' icon='bookmark' label='Bookmark' color='red'
+                    if is_type
+                        a.ui.icon.large.circular.button.route_type(href="/t/#{slug}")
+                            i.sitemap.icon
+                        a.ui.icon.large.circular.button.route_type(href="/type/edit/#{_id}")
+                            i.edit.icon
+                    else
+                        a.ui.icon.large.circular.button(href="/t/#{type}/#{_id}/edit")
+                            i.pencil.icon
+                        a.ui.icon.large.circular.button(href="/t/#{type}/#{_id}/view")
+                            i.eye.icon
+                    //- each type.actions
+                    //-     +Template.dynamic template=this data=..
+                    if _author_id
+                        +author_info
+                    +creation_info
+                    .ui.small.inline.grey.header timestamp tags
+                    each _timestamp_tags
+                        .ui.label #{this}
+    
+    
+    
