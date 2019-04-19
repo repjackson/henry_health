@@ -14,6 +14,9 @@ if Meteor.isClient
         Meteor.setTimeout ->
             $('.button').popup()
         , 2000
+        Meteor.setTimeout ->
+            $('.accordion').accordion()
+        , 2000
 
 
     Template.user_single_doc_ref_editor.onCreated ->

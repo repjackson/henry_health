@@ -181,10 +181,10 @@ template(name='html_edit')
                     |#{this}
     .froala-container
         +froalaReactive getFEContext
-    +call_watson mode='html'
-    +tone mode='html'
-    if watson
-        +watson_view
+    //- +call_watson mode='html'
+    //- +tone mode='html'
+    //- if watson
+    //-     +watson_view
         
         
 template(name='html_view')
@@ -195,8 +195,8 @@ template(name='html_view')
     //-     .active.content
     |!{field_value}
     //- +call_watson mode='html'
-    if watson
-        +watson_view
+    //- if watson
+    //-     +watson_view
 
 
 template(name='doc_edit')
@@ -545,7 +545,7 @@ template(name='single_doc_edit')
             i.grey.icon(class=icon)
         |#{label}
     each choices
-        .ui.circular.button.select_choice(class=choice_class)
+        .ui.circular.compact.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{calculated_label}
@@ -558,7 +558,7 @@ template(name='multi_doc_edit')
     .ui.small.header(label=key)
         |#{label}
     each choices
-        .ui.circular.button.select_choice(class=choice_class)
+        .ui.circular.compact.button.select_choice(class=choice_class)
             if icon
                 i.grey.icon(class=icon)
             |#{label}

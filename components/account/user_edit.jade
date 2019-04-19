@@ -13,17 +13,26 @@ template(name='user_edit')
                 //-      input#email(type='email' value=user_from_username_param.email)
                 if user_is_client
                     with user_from_username_param
-                        +multi_doc_edit key='stress_source' ref_type='source_of_stress' label='Which of the following are major sources of stress for you?'
-                        +multi_doc_edit key='previous_counsuling_source' ref_type='counsuling_source' label='Have you ever sought counseling from any of the following?'
-                        +single_doc_edit key='therapist_gender_preference' ref_type='gender' label='Would you prefer a male or female therapist?'
-                        +single_doc_edit key='self_consider' ref_type='consider_self' label='Do you consider yourself to be: *'
-                        +single_doc_edit key='marital_status' ref_type='marital_status' label='What is your marital status?'
-                        +single_doc_edit key='highest_education_level' ref_type='education_level' label='What is your highest level of education? *'
-                        +single_doc_edit key='employment' ref_type='employment' label='Are you employed? *'
-                        +single_doc_edit key='annual_household_income' ref_type='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
-                        +single_doc_edit key='annual_income' ref_type='income_option' label='What is your annual income? *'
-                        +boolean_edit key='health_insurance' label='Do you have health insurance? *'
-                        +boolean_edit key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
+                        .ui.styled.fluid.accordion
+                            .title
+                                .ui.header 
+                                    |Demographics
+                                    i.dropdown.icon
+                            .content
+                                +single_doc_edit key='identify' ref_type='binary' label='1. Do you identify as African American or Black?'
+                                +single_doc_edit key='describe' ref_type='binary' label='2. How do you describe yourself?'
+                                +multi_doc_edit key='stress_source' ref_type='source_of_stress' label='1. Which of the following are major sources of stress for you?'
+                                +multi_doc_edit key='previous_counsuling_source' ref_type='counsuling_source' label='2. Have you ever sought counseling from any of the following?'
+                                +single_doc_edit key='therapist_gender_preference' ref_type='gender' label='3. Would you prefer a male or female therapist?'
+                                +single_doc_edit key='something' ref_type='' label='4. During the past 4 weeks, to what extent has your physical health or emotional problems interfered with your normal social activities with family, friends, neighbors or groups?'
+                                +single_doc_edit key='self_consider' ref_type='consider_self' label='Do you consider yourself to be: *'
+                                +single_doc_edit key='marital_status' ref_type='marital_status' label='What is your marital status?'
+                                +single_doc_edit key='highest_education_level' ref_type='education_level' label='What is your highest level of education? *'
+                                +single_doc_edit key='employment' ref_type='employment' label='Are you employed? *'
+                                +single_doc_edit key='annual_household_income' ref_type='income_option' label='What is your annual household (combined income of spouse, partner, etc) income?'
+                                +single_doc_edit key='annual_income' ref_type='income_option' label='What is your annual income? *'
+                                +boolean_edit key='health_insurance' label='Do you have health insurance? *'
+                                +boolean_edit key='out_of_pocket' label='Are you willing to pay for our service offerings out of pocket?'
                         .ui.secondary.segment
                             a.ui.circular.button(href="https://henry-health.com/privacy-policy/" target="_window") 
                                 i.external.icon
